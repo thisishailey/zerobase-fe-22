@@ -222,6 +222,7 @@ div.postHeaderGrid span.profile {
 }
 
 div.postHeaderGrid p.accountName {
+    color: #000000;
     font-family: "SF Pro Display Semibold", sans-serif;
     font-weight: 600;
     font-size: 13px;
@@ -266,4 +267,64 @@ div.postContent div.postContentPageCount {
 
 div.postContentPageCount p {
     color: #F9F9F9;
+}
+
+section.post div.postMenu {
+    width: auto;
+    height: 24px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.postMenu img {
+    width: 24px;
+    height: 24px;
+}
+
+div.postMenu div.postMenuLeft {
+    width: 96px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+div.postMenu div.postMenuCenter {
+    width: 96px;
+    display: flex;
+    justify-content: center;
+}
+
+div.postMenu div.postMenuRight {
+    width: 96px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+section.post footer.postDescription {
+    width: auto;
+    height: 66px;
+    padding: 2px 12px;
+}
+
+footer div.postLikes,
+footer div.postText {
+    padding: 2px 0;
+}
+
+footer div.postLikes p.likesCount,
+footer div.postText span.accountName {
+    color: #000000;
+    font-family: "SF Pro Display Semibold", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+footer div.postText span.textHide {
+    color: #6E6E6E;
+}
+
+footer div.postText p {
+    font-size: 13px;
 }
