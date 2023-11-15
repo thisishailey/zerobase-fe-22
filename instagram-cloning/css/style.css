@@ -1,0 +1,43 @@
+body {
+    background: #DDDDDD;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background: #ffffff;
+    width: 390px;
+    height: 764px;
+    margin: 0 auto;
+}
+
+.bottomNavBar {
+    display: flex;
+    width: 390px;
+    height: 48px;
+    top: 714px;
+    position: absolute;
+    border-top: 1px solid rgb(219, 219, 219);
+    padding-top: 1px;
+    justify-content: space-evenly;
+}
+
+.bottomNavBar div.tab {
+    display: flex;
+    width: 48px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottomNavBar div.tab .tabImg {
+    width: 50%;
+    height: 50%;
+}
+
+.bottomNavBar div.tab span.tabImg {
+    border-radius: 50%;
+    background-image: url("../images/profile.jpg");
+    background-size: cover;
+    background-position: center;
+}
