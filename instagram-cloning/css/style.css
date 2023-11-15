@@ -14,16 +14,17 @@ body {
     padding: 0;
     font-family: "SF Pro Display Regular", sans-serif;
     font-weight: 400;
+    font-size: 12px;
 }
 
-.container {
+div.container {
     background: #ffffff;
     width: 390px;
     height: 764px;
     margin: 0 auto;
 }
 
-.bottomNavBar {
+nav.bottomNavBar {
     display: flex;
     width: 390px;
     height: 48px;
@@ -45,12 +46,138 @@ body {
 .bottomNavBar div.tab .tabImg {
     width: 50%;
     height: 50%;
+    cursor: pointer;
 }
 
 .bottomNavBar div.tab span.tabImg {
     border-radius: 50%;
     border: 1px solid rgb(219, 219, 219);
-    background-image: url("../images/profile.jpg");
+    background-image: url("../images/profile-user.jpg");
     background-size: cover;
     background-position: center;
+}
+
+section.igHome {
+    width: 390px;
+    height: 714px;
+}
+
+nav.topNavBar {
+    display: flex;
+    width: auto;
+    height: 30px;
+    padding: 20px 16px 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topNavBar img.igLogo {
+    width: 104px;
+    height: 30px;
+    cursor: pointer;
+}
+
+div.topNavMenu {
+    display: flex;
+}
+
+.topNavMenu img {
+    width: 24px;
+    height: 24px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+main.homeMain {
+    width: 390px;
+    height: 652px;
+}
+
+.homeMain div.story {
+    display: flex;
+    width: 374px;
+    height: 84px;
+    padding: 8px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+div.story div.storyAccount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.storyAccount span.ring {
+    background: linear-gradient(#C913B9, #F9373F, #FECD00);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+div.storyAccount span.ringUser {
+    width: 64px;
+    height: 64px;
+    position: relative;
+}
+
+div.storyAccount img.addStory {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 110px;
+    left: 452px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+}
+
+div.storyAccount span.accountProfile {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 70px;
+    cursor: pointer;
+}
+
+div#accountUser span.accountProfile {
+    background-image: url("../images/profile-user.jpg");
+}
+
+div#account1 span.accountProfile {
+    background-image: url("../images/profile-1.jpg");
+}
+
+div#account2 span.accountProfile {
+    background-image: url("../images/profile-2.jpg");
+}
+
+div#account3 span.accountProfile {
+    background-image: url("../images/profile-3.jpg");
+}
+
+div#account4 span.accountProfile {
+    background-image: url("../images/profile-4.jpg");
+}
+
+div.storyAccount p.accountName {
+    margin: 0;
+    padding-top: 4px;
+    text-align: center;
+    color: #262626;
+    position: relative;
+}
+
+main.homeMain div.post {
+    width: 390px;
+    height: 553px;
 }
