@@ -68,7 +68,7 @@ h1.logo {
     height: 310px;
 }
 
-button.purchase {
+.purchase {
     width: 42px;
     height: 42px;
     padding: 0;
@@ -91,14 +91,14 @@ button.purchase {
 .product:focus {
     border: 1px solid var(--blue);
 
-    button.purchase {
+    .purchase {
         width: 112px;
         height: 42px;
         background: var(--blue);
         transition: background 1.5s;
     }
 
-    button.purchase::before {
+    .purchase::before {
         content: "구매하기";
         color: var(--white);
     }
