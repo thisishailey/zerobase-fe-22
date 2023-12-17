@@ -1,1 +1,72 @@
-/* CSS 작성 */
+/* 오늘의 발견 */
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-align: center;
+    background: var(--white);
+}
+
+.container {
+    width: 1020px;
+    height: 1098px;
+    margin: 100px auto 242px;
+}
+
+header {
+    padding-bottom: 48px;
+    text-align: left;
+}
+
+h1.logo {
+    margin: 0;
+}
+
+.section-title {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title h2 {
+    font-size: 24px;
+}
+
+.section-title h3 {
+    font-size: 18px;
+    color: var(--darkgray);
+}
+
+.section-title h4 {
+    font-size: 16px;
+    color: var(--darkgray);
+}
+
+.products {
+    width: 1036px;
+    height: 962px;
+}
+
+.product-img {
+    margin: 0 16px 16px 0;
+    padding: 20px;
+    border: 1px solid var(--gray);
+    float: left;
+}
+
+.product-img:hover,
+.product-img:focus {
+    border: 1px solid var(--blue);
+}
+
+.product-img.big-img {
+    width: 502px;
+    height: 310px;
+}
+
+.product-img.sml-img {
+    width: 243px;
+    height: 310px;
+}
