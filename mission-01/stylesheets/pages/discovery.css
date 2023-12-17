@@ -49,24 +49,57 @@ h1.logo {
     height: 962px;
 }
 
-.product-img {
+.product {
     margin: 0 16px 16px 0;
     padding: 20px;
     border: 1px solid var(--gray);
     float: left;
+    position: relative;
+    cursor: pointer;
 }
 
-.product-img:hover,
-.product-img:focus {
-    border: 1px solid var(--blue);
-}
-
-.product-img.big-img {
+.product.big-box {
     width: 502px;
     height: 310px;
 }
 
-.product-img.sml-img {
+.product.sml-box {
     width: 243px;
     height: 310px;
+}
+
+button.purchase {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 0;
+    position: absolute;
+    z-index: 10;
+    bottom: 20px;
+    left: 20px;
+    background: var(--black-gradient);
+    color: var(--lightgray);
+    font-size: 14px;
+    line-height: 120%;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+
+.product:hover,
+.product:focus {
+    border: 1px solid var(--blue);
+
+    button.purchase {
+        width: 112px;
+        height: 42px;
+        background: var(--blue);
+        transition: background 1.5s;
+    }
+
+    button.purchase::before {
+        content: "구매하기";
+        color: var(--white);
+    }
 }
