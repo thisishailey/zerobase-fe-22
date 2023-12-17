@@ -62,7 +62,7 @@ section#shopping-offer {
 .product-card {
     width: 200px;
     height: 270px;
-    padding: 14px 14px 18px 14px;
+    padding: 14px 14px auto 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,11 +103,18 @@ section#shopping-offer {
 }
 
 .product-name,
+p.product-delivery,
 .product-review-count {
     font-size: 14px;
     font-style: normal;
-    font-weight: 400;
     line-height: 120%;
+}
+
+.product-name {
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .product-info {
@@ -118,10 +125,7 @@ section#shopping-offer {
 
 p.product-delivery {
     height: 16px;
-    font-size: 14px;
-    font-style: normal;
     font-weight: 500;
-    line-height: 120%;
     color: var(--color-gray-700);
 }
 
@@ -156,4 +160,5 @@ img.product-delivery {
 
 .product-review-count {
     color: var(--color-gray-700);
+    font-weight: 400;
 }
