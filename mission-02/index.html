@@ -1,17 +1,127 @@
 <!DOCTYPE html>
 <html lang="ko-KR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>오늘의 쇼핑 제안 - 쿠팡(Coupang)</title>
-  <link rel="icon" href="/assets/favicon/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/stylesheets/main.css" />
+  <link rel="icon" href="./assets/favicon/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./stylesheets/main.css">
 </head>
+
 <body>
-  
+  <div class="container">
+
+    <header>
+      <h1 class="logo">
+        <a href="https://www.coupang.com/">
+          <picture>
+            <source srcset="./assets/logo/logo.webp" type="image/webp" width=176 height=40>
+            <img src="./assets/logo/logo.png" width=176 height=40 alt="쿠팡 로고 이미지">
+          </picture>
+        </a>
+      </h1>
+    </header>
+
+    <section id="shopping-offer">
+      <div class="section-title">
+        <div class="title-icon"></div>
+        <h2>오늘의 쇼핑 제안</h2>
+      </div>
+
+      <div class="products">
+
+        <a href="/">
+          <div class="product-card">
+            <div class="product-discount" aria-label="할인율" role="region">30%</div>
+            <img class="product-img" src="./assets/offer/furniture.jpg" alt="렌지대 제품 이미지">
+            <div class="product-description">
+              <p class="product-name">솔로리빙 셀린 렌지대 60...</p>
+              <div class="product-info">
+                <div class="product-review">
+                  <div class="product-rating four-and-half-stars" aria-label="구매자 평점 4.5점" role="note"></div>
+                  <p class="product-review-count" aria-label="구매자 리뷰 수" role="note">(3,255)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="/">
+          <div class="product-card">
+            <img class="product-img" src="./assets/offer/renton.jpg" alt="랜턴 제품 이미지">
+            <div class="product-description">
+              <p class="product-name">옆 동네몰 레트로 LED 감성...</p>
+              <div class="product-info">
+                <img src="./assets/icon/badge-rocket.svg" alt="배송유형 로켓배송" class="product-delivery">
+                <div class="product-review">
+                  <div class="product-rating four-and-half-stars" aria-label="구매자 평점 4.5점" role="note"></div>
+                  <p class="product-review-count" aria-label="구매자 리뷰 수" role="note">(1,807)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="/">
+          <div class="product-card">
+            <img class="product-img" src="./assets/offer/drying-rack.jpg" alt="식기건조대 제품 이미지">
+            <div class="product-description">
+              <p class="product-name">프리미엄 부착식 식기건조...</p>
+              <div class="product-info">
+                <p class="product-delivery" aria-label="배송유형" role="region">무료배송</p>
+                <div class="product-review">
+                  <div class="product-rating four-stars" aria-label="구매자 평점 4점" role="note"></div>
+                  <p class="product-review-count" aria-label="구매자 리뷰 수" role="note">(2,423)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="/">
+          <div class="product-card">
+            <div class="product-discount" aria-label="할인율" role="region">10%</div>
+            <img class="product-img" src="./assets/offer/boohgle.jpg" alt="냄비 제품 이미지">
+            <div class="product-description">
+              <p class="product-name">타지 않는 냄비 보오글 네모...</p>
+              <div class="product-info">
+                <img src="./assets/icon/badge-rocket.svg" alt="배송유형 로켓배송" class="product-delivery">
+                <div class="product-review">
+                  <div class="product-rating five-stars" aria-label="구매자 평점 5점" role="note"></div>
+                  <p class="product-review-count" aria-label="구매자 리뷰 수" role="note">(1,009)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="/">
+          <div class="product-card">
+            <div class="product-discount" aria-label="할인율" role="region">25%</div>
+            <img class="product-img" src="./assets/offer/deskset.jpg" alt="책상 제품 이미지">
+            <div class="product-description">
+              <p class="product-name">베스트리빙 베이직 멀티 H...</p>
+              <div class="product-info">
+                <p class="product-delivery" aria-label="배송유형" role="region">무료배송</p>
+                <div class="product-review">
+                  <div class="product-rating four-stars" aria-label="구매자 평점 4점" role="note"></div>
+                  <p class="product-review-count" aria-label="구매자 리뷰 수" role="note">(3,203)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
 </body>
+
 </html>

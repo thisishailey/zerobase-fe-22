@@ -1,6 +1,6 @@
 /* Theme */
-:root{
-  --color-back: #181818;
+:root {
+  --color-black: #181818;
   --color-white: #FFFFFF;
   --color-gray-100: #F3F3F3;
   --color-gray-200: #E7E7E7;
@@ -20,7 +20,7 @@
   --color-blue-700: #005A89;
   --color-blue-800: #003C5B;
   --color-blue-900: #001E2E;
-  --color-opacity-20: rgba(0,0,0,0.2);
+  --color-opacity-20: rgba(0, 0, 0, 0.2);
   --color-red-100: #FAD3D6;
   --color-red-200: #F5A7AC;
   --color-red-300: #EF7B83;
@@ -71,11 +71,11 @@
   --font-family: 'Noto Sans KR', sans-serif;
 }
 
-html{
+html {
   font-size: var(--base-size);
 }
 
-body{
+body {
   color: var(--color-black);
   background: var(--color-white);
 }
