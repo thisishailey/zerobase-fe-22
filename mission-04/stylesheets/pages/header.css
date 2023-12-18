@@ -1,1 +1,166 @@
 /* 헤더 */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* login-bar */
+
+.login-bar {
+    width: 100%;
+    height: 34px;
+    background: var(--color-gray-100);
+}
+
+.login-bar-items {
+    width: 1020px;
+    height: 100%;
+    margin: 5px auto;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.login-bar-item {
+    width: max-content;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    user-select: none;
+    cursor: pointer;
+}
+
+.login-bar-item:first-child {
+    margin-left: 744px;
+}
+
+
+/* grid container */
+
+.container {
+    width: 1020px;
+    height: 116px;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 74px 1fr;
+    grid-template-columns: 110px 216px 575px 1fr;
+    grid-template-areas:
+        "category logo search buttons"
+        "category menu menu buttons"
+    ;
+}
+
+
+/* category */
+
+button.button--category {
+    grid-area: category;
+    width: 110px;
+    height: 116px;
+    padding: 30px 32.5px;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    color: var(--color-white);
+    background-color: var(--color-blue-600);
+    background-image: url(../../assets/icon/hamburger.svg);
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: top 30px center;
+}
+
+
+/* logo */
+
+h1.logo {
+    grid-area: logo;
+    width: 176px;
+    height: 40px;
+    margin: 34px 0 0 40px;
+    background-image: url(../../assets/logo/logo.svg);
+    background-size: 176px 40px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1.logo a {
+    width: 176px;
+    height: 40px;
+}
+
+
+/* search */
+
+form.search {
+    grid-area: search;
+    width: 516px;
+    height: 40px;
+    margin: 34px 29px 0 30px;
+    border: 1px solid var(--color-blue-600);
+    position: relative;
+}
+
+.search select {
+    width: 135px;
+    height: 38px;
+    padding: 12px 100px 12px 12px;
+    border: 0;
+    appearance: none;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    color: var(--color-gray-700);
+    background-color: transparent;
+}
+
+svg.select-arrow {
+    position: absolute;
+    left: 94px;
+    z-index: -1;
+}
+
+
+/* buttons */
+
+.side-buttons {
+    grid-area: buttons;
+    display: flex;
+}
+
+ul.mycoupang-links {
+    display: none;
+}
+
+.myCoupang.is--active {
+    ul.mycoupang-links {
+        display: flex;
+    }
+}
+
+
+/* menu */
+
+nav.menu-list {
+    grid-area: menu;
+}
+
+ul.menu-items {
+    display: flex;
+    gap: 2px;
+    list-style-type: none;
+}
