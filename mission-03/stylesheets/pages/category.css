@@ -238,3 +238,86 @@ article.kitchen {
 
 
 /* article products */
+
+.products {
+    width: 526px;
+    height: 631px;
+    display: flex;
+    flex-direction: column;
+}
+
+.products-col {
+    width: 100%;
+    height: 50%;
+}
+
+.products-col:first-child::after {
+    content: url("../../assets/icon/product-card-divider.svg");
+    width: 528px;
+    height: 2px;
+    position: absolute;
+    font-size: 0;
+}
+
+.products-row {
+    margin: 8px 16px;
+    display: flex;
+    gap: 16px;
+}
+
+.product-card {
+    width: 160px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.product-img {
+    width: 160px;
+    height: 160px;
+}
+
+.product-description {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.product-name,
+.product-discount,
+span.won {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.product-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.product-discount {
+    color: var(--color-red-500);
+}
+
+.product-price-delivery {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.product-rocket {
+    width: 54px;
+    height: 14px;
+}
