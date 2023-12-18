@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    text-align: center;
     background: var(--white);
 }
 
@@ -16,7 +15,6 @@ body {
 
 header {
     padding-bottom: 48px;
-    text-align: left;
 }
 
 h1.logo {

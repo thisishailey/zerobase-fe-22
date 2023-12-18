@@ -18,7 +18,6 @@ header {
 
 header h1.logo {
     margin: 0;
-    text-align: left;
 }
 
 header picture {
@@ -29,7 +28,6 @@ header picture {
 section#shopping-offer {
     width: 1022px;
     height: 354px;
-    text-align: left;
 }
 
 .section-title {
