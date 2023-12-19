@@ -6,6 +6,7 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
+  background: var(--color-white);
 }
 
 
@@ -15,6 +16,7 @@ body {
 
 header.header {
   border-bottom: 1px solid var(--color-gray-100);
+  user-select: none;
 }
 
 .header__inner {
@@ -26,17 +28,20 @@ header.header {
 button.button--category {
   width: 110px;
   height: 116px;
-  padding: 30px 32.5px;
   border: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   color: var(--color-white);
   background-color: var(--color-blue-600);
-  background-image: url(../../assets/icon/hamburger.svg);
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  background-position: top 30px center;
+}
+
+.button--category:focus {
+  border-radius: 4px;
+  border: 1px solid var(--red-500, #E52330);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* ---------------------------------------------- */
@@ -48,6 +53,7 @@ nav.navigation {
   height: 520px;
   margin: 0 auto;
   display: none;
+  user-select: none;
 }
 
 .navigation.is--active {
@@ -119,3 +125,122 @@ a.navigation-item-button {
 /* ---------------------------------------------- */
 /* 푸터                                            */
 /* ---------------------------------------------- */
+
+.footer-menu {
+  height: 40px;
+  background: var(--color-gray-200);
+}
+
+.footer-menu-bar {
+  width: 1006px;
+  height: 35px;
+  margin: 3px auto 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  user-select: none;
+}
+
+.footer-menu-item {
+  color: var(--color-gray-800);
+  cursor: pointer;
+}
+
+.footer-info {
+  height: 207px;
+}
+
+.footer-info-layout {
+  width: 1200px;
+  height: 143px;
+  margin: 32px auto;
+  padding-right: 2px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 63px;
+  color: var(--color-gray-800);
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.footer-logo {
+  width: 176px;
+  height: 40px;
+  background-image: url(../../assets/logo/logo-mono.svg);
+  text-indent: 500%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-business-info {
+  width: 260px;
+  height: 143px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 15.8px;
+  line-height: 120%;
+}
+
+.footer-business-info li {
+  width: 260px;
+}
+
+.footer-customer-center {
+  width: 293px;
+  height: 143px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-customer-center-one {
+  height: 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-customer-center-one-text-one {
+  font-weight: 700;
+}
+
+.footer-customer-center-one-text-two {
+  padding-left: 15px;
+  border-left: 1px solid var(--color-gray-800);
+}
+
+.footer-customer-center-two {
+  width: 246px;
+  height: 58px;
+  margin-bottom: 4px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.footer-customer-center-three,
+.footer-customer-center-four {
+  height: 19px;
+}
+
+.footer-payment-guarantee {
+  width: 282px;
+  height: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-payment-guarantee p {
+  margin: 0;
+}
+
+.footer-payment-guarantee-title {
+  font-weight: 700;
+}
