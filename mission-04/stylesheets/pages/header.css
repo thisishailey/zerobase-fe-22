@@ -3,6 +3,10 @@
 body {
     margin: 0;
     padding: 0;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
 }
 
 
@@ -19,7 +23,7 @@ body {
     height: 100%;
     margin: 5px auto;
     padding: 0;
-    list-style-type: none;
+    list-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,10 +32,6 @@ body {
 
 .login-bar-item {
     width: max-content;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
     user-select: none;
     cursor: pointer;
 }
@@ -68,10 +68,6 @@ button.button--category {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
     color: var(--color-white);
     background-color: var(--color-blue-600);
     background-image: url(../../assets/icon/hamburger.svg);
@@ -90,7 +86,7 @@ h1.logo {
     margin: 34px 0 0 40px;
     background-image: url(../../assets/logo/logo.svg);
     background-size: 176px 40px;
-    text-indent: 100%;
+    text-indent: 200%;
     white-space: nowrap;
     overflow: hidden;
     display: flex;
@@ -108,24 +104,22 @@ h1.logo a {
 form.search {
     grid-area: search;
     width: 516px;
-    height: 40px;
-    margin: 34px 29px 0 30px;
-    border: 1px solid var(--color-blue-600);
+    height: 44px;
+    margin: 30px 29px 0 30px;
+    border: 2px solid var(--color-blue-600);
     position: relative;
+    display: flex;
 }
 
 .search select {
     width: 135px;
-    height: 38px;
-    padding: 12px 100px 12px 12px;
+    height: 40px;
+    padding: 13px;
     border: 0;
     appearance: none;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
     color: var(--color-gray-700);
     background-color: transparent;
+    cursor: pointer;
 }
 
 svg.select-arrow {
@@ -134,21 +128,175 @@ svg.select-arrow {
     z-index: -1;
 }
 
+.search input {
+    width: 301px;
+    height: 40px;
+    margin: 0;
+    padding: 13px 10px;
+    border: 0;
+    border-left: 1px solid var(--color-gray-100);
+    color: var(--color-gray-900);
+}
+
+.search input::placeholder {
+    color: var(--color-gray-600);
+}
+
+.search button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    background-color: var(--color-white);
+    background-position: center;
+}
+
+button.voice-search {
+    background-image: url(../../assets/icon/mic.svg);
+}
+
+button.keyword-search {
+    background-image: url(../../assets/icon/search.svg);
+}
+
 
 /* buttons */
 
 .side-buttons {
     grid-area: buttons;
+    margin-left: 15px;
     display: flex;
+    gap: 14px;
+}
+
+.myCoupang,
+.cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-buttons button {
+    width: 45px;
+    height: 54px;
+    padding: 0;
+    border: 0;
+    background-color: var(--color-white);
+    background-repeat: no-repeat;
+    background-position: top 5px center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+button.mycoupang-button {
+    background-image: url(../../assets/icon/my-coupang.svg);
 }
 
 ul.mycoupang-links {
     display: none;
+    list-style: none;
+    padding: 0;
 }
 
 .myCoupang.is--active {
     ul.mycoupang-links {
+        width: 90px;
+        height: 130px;
+        position: absolute;
+        top: 126px;
+        border: 1px solid var(--color-gray-300);
+        background: var(--color-white);
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    ul.mycoupang-links::before {
+        content: "";
+        border-top: 0;
+        border-bottom: 8px solid var(--color-white);
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        position: absolute;
+        bottom: 100%;
+        z-index: 1;
+    }
+
+    ul.mycoupang-links::after {
+        content: "";
+        border-top: 0;
+        border-bottom: 10px solid var(--color-gray-300);
+        border-right: 6.25px solid transparent;
+        border-left: 6.25px solid transparent;
+        position: absolute;
+        bottom: 100%;
+    }
+}
+
+.cart {
+    position: relative;
+    justify-content: flex-end;
+}
+
+button.cart-button {
+    background-image: url(../../assets/icon/cart.svg);
+}
+
+.cart-count {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-blue-600);
+    color: var(--color-white);
+    text-align: center;
+    position: absolute;
+    top: 30px;
+    right: 2.5px;
+}
+
+.cart-message {
+    display: none;
+}
+
+.cart.cart--empty {
+    .cart-message {
+        width: 288px;
+        height: 90px;
+        position: absolute;
+        top: 100px;
+        right: 6px;
+        border: 1px solid var(--color-gray-300);
+        background: var(--color-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cart-message::before {
+        content: "";
+        border-top: 0;
+        border-bottom: 8px solid var(--color-white);
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        position: absolute;
+        bottom: 100%;
+        right: 10px;
+        z-index: 1;
+    }
+
+    .cart-message::after {
+        content: "";
+        border-top: 0;
+        border-bottom: 10px solid var(--color-gray-300);
+        border-right: 6.25px solid transparent;
+        border-left: 6.25px solid transparent;
+        position: absolute;
+        bottom: 100%;
+        right: 9px;
     }
 }
 
@@ -157,10 +305,42 @@ ul.mycoupang-links {
 
 nav.menu-list {
     grid-area: menu;
+    width: 755px;
+    height: 26px;
+    margin: 10px 0 6px 36px;
 }
 
 ul.menu-items {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
     gap: 2px;
-    list-style-type: none;
+    list-style: none;
+}
+
+li.menu-item {
+    width: auto;
+    height: 26px;
+    padding: 6px 14px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.menu-item-content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+li.menu-item:nth-last-child(3) {
+    width: 73px;
+    padding: 6px 7px 6px 6px;
+}
+
+li.menu-item:nth-last-child(2) {
+    width: 73px;
+    padding: 6px 20px 6px 19px;
 }

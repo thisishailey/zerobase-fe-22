@@ -36,7 +36,7 @@
       Coupang
     </h1>
 
-    <form class="search" action="">
+    <form class="search" action="/">
       <select name="search-category" id="category-select">
         <option value="all">전체</option>
         <option value="living">생활용품</option>
@@ -46,41 +46,47 @@
         xmlns="http://www.w3.org/2000/svg">
         <path d="M24 17H15L19.6957 23L24 17Z" fill="#767676" />
       </svg>
-      <input type="search">
-      <button class="voice-search"></button>
-      <button class="keyword-search"></button>
+      <input type="search" placeholder="찾고 싶은 상품을 검색해 보세요!" required>
+      <button class="voice-search" aria-label="음성 검색"></button>
+      <button class="keyword-search" aria-label="키워드 검색"></button>
     </form>
 
     <div class="side-buttons">
       <div class="myCoupang">
         <button class="mycoupang-button">마이쿠팡</button>
         <ul class="mycoupang-links">
-          <li class="mycoupang-link">주문목록</li>
-          <li class="mycoupang-link">취소/반품</li>
-          <li class="mycoupang-link">찜리스트</li>
+          <li class="mycoupang-link"><a href="/">주문목록</a></li>
+          <li class="mycoupang-link"><a href="/">취소/반품</a></li>
+          <li class="mycoupang-link"><a href="/">찜리스트</a></li>
         </ul>
       </div>
 
       <div class="cart">
         <button class="cart-button">장바구니</button>
-        <div class="cart-count"></div>
-        <div class="cart-message"></div>
+        <div class="cart-count">0</div>
+        <div class="cart-message">장바구니에 담긴 상품이 없습니다.</div>
       </div>
     </div>
 
     <nav class="menu-list">
       <ul class="menu-items">
         <li class="menu-item">
-          <img src="./assets/icon/icon-rocket.svg" alt="로켓배송 아이콘">
-          로켓배송
+          <div class="menu-item-content">
+            <img src="./assets/icon/icon-rocket.svg" alt="로켓배송 아이콘">
+            로켓배송
+          </div>
         </li>
         <li class="menu-item">
-          <img src="./assets/icon/icon-fresh.svg" alt="로켓프레시 아이콘">
-          로켓프레시
+          <div class="menu-item-content">
+            <img src="./assets/icon/icon-fresh.svg" alt="로켓프레시 아이콘">
+            로켓프레시
+          </div>
         </li>
         <li class="menu-item">
-          2022년 설날
-          <img src="./assets/icon/new.svg" alt="new 아이콘">
+          <div class="menu-item-content">
+            2022년 설날
+            <img src="./assets/icon/new.svg" alt="new 아이콘">
+          </div>
         </li>
         <li class="menu-item">로켓직구</li>
         <li class="menu-item">골드박스</li>
