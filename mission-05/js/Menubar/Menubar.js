@@ -23,14 +23,13 @@ export class Menubar {
 
     let e = domNode.firstElementChild;
 
-    // error in given js file -- needed fixing to make it work properly
-    // while (e) {
-    let menubarItem = e.firstElementChild;
-    if (e && menubarItem && menubarItem.tagName !== 'A') {
-      throw new Error(msgPrefix + '의 자식 요소가 A 요소가 아닙니다.');
+    while (e) {
+      let menubarItem = e.firstElementChild;
+      if (e && menubarItem && menubarItem.tagName !== 'A') {
+        throw new Error(msgPrefix + '의 자식 요소가 A 요소가 아닙니다.');
+      }
+      e = e.nextElementSibling;
     }
-    //   e = e.nextElementSibling;
-    // }
 
     this.isMenubar = true;
 
