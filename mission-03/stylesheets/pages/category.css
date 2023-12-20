@@ -106,24 +106,14 @@ article.kitchen {
 }
 
 .link {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.link p {
-    margin: 0;
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
     color: var(--color-gray-700);
-}
-
-.link .click-arrow {
-    width: 6px;
-    height: 10px;
     background-image: url(../../assets/icon/angle-right-default.svg);
+    background-repeat: no-repeat;
+    background-position: top 56% left 48%;
 }
 
 .hashtag-title {

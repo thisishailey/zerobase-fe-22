@@ -72,16 +72,16 @@ h1.logo {
     padding: 0;
     border: 0;
     position: absolute;
-    z-index: 10;
     bottom: 20px;
     left: 20px;
+    z-index: 10;
     background: var(--black-gradient);
     color: var(--lightgray);
     font-size: 14px;
     line-height: 120%;
     display: inline-flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: flex-end;
     cursor: pointer;
 }
 

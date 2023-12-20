@@ -20,6 +20,12 @@ header h1.logo {
     margin: 0;
 }
 
+header h1.logo a {
+    width: 1020px;
+    height: 40px;
+    display: flex;
+}
+
 header picture {
     width: 176px;
     height: 40px;
@@ -31,8 +37,8 @@ section#shopping-offer {
 }
 
 .section-title {
-    display: flex;
     width: 234px;
+    display: flex;
     align-items: center;
 }
 
