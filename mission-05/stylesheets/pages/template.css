@@ -39,10 +39,11 @@ button.button--category {
 }
 
 .button--category:focus {
+  outline: none;
   border-radius: 4px;
-  border: 1px solid var(--red-500, #E52330);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 1px 1px var(--color-red-500);
 }
+
 
 /* ---------------------------------------------- */
 /* 내비게이션                                        */
@@ -73,12 +74,12 @@ ul.navigation__list {
   padding: 10px 5px;
   list-style: none;
   background: var(--color-white);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px 0px var(--color-opacity-20);
+  position: absolute;
 }
 
 .navigation__list.depth-two,
 .navigation__list.depth-three {
-  position: absolute;
   top: 0;
   left: 180px;
   display: none;
@@ -86,6 +87,20 @@ ul.navigation__list {
 
 .navigation__list.is--active {
   display: block;
+}
+
+.navigation__list::after {
+  content: "";
+  width: 1px;
+  height: 500px;
+  border-right: 1px solid var(--color-gray-100);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.navigation__list.depth-three::after {
+  display: none;
 }
 
 li.navigation-list-item {
@@ -113,6 +128,22 @@ a.navigation-item-button {
   cursor: pointer;
 }
 
+a.navigation-item-button.is--active,
+a.navigation-item-button:focus,
+a.navigation-item-link:hover,
+a.navigation-item-link:focus {
+  font-weight: 700;
+  color: var(--color-blue-600);
+}
+
+a.navigation-item-button.is--active,
+a.navigation-item-button:focus {
+  background-image: url(../../assets/icon/more-right-active.svg);
+  background-repeat: no-repeat;
+  background-position: top 50% right 12px;
+}
+
+
 /* ---------------------------------------------- */
 /* 메인 콘텐츠                                       */
 /* ---------------------------------------------- */
@@ -125,6 +156,9 @@ a.navigation-item-button {
 /* ---------------------------------------------- */
 /* 푸터                                            */
 /* ---------------------------------------------- */
+
+
+/* footer menu */
 
 .footer-menu {
   height: 40px;
@@ -145,6 +179,9 @@ a.navigation-item-button {
   color: var(--color-gray-800);
   cursor: pointer;
 }
+
+
+/* footer info */
 
 .footer-info {
   height: 207px;
@@ -243,4 +280,40 @@ a.navigation-item-button {
 
 .footer-payment-guarantee-title {
   font-weight: 700;
+}
+
+
+/* footer copyright */
+
+.footer-copyright {
+  height: 102px;
+  background: var(--color-gray-900);
+  color: var(--color-gray-200);
+  font-weight: 300;
+  display: flex;
+}
+
+.footer-copyright-layout {
+  width: 1020px;
+  height: 70px;
+  margin: 14px auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+p.footer-copyright-text {
+  width: 858px;
+  height: 70px;
+  margin: 0;
+}
+
+.footer-copyright-sns {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-copyright-sns-instagram {
+  background: linear-gradient(#285AEB, #BC1888, #CC2366, #DC2743, #E6683C, #F09433);
+  border-radius: 50%;
 }
