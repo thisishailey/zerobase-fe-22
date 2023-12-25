@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "SF Pro Display Regular";
+    src: url(../fonts/SF-Pro-Display-Regular.otf);
+}
+
+@font-face {
+    font-family: "SF Pro Display Semibold";
+    src: url(../fonts/SF-Pro-Display-Semibold.otf);
+}
+
 body {
     margin: 0;
     padding: 0;
