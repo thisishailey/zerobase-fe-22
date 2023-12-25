@@ -23,13 +23,13 @@
                     <form class="sign-up-form" method="post">
                         <span class="about-sign-up">Sign up to see photos and videos from your friends.</span>
                         <button class="log-in-with-facebook" type="button">
-                            <span class="facebook-icon"></span>
+                            <span class="facebook-icon" aria-hidden="true"></span>
                             Log in with Facebook
                         </button>
                         <div class="other-sign-up">
-                            <div class="horizontal-line"></div>
+                            <div class="horizontal-line" aria-hidden="true"></div>
                             <div class="or-text">or</div>
-                            <div class="horizontal-line"></div>
+                            <div class="horizontal-line" aria-hidden="true"></div>
                         </div>
                         <input type="text" id="mobile-email" aria-label="Mobile Number or Email"
                             placeholder="Mobile Number or Email" aria-required="true" required>
@@ -42,17 +42,33 @@
                         <span class="info-sign-up">
                             People who use our service may have uploaded your contact information to Instagram.
                             <a href="https://www.facebook.com/help/instagram/261704639352628" target="_blank"
-                                rel="noopener">Learn More</a>
+                                rel="noopener" role="link">Learn More</a>
                         </span>
                         <button class="sign-up-button" type="submit" disabled>Sign up</button>
                     </form>
                 </div>
             </section>
             <section class="log-in">
-
+                <p class="log-in-text">
+                    Have an account?
+                    <a href="https://www.instagram.com/accounts/login/?source=auth_switcher" target="_self"
+                        role="link">Log in</a>
+                </p>
             </section>
             <section class="app-download">
-
+                <p class="app-download-text">Get the app.</p>
+                <div class="app-download-link">
+                    <a href="https://apps.apple.com/us/app/instagram/id389801252?vt=lo" target="_blank" rel="noopener"
+                        role="link" aria-label="Download on the App Store">
+                        <img src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/Yfc020c87j0.png"
+                            alt="Download on the App Store" aria-hidden="true">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.instagram.android&hl=en&gl=US"
+                        target="_blank" rel="noopener" role="link" aria-label="Get it on Google Play">
+                        <img src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png"
+                            alt="Get it on Google Play" aria-hidden="true">
+                    </a>
+                </div>
             </section>
         </main>
     </div>

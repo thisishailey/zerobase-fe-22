@@ -7,5 +7,6 @@
     --color-blue-500: rgb(0, 149, 246);
     --color-blue-600: rgb(24, 119, 242);
     --color-blue-800: rgb(0, 55, 107);
+    --color-black: rgb(0, 0, 0);
     --opacity-disabled: 0.7;
 }

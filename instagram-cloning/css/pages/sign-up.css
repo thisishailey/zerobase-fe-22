@@ -151,7 +151,7 @@ main {
 
 .info-sign-up a {
     color: var(--color-blue-800);
-    text-decoration-line: none;
+    text-decoration: none;
 }
 
 .sign-up-button:disabled {
@@ -168,6 +168,23 @@ main {
     padding: 10px 0;
     border: 1px solid var(--color-gray-300);
     display: flex;
+    justify-content: center;
+}
+
+.log-in-text {
+    width: 159px;
+    height: 18px;
+    margin: 15px;
+    color: var(--color-black);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.log-in-text a {
+    color: var(--color-blue-500);
+    font-weight: 600;
+    text-decoration: none;
 }
 
 
@@ -178,4 +195,28 @@ main {
     height: 95px;
     display: flex;
     flex-direction: column;
+}
+
+.app-download-text {
+    width: 310px;
+    height: 11px;
+    margin: 10px 20px;
+    color: var(--color-black);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.app-download-link {
+    width: 350px;
+    height: 44px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.app-download-link img {
+    height: 40px;
 }
