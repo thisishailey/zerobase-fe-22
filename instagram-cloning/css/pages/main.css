@@ -1,13 +1,3 @@
-@font-face {
-    font-family: "SF Pro Display Regular";
-    src: url(../fonts/SF-Pro-Display-Regular.otf);
-}
-
-@font-face {
-    font-family: "SF Pro Display Semibold";
-    src: url(../fonts/SF-Pro-Display-Semibold.otf);
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -57,7 +47,7 @@ nav.bottomNavBar {
 .bottomNavBar div.tab span.tabImg {
     border-radius: 50%;
     border: 1px solid rgb(219, 219, 219);
-    background-image: url("../images/profile-user.jpg");
+    background-image: url("../../images/main-page/profile-user.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -151,23 +141,23 @@ div.storyAccount span.accountProfile {
 }
 
 div#accountUser span.accountProfile {
-    background-image: url("../images/profile-user.jpg");
+    background-image: url("../../images/main-page/profile-user.jpg");
 }
 
 div#account1 span.accountProfile {
-    background-image: url("../images/profile-1.jpg");
+    background-image: url("../../images/main-page/profile-1.jpg");
 }
 
 div#account2 span.accountProfile {
-    background-image: url("../images/profile-2.jpg");
+    background-image: url("../../images/main-page/profile-2.jpg");
 }
 
 div#account3 span.accountProfile {
-    background-image: url("../images/profile-3.jpg");
+    background-image: url("../../images/main-page/profile-3.jpg");
 }
 
 div#account4 span.accountProfile {
-    background-image: url("../images/profile-4.jpg");
+    background-image: url("../../images/main-page/profile-4.jpg");
 }
 
 div.storyAccount p.accountName {
@@ -211,7 +201,7 @@ div.postHeaderGrid span.profile {
     height: 30px;
     border-radius: 50%;
     border: 1.5px solid #ffffff;
-    background-image: url(../images/profile-2.jpg);
+    background-image: url("../../images/main-page/profile-2.jpg");
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -247,7 +237,7 @@ div.postHeaderMenu {
 section.post div.postContent {
     width: 100%;
     height: 390px;
-    background-image: url(../images/post-img.jpg);
+    background-image: url("../../images/main-page/post-img.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
