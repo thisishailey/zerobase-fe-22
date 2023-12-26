@@ -1,0 +1,37 @@
+/* Font */
+
+@font-face {
+    font-family: Cereal;
+    src: url(../../assets/font/AirbnbCereal_300_Light.otf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Cereal;
+    src: url(../../assets/font/AirbnbCereal_400_Normal.otf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Cereal;
+    src: url(../../assets/font/AirbnbCereal_500_Medium.otf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Cereal;
+    src: url(../../assets/font/AirbnbCereal_600_SemiBold.otf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Cereal;
+    src: url(../../assets/font/AirbnbCereal_800_XBold.otf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: Cereal;
+    src: url(../../assets/font/AirbnbCereal_900_Black.otf);
+    font-weight: 900;
+}
