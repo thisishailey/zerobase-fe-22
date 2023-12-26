@@ -6,7 +6,7 @@
 
 .new-release {
   width: 100%;
-  height: 64px;
+  height: 65px;
   background-color: var(--color-gray-100);
   display: flex;
   flex-direction: column;
@@ -36,10 +36,20 @@
 
 .main-header {
   width: 100%;
-  height: 80px;
+  height: 81px;
+  display: flex;
+  flex-direction: column;
+}
+.main-header .header-container {
   padding: 0 40px;
   display: flex;
   align-items: center;
+}
+.main-header::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-gray-200);
 }
 
 .logo-heading {
@@ -53,12 +63,12 @@
   display: flex;
 }
 .logo-heading .logo-link {
-  width: 30px;
+  width: 32px;
   height: 80px;
   color: var(--color-pink);
   fill: var(--color-pink);
   background-image: url("../../assets/logo/airbnb-logo.svg");
-  background-size: 30px 32px;
+  background-size: 32px 32px;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -129,12 +139,31 @@
 }
 .profile .host-home {
   padding: 12px;
+  position: relative;
+  z-index: 1;
 }
 .profile .host-home .host-home-text {
   height: 18px;
+  background-color: var(--color-transparent);
   font-size: var(--font-size-mdm);
   font-weight: 500;
   line-height: 18px;
+  position: relative;
+  z-index: 1;
+}
+.profile .host-home::before {
+  content: "";
+  width: auto;
+  height: 42px;
+  border-radius: 22px;
+  position: absolute;
+  top: 0px;
+  left: -3px;
+  right: -3px;
+  z-index: 0;
+}
+.profile .host-home:hover::before {
+  background-color: var(--color-gray-100);
 }
 .profile .country {
   width: 40px;
@@ -142,11 +171,27 @@
   margin: 0 8px 0 0;
   padding: 12px;
   background-color: var(--color-transparent);
-  background-image: url(../../assets/images/globe.svg);
-  background-size: 16px 16px;
-  background-repeat: no-repeat;
-  background-position: center;
+  position: relative;
+  z-index: 1;
   cursor: pointer;
+}
+.profile .country .country-img {
+  position: relative;
+  z-index: 1;
+}
+.profile .country::before {
+  content: "";
+  width: auto;
+  height: 42px;
+  border-radius: 22px;
+  position: absolute;
+  top: 0px;
+  left: -3px;
+  right: -3px;
+  z-index: 0;
+}
+.profile .country:hover::before {
+  background-color: var(--color-gray-100);
 }
 .profile .profile-menu {
   width: 86px;
@@ -159,6 +204,9 @@
   align-items: center;
   gap: 14px;
   cursor: pointer;
+}
+.profile .profile-menu:hover {
+  box-shadow: 0 2px 4px var(--color-gray-transparent);
 }
 .profile .profile-menu .profile-menu-img-hamburger {
   width: 16px;
