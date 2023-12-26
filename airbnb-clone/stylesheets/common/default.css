@@ -1,0 +1,13 @@
+/* Default */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: var(--color-white);
+    color: var(--color-gray-900);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-sml);
+    box-sizing: border-box;
+}
