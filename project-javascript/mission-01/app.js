@@ -1,13 +1,13 @@
-// if the key 'navActive' does not exist
-if (localStorage.getItem('navActive') === null) {
-    localStorage.navActive = 'n';
-}
-
 // when the page is loaded
-if (localStorage.navActive === 'y') {
-    document.querySelector('nav').classList.add('active');
-}
-document.querySelector('body').style.visibility = 'visible';
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('navActive') === null) {
+        localStorage.navActive = 'n';
+    }
+    if (localStorage.navActive === 'y') {
+        document.querySelector('nav').classList.add('active');
+    }
+    document.querySelector('body').style.visibility = 'visible';
+});
 
 // when the toggle button clicks
 document.querySelector('i.toggle').addEventListener('click', () => {
