@@ -1,6 +1,7 @@
 const AnalogClock = $container => {
   createTimeDiv($container);
   createHandDiv($container);
+  rotateHands($container);
 };
 
 
@@ -45,6 +46,35 @@ function createHandDiv(clock) {
   }
 }
 
+
+// get time
+
+let hour;
+let minute;
+let second;
+
+function rotateHands(clock) {
+  setInterval(() => {
+    getTime();
+    updateHands(clock);
+  }, 1000);
+}
+
+function getTime() {
+  const time = new Date();
+  hour = time.getHours();
+  minute = time.getMinutes();
+  second = time.getSeconds();
+}
+
+function updateHands(clock) {
+  const handHour = clock.querySelector('.hand.hour');
+  const handMinute = clock.querySelector('.hand.minute');
+  const handSecond = clock.querySelector('.hand.second');
+  handHour.style.setProperty('--deg', (hour % 12) * (360 / 12));
+  handMinute.style.setProperty('--deg', minute * (360 / 60));
+  handSecond.style.setProperty('--deg', second * (360 / 60));
+}
 
 
 export default AnalogClock;
