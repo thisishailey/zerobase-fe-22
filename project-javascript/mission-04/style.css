@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background: #FBF9F1;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    text-align: center;
+}
+
+.heading {
+    margin-top: 30px;
+    padding: 50px;
+    color: #365486;
+    font-weight: 400;
+}
+
+.title {
+    color: #72cae0;
+    font-weight: 400;
+}
+
+.container {
+    display: inline-flex;
+    padding: 20px 60px;
+}
