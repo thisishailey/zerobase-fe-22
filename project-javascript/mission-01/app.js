@@ -12,12 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // when the toggle button clicks
 document.querySelector('i.toggle').addEventListener('click', () => {
     document.querySelector('body').classList.remove('preload');
-    if (localStorage.navActive === 'y') {
-        document.querySelector('nav').classList.remove('active');
-        localStorage.navActive = 'n';
-    }
-    else {
-        document.querySelector('nav').classList.add('active');
-        localStorage.navActive = 'y';
-    }
+    document.querySelector('nav').classList.toggle('active');
+    if (localStorage.navActive === 'y') { localStorage.navActive = 'n'; }
+    else { localStorage.navActive = 'y'; }
 });
