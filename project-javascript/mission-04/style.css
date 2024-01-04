@@ -15,16 +15,26 @@ body {
 .heading {
     margin-top: 30px;
     padding: 50px;
-    color: #365486;
+    color: #597E52;
     font-weight: 400;
 }
 
 .title {
-    color: #72cae0;
+    color: #B19470;
     font-weight: 400;
 }
 
 .container {
-    display: inline-flex;
     padding: 20px 60px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.calendar {
+    width: 300px;
+}
+
+.date-picker {
+    width: 300px;
 }
