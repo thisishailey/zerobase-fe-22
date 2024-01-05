@@ -1,0 +1,10 @@
+/* Theme Colors */
+
+:root {
+    --bg-white: #FBF9F1;
+    --heading-green: #597E52;
+    --heading-brown: #B19470;
+    --theme-color-green: #88AB8E;
+    --theme-color-white: #fff;
+    --calendar-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+}

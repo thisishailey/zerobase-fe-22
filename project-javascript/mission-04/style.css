@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #FBF9F1;
+    background: var(--bg-white);
     font-family: 'Open Sans';
     font-weight: 300;
     text-align: center;
@@ -15,12 +15,12 @@ body {
 .heading {
     margin-top: 30px;
     padding: 50px;
-    color: #597E52;
+    color: var(--heading-green);
     font-weight: 400;
 }
 
 .title {
-    color: #B19470;
+    color: var(--heading-brown);
     font-weight: 400;
 }
 
