@@ -23,6 +23,7 @@ function styleCalendar(e) {
     e.style.setProperty('--calendar-size', cldrWidth);
     e.style.borderRadius = 'calc(var(--calendar-size) * 0.04)';
     e.style.boxShadow = 'var(--calendar-box-shadow)';
+    e.style.userSelect = 'none';
 }
 
 
@@ -46,9 +47,11 @@ function styleNavBtn(e) {
     const arrow = makeElement('div', e, 'nav-btn-arrow');
     if (e.classList.contains('last-mo')) {
         arrow.style.borderRight = 'calc(var(--calendar-size) * 0.025) solid var(--theme-white)';
+        arrow.classList.add('last-mo');
     }
     else if (e.classList.contains('next-mo')) {
         arrow.style.borderLeft = 'calc(var(--calendar-size) * 0.025) solid var(--theme-white)';
+        arrow.classList.add('next-mo');
     }
     arrow.style.borderTop = 'calc(var(--calendar-size) * 0.022) solid transparent';
     arrow.style.borderBottom = 'calc(var(--calendar-size) * 0.022) solid transparent';
@@ -64,7 +67,7 @@ function styleNavDiv(e) {
     month.style.fontSize = 'calc(var(--calendar-size) * 0.06)';
     const year = makeElement('p', e, 'nav-year');
     year.style.fontSize = 'calc(var(--calendar-size) * 0.04)';
-    return [month, year];
+    return e;
 }
 
 
@@ -81,6 +84,11 @@ function styleGrid(e) {
 
 const gridContent = (e, value, last, next) => {
     weekdays(e);
+    days(e, value, last, next);
+}
+
+const newGridContent = (e, value, last, next) => {
+    e.querySelectorAll('.day').forEach(e => { e.remove() })
     days(e, value, last, next);
 }
 
@@ -107,7 +115,7 @@ const days = (e, value, last, next) => {
     const startPoint = 8 - value.dayCountFirst;
     let index = 0;
     for (let i = 1; i <= (weeks * 7); i++) {
-        days[i] = makeElement('div', e, `day${i}`);
+        days[i] = makeElement('div', e, 'day');
         days[i].style.height = 'calc(var(--calendar-size) * 0.12)';
         days[i].style.fontSize = 'calc(var(--calendar-size) * 0.05)';
         days[i].style.color = 'var(--font-black)';
@@ -146,6 +154,7 @@ const days = (e, value, last, next) => {
     days.forEach(e => {
         if (e.dataset.date === today) {
             const t = makeElement('div', e, 'today');
+            t.setAttribute('data-date', `${today}`)
             t.style.width = 'calc(var(--calendar-size) * 0.1)';
             t.style.height = 'calc(var(--calendar-size) * 0.1)';
             t.style.borderRadius = 'calc(var(--calendar-size) * 0.05)';
@@ -160,4 +169,4 @@ const days = (e, value, last, next) => {
     })
 }
 
-export { styleCalendar, styleNav, styleNavBtn, styleNavDiv, styleGrid, gridContent, makeElement };
+export { makeElement, styleCalendar, styleNav, styleNavBtn, styleNavDiv, styleGrid, gridContent, newGridContent };
