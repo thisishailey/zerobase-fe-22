@@ -1,4 +1,4 @@
-import CurrentDate from "./CurrentDate.js";
+import getDate from "./getDate.js";
 import { makeElement, styleNav, styleNavBtn, styleNavDiv } from "./style.js";
 
 const CalendarNav = ($calendar) => {
@@ -10,7 +10,7 @@ const CalendarNav = ($calendar) => {
 }
 
 function insertDate([month, year]) {
-    const currentDate = CurrentDate();
+    const currentDate = getDate(new Date);
     month.innerHTML = currentDate.month;
     year.innerHTML = currentDate.year;
 }
