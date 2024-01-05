@@ -1,5 +1,5 @@
 import { insertDate } from "./getDate.js";
-import { makeElement, styleNav, styleNavBtn, styleNavDiv } from "./style.js";
+import { makeElement, styleNav, styleNavBtn, styleNavDiv } from "./functions.js";
 
 const CalendarNav = ($calendar) => {
     const cldrNav = makeElement('nav', $calendar, 'calendar-nav');

@@ -153,20 +153,24 @@ const days = (e, value, last, next) => {
     today = `${today.getFullYear()}-${today.toLocaleString('default', { month: "2-digit" })}-${today.toLocaleString('default', { day: "2-digit" })}`;
     days.forEach(e => {
         if (e.dataset.date === today) {
-            const t = makeElement('div', e, 'today');
-            t.setAttribute('data-date', `${today}`)
-            t.style.width = 'calc(var(--calendar-size) * 0.1)';
-            t.style.height = 'calc(var(--calendar-size) * 0.1)';
-            t.style.borderRadius = 'calc(var(--calendar-size) * 0.05)';
-            t.style.background = 'var(--theme-green)';
-            t.style.position = 'absolute';
-            t.style.zIndex = '-1';
-            e.style.background = 'transparent';
-            e.style.color = 'var(--theme-white)';
-            e.style.fontWeight = 'var(--font-bold)';
-            e.style.zIndex = '10';
+            selected(e, 'today', 'var(--theme-green)');
         }
     })
+}
+
+function selected(e, className, color) {
+    const s = makeElement('div', e, `${className}`);
+    s.setAttribute('data-date', e.dataset.date)
+    s.style.width = 'calc(var(--calendar-size) * 0.1)';
+    s.style.height = 'calc(var(--calendar-size) * 0.1)';
+    s.style.borderRadius = 'calc(var(--calendar-size) * 0.05)';
+    s.style.background = `${color}`;
+    s.style.position = 'absolute';
+    s.style.zIndex = '-1';
+    e.style.background = 'transparent';
+    e.style.color = 'var(--theme-white)';
+    e.style.fontWeight = 'var(--font-bold)';
+    e.style.zIndex = '10';
 }
 
 export { makeElement, styleCalendar, styleNav, styleNavBtn, styleNavDiv, styleGrid, gridContent, newGridContent };

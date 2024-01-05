@@ -1,4 +1,4 @@
-import { styleCalendar } from "./style.js";
+import { styleCalendar } from "./functions.js";
 import CalendarNav from "./CalendarNav.js";
 import CalendarGrid from "./CalendarGrid.js";
 import addCalendarEvents from "./event.js";

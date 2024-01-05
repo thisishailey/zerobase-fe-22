@@ -5,10 +5,12 @@
     --heading-green: #597E52;
     --heading-brown: #B19470;
     --theme-green: #88AB8E;
+    --theme-brown: #B99470;
     --theme-white: #fff;
     --font-gray: #A9A9A9;
     --font-black: #141414;
     --font-red: #B80000;
     --font-bold: 400;
-    --calendar-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+    --calendar-box-shadow: 0 0 9px 3px rgba(0, 0, 0, 0.12);
+    --picker-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
 }

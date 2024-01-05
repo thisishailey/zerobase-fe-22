@@ -1,4 +1,4 @@
-import { newGridContent } from "./style.js";
+import { newGridContent } from "./functions.js";
 import { getDate, insertDate, lastMonth, nextMonth } from "./getDate.js";
 import DateValues from "./DateValues.js";
 

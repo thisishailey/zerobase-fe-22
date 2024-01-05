@@ -23,7 +23,7 @@ function lastMonth(targetDate) {
 
 function nextMonth(targetDate) {
     let nextMonth = targetDate;
-    nextMonth.setMonth(nextMonth.getMonth() + 1);
+    nextMonth.setMonth(nextMonth.getMonth() + 2);
     return nextMonth;
 }
 
