@@ -44,7 +44,7 @@ function styleNavBtn(e) {
     e.style.cursor = 'pointer';
     flexCenter(e);
     const arrow = makeElement('div', e, 'nav-btn-arrow');
-    if (e.classList.contains('prev-mo')) {
+    if (e.classList.contains('last-mo')) {
         arrow.style.borderRight = 'calc(var(--calendar-size) * 0.025) solid var(--theme-white)';
     }
     else if (e.classList.contains('next-mo')) {
