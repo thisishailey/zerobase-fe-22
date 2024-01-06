@@ -1,1 +1,5 @@
-// do something!
+const NewsList = ($root) => {
+
+}
+
+export default NewsList;
