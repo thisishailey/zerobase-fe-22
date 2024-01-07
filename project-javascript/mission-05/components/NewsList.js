@@ -1,41 +1,52 @@
-import { makeElement, styleScrollImg } from "./functions.js";
+import { makeElement, setLinkAttr, addThumbnailImg, addScrollImg } from "./functions.js";
 
 const NewsList = ($root) => {
     const container = makeElement('div', $root, 'news-list-container');
     const news = makeElement('article', container, 'news-list');
-    makeNewsItem(news);
+    const NewsItems = [];
+    for (let i = 0; i < pageSize; i++) {
+        NewsItems[i] = makeNewsItem(news);
+    }
     const scroll = makeElement('div', container, 'scroll-observer');
-    styleScrollImg(makeElement('img', scroll, ''));
+    addScrollImg(makeElement('img', scroll, ''));
 }
 
-const makeNewsItem = (news) => {
+function makeNewsItem(news) {
     const newsItem = makeElement('section', news, 'news-item');
     const newsThumbnail = makeElement('div', newsItem, 'thumbnail');
+    addThumbnailImg(makeElement('img', setLinkAttr(makeElement('a', newsThumbnail, '')), ''));
     const newsContent = makeElement('div', newsItem, 'contents');
+    setLinkAttr(makeElement('a', makeElement('h2', newsContent, ''), ''));
+    makeElement('p', newsContent, '');
+    return newsItem;
 }
 
-//         <section class="news-item">
-//             <div class="thumbnail">
-//                 <a href="https://www.ajunews.com/view/20220220180410403" target="_blank" rel="noopener noreferrer">
-//                     <img
-//                     src="https://image.ajunews.com/content/image/2022/02/20/20220220180523846963.jpg"
-//                     alt="thumbnail" />
-//                 </a>
-//             </div>
-//             <div class="contents">
-//                 <h2>
-//                     <a href="https://www.ajunews.com/view/20220220180410403" target="_blank" rel="noopener noreferrer">
-//                     ​[뉴욕증시 주간전망] 러시아-우크라이나 긴장 속 변동성 지속 - 아주경제
-//                     </a>
-//                 </h2>
-//                 <p>
-//                     이번 주(21일~25일·현지시간) 뉴욕 증시는 러시아와 우크라이나 간 지정학적 긴장과 우크라이나 간 미국
-//                     연방준비제도(Fed·연준)의 긴축 우려에 계속해서...
-//                 </p>
-//             </div>
-//         </section>
-//         <section class="news-item"></section> * n
+let category = 'all';
+let page = 1;
+const pageSize = 5;
+const apiKey = 'b2fa101aa17748ce9070e4355e67fdee';
 
+function getNews() {
+    category = 'all';
+    page = 1;
+    // const url = `https://newsapi.org/v2/top-headlines?country=kr&category=${category === 'all' ? 'general' : category}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`;
+    return new Promise((resolve) => {
+        axios.get(url).then(
+            res => { const news = res.data.articles; resolve(news); }
+        );
+    })
+}
 
+async function loadNews() {
+    const news = await getNews();
+    news.forEach((article, i) => {
+        NewsItems[i].querySelectorAll('a').forEach(a => { a.href = article.url; });
+        if (article.urlToImage) { NewsItems[i].querySelector('img').src = article.urlToImage; }
+        NewsItems[i].querySelector('h2>a').innerHTML = article.title;
+        NewsItems[i].querySelector('p') = article.description;
+    });
+}
+
+loadNews();
 
 export default NewsList;

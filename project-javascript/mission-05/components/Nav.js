@@ -1,4 +1,5 @@
 import { makeElement } from "./functions.js";
+import { changeCategory } from "./events.js";
 
 const idArr = ['all', 'business', 'entertainment', 'health', 'science', 'sports', 'technology'];
 const textArr = ['전체보기', '비즈니스', '엔터테인먼트', '건강', '과학', '스포츠', '기술'];
@@ -14,6 +15,7 @@ const Nav = ($root) => {
             navListItem.classList.add('active');
         }
     }
+    changeCategory(navList);
 }
 
 export default Nav;

@@ -5,9 +5,20 @@ function makeElement(element, parent, className) {
     return e;
 }
 
-function styleScrollImg(e) {
+function setLinkAttr(e) {
+    e.target = '_blank';
+    e.rel = 'noopener noreferrer';
+    return e;
+}
+
+function addThumbnailImg(e) {
+    e.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
+    e.alt = 'thumbnail';
+}
+
+function addScrollImg(e) {
     e.src = './img/ball-triangle.svg';
     e.alt = 'Loading...';
 }
 
-export { makeElement, styleScrollImg };
+export { makeElement, setLinkAttr, addThumbnailImg, addScrollImg };
