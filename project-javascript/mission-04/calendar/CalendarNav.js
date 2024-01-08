@@ -5,7 +5,7 @@ const CalendarNav = ($calendar) => {
     const cldrNav = createElement('nav', $calendar, 'calendar-nav');
     styleNav(cldrNav);
     styleNavBtn(createElement('button', cldrNav, 'last-mo'));
-    insertDate(styleNavDiv(createElement('div', cldrNav, 'this-mo')));
+    insertDate(styleNavDiv(createElement('div', cldrNav, 'this-mo')), new Date());
     styleNavBtn(createElement('button', cldrNav, 'next-mo'));
 }
 

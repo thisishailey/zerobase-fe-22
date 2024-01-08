@@ -6,7 +6,8 @@ import { gridContent } from "./CalendarDays.js";
 const CalendarGrid = $calendar => {
     const cldrGrid = createElement('div', $calendar, 'calendar-grid');
     styleGrid(cldrGrid);
-    gridContent(cldrGrid, DateValues(getDate()), DateValues(getDate(lastMonth())), DateValues(getDate(nextMonth())));
+    const now = new Date();
+    gridContent(cldrGrid, DateValues(getDate(now)), DateValues(getDate(lastMonth(now))), DateValues(getDate(nextMonth(now))));
 }
 
 export default CalendarGrid;

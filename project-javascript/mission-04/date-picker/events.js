@@ -12,9 +12,11 @@ function addPickerEvent(picker) {
         if (picker.classList.contains('calendar-collapsed')) {
             if (e.target.classList.contains('date-input')) {
                 if (picker.querySelector('.calendar')) {
-                    const target = new Date(e.target.value);
-                    insertDate(picker.querySelector('.calendar'), target);
-                    newGridContent(picker.querySelector('.calendar-grid'), DateValues(getDate(target)), DateValues(getDate(lastMonth(target))), DateValues(getDate(nextMonth(target))));
+                    if (e.target.value !== '') {
+                        const targetDate = new Date(e.target.value);
+                        insertDate(picker.querySelector('.calendar'), targetDate);
+                        newGridContent(picker.querySelector('.calendar-grid'), DateValues(getDate(targetDate)), DateValues(getDate(lastMonth(targetDate))), DateValues(getDate(nextMonth(targetDate))));
+                    }
                     picker.querySelector('.calendar').hidden = false;
                 }
                 else {
