@@ -14,10 +14,15 @@ function getNews($container, newCategory) {
     if (newCategory === currentCategory) { currentPage++; }
     else { currentPage = 1; currentCategory = newCategory; $container.querySelectorAll('.news-item').forEach(e => { e.remove(); }); }
     const url = `https://newsapi.org/v2/top-headlines?country=kr&category=${currentCategory === 'all' ? 'general' : currentCategory}&page=${currentPage}&pageSize=${defaultPageSize}&apiKey=${defaultApiKey}`;
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         let loadedArticles = document.querySelectorAll('.news-item').length
         axios.get(url).then(
-            res => { const news = res.data.articles; const noMoreArticles = (loadedArticles + 5 >= res.data.totalResults); resolve(news, noMoreArticles); }
+            res => {
+                const news = res.data.articles;
+                const noMoreArticles = (loadedArticles + 5 >= res.data.totalResults);
+                if (noMoreArticles) { reject(noMoreArticles) }
+                else { resolve(news) };
+            }
         );
     });
 }
@@ -39,8 +44,8 @@ function createNewsItems($container) {
 }
 
 async function loadNews($container, category) {
-    const [news, noMoreArticles] = await getNews($container, category);
-    if (noMoreArticles) return;
+    const news = await getNews($container, category).catch((e) => { e });
+    if (!news) { document.querySelector('.scroll-observer').hidden = true; return; }
     const articles = await createNewsItems($container);
     news.forEach((article, i) => {
         articles[i].querySelectorAll('a').forEach(a => { a.href = article.url; });

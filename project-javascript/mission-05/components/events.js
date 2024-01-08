@@ -1,5 +1,4 @@
 import newCategory from "./proxy.js";
-import NewsItems from "./NewsItems.js";
 
 function changeCategory(navList) {
     navList.addEventListener('click', (e) => {
@@ -7,7 +6,8 @@ function changeCategory(navList) {
             navList.querySelector('.active').classList.remove('active');
             e.target.classList.add('active');
             newCategory.category = e.target.id;
-            NewsItems(document.querySelector('.news-list'));
+            document.querySelectorAll('.news-item').forEach(e => { e.remove() });
+            document.querySelector('.scroll-observer').hidden = false;
         }
     })
 }
