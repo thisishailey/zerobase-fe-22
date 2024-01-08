@@ -1,4 +1,4 @@
-import { makeElement } from "./functions.js";
+import { makeElement } from "./tools.js";
 import { changeCategory } from "./events.js";
 
 const idArr = ['all', 'business', 'entertainment', 'health', 'science', 'sports', 'technology'];

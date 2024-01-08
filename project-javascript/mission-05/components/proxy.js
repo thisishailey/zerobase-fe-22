@@ -1,4 +1,4 @@
-const currentCategory = new Proxy(
+const newCategory = new Proxy(
     { category: 'all' },
     {
         set(obj, prop, val) {
@@ -7,4 +7,4 @@ const currentCategory = new Proxy(
     }
 );
 
-export default currentCategory;
+export default newCategory;
