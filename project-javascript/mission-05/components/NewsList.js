@@ -1,12 +1,12 @@
-import { makeElement, addScrollImg } from "./tools.js";
-import NewsItems from "./NewsItems.js";
+import { createElement, addScrollImg } from "./tools.js";
+import InfiniteScroll from "./observer.js";
 
 const NewsList = ($root) => {
-    const container = makeElement('div', $root, 'news-list-container');
-    const news = makeElement('article', container, 'news-list');
-    NewsItems(news);
-    const scroll = makeElement('div', container, 'scroll-observer');
-    addScrollImg(makeElement('img', scroll, ''));
+    const container = createElement('div', $root, 'news-list-container');
+    createElement('article', container, 'news-list');
+    const scroll = createElement('div', container, 'scroll-observer');
+    addScrollImg(createElement('img', scroll, ''));
+    InfiniteScroll(container, scroll);
 }
 
 export default NewsList;

@@ -12,4 +12,4 @@ function changeCategory(navList) {
     })
 }
 
-export { changeCategory };
+export default changeCategory;

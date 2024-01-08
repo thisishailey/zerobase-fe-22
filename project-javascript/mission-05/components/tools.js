@@ -1,4 +1,4 @@
-function makeElement(element, parent, className) {
+function createElement(element, parent, className) {
     const e = document.createElement(`${element}`);
     parent.appendChild(e);
     if (className) { e.classList.add(`${className}`); }
@@ -21,4 +21,4 @@ function addScrollImg(e) {
     e.alt = 'Loading...';
 }
 
-export { makeElement, setLinkAttr, addThumbnailImg, addScrollImg };
+export { createElement, setLinkAttr, addThumbnailImg, addScrollImg };
