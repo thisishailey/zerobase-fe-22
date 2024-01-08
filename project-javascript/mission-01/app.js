@@ -1,4 +1,3 @@
-// when the page is loaded
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('navActive') === null) {
         localStorage.navActive = 'n';
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('body').style.visibility = 'visible';
 });
 
-// when the toggle button clicks
 document.querySelector('i.toggle').addEventListener('click', () => {
     document.querySelector('body').classList.remove('preload');
     document.querySelector('nav').classList.toggle('active');
