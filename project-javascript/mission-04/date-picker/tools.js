@@ -1,4 +1,4 @@
-function makeElement(element, parent, className) {
+function createElement(element, parent, className) {
     const e = document.createElement(`${element}`);
     parent.appendChild(e);
     e.classList.add(`${className}`);
@@ -8,6 +8,7 @@ function makeElement(element, parent, className) {
 function styleInput(e) {
     e.name = 'date-picker-input';
     e.type = 'text';
+    e.value = '';
     e.placeholder = 'Select Date';
     e.setAttribute('readonly', true);
     e.style.width = '200px';
@@ -24,7 +25,7 @@ function styleInput(e) {
 
 function stylePickedDate(picked, picker) {
     picker.querySelectorAll('.day').forEach((e) => { if (e.dataset.date === picked) { picked = e } });
-    const s = makeElement('div', picked, 'picked');
+    const s = createElement('div', picked, 'picked');
     s.setAttribute('data-date', picked.dataset.date);
     s.style.width = 'calc(var(--calendar-size) * 0.1)';
     s.style.height = 'calc(var(--calendar-size) * 0.1)';
@@ -38,4 +39,4 @@ function stylePickedDate(picked, picker) {
     picked.style.zIndex = '10';
 }
 
-export { makeElement, styleInput, stylePickedDate };
+export { createElement, styleInput, stylePickedDate };

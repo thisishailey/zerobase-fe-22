@@ -1,8 +1,8 @@
-import { makeElement, styleInput } from "./functions.js";
-import addPickerEvent from "./event.js";
+import { createElement, styleInput } from "./tools.js";
+import addPickerEvent from "./events.js";
 
 const DatePicker = ($datePicker) => {
-    styleInput(makeElement('input', $datePicker, 'date-input'));
+    styleInput(createElement('input', $datePicker, 'date-input'));
     addPickerEvent($datePicker);
 }
 

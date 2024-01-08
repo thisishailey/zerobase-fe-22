@@ -1,7 +1,6 @@
-import { newGridContent } from "./functions.js";
+import { newGridContent } from "./CalendarDays.js";
 import { getDate, insertDate, lastMonth, nextMonth } from "./getDate.js";
 import DateValues from "./DateValues.js";
-
 
 function addCalendarEvents($calendar) {
     changeMonth($calendar);

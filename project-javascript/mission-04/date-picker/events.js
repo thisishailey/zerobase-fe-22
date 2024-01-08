@@ -1,5 +1,8 @@
-import { makeElement, stylePickedDate } from "./functions.js";
+import { getDate, insertDate, lastMonth, nextMonth } from "../calendar/getDate.js";
+import { newGridContent } from "../calendar/CalendarDays.js";
+import DateValues from "../calendar/DateValues.js";
 import Calendar from "../calendar/Calendar.js";
+import { createElement, stylePickedDate } from "./tools.js";
 
 let pickedDate;
 
@@ -9,10 +12,13 @@ function addPickerEvent(picker) {
         if (picker.classList.contains('calendar-collapsed')) {
             if (e.target.classList.contains('date-input')) {
                 if (picker.querySelector('.calendar')) {
+                    const target = new Date(e.target.value);
+                    insertDate(picker.querySelector('.calendar'), target);
+                    newGridContent(picker.querySelector('.calendar-grid'), DateValues(getDate(target)), DateValues(getDate(lastMonth(target))), DateValues(getDate(nextMonth(target))));
                     picker.querySelector('.calendar').hidden = false;
                 }
                 else {
-                    Calendar(makeElement('div', picker, 'calendar'));
+                    Calendar(createElement('div', picker, 'calendar'));
                     picker.querySelector('.calendar').style.marginTop = '10px';
                 }
                 picker.classList.remove('calendar-collapsed');
@@ -26,10 +32,10 @@ function addPickerEvent(picker) {
                 picker.querySelector('.calendar').hidden = true;
                 picker.classList.add('calendar-collapsed');
             }
-            let hasPickedDate = false;
-            picker.querySelectorAll('.day').forEach(e => { if (e.dataset.date === pickedDate) { hasPickedDate = true } });
-            if (hasPickedDate) { stylePickedDate(pickedDate, picker); }
         }
+        let hasPickedDate = false;
+        picker.querySelectorAll('.day').forEach(e => { if (e.dataset.date === pickedDate) { hasPickedDate = true } });
+        if (hasPickedDate) { stylePickedDate(pickedDate, picker); }
         pickerClicked = true;
     });
     document.addEventListener('click', () => {

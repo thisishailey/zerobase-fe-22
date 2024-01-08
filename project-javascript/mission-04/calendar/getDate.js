@@ -1,5 +1,7 @@
-function getDate(obj) {
-    const date = obj;
+function getDate(targetDate) {
+    let date;
+    if (targetDate === undefined) { date = new Date(); }
+    else { date = targetDate; }
     return {
         year: date.getFullYear(),
         month: date.toLocaleString('default', { month: 'long' }),
@@ -16,13 +18,17 @@ function insertDate(e, targetDate) {
 }
 
 function lastMonth(targetDate) {
-    let lastMonth = targetDate;
+    let lastMonth;
+    if (targetDate === undefined) { lastMonth = new Date(); }
+    else { lastMonth = targetDate; }
     lastMonth.setMonth(lastMonth.getMonth() - 1);
     return lastMonth;
 }
 
 function nextMonth(targetDate) {
-    let nextMonth = targetDate;
+    let nextMonth;
+    if (targetDate === undefined) { nextMonth = new Date(); }
+    else { nextMonth = targetDate; }
     nextMonth.setMonth(nextMonth.getMonth() + 2);
     return nextMonth;
 }

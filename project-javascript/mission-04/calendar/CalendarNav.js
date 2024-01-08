@@ -1,12 +1,12 @@
 import { insertDate } from "./getDate.js";
-import { makeElement, styleNav, styleNavBtn, styleNavDiv } from "./functions.js";
+import { createElement, styleNav, styleNavBtn, styleNavDiv } from "./tools.js";
 
 const CalendarNav = ($calendar) => {
-    const cldrNav = makeElement('nav', $calendar, 'calendar-nav');
+    const cldrNav = createElement('nav', $calendar, 'calendar-nav');
     styleNav(cldrNav);
-    styleNavBtn(makeElement('button', cldrNav, 'last-mo'));
-    insertDate(styleNavDiv(makeElement('div', cldrNav, 'this-mo')), new Date);
-    styleNavBtn(makeElement('button', cldrNav, 'next-mo'));
+    styleNavBtn(createElement('button', cldrNav, 'last-mo'));
+    insertDate(styleNavDiv(createElement('div', cldrNav, 'this-mo')));
+    styleNavBtn(createElement('button', cldrNav, 'next-mo'));
 }
 
 export default CalendarNav;
