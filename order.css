@@ -1,0 +1,19 @@
+.property-order {
+    width: 0;
+    height: 0;
+    margin: 0;
+    /* margin-top; -bottom; -left; -right; */
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    /* background-related properties: background-image; -repeat; -position; ... */
+    color: #fff;
+    /* font-related properties: text-align; font-family; -weight; -size; line-height; ... */
+    position: absolute;
+    /* top; bottom; left; right; z-index; */
+    display: flex;
+    /* display-related properties: flex-direction; align-items; grid-template-columns; ... */
+    user-select: none;
+    cursor: pointer;
+}
