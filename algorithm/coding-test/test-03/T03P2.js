@@ -7,3 +7,12 @@ function solution(s) {
 }
 
 console.log(solution('google'));
+
+
+// + another solution using Set
+
+function anotherSolution(s) {
+    return new Set(s).size;
+}
+
+console.log(anotherSolution('google'));
