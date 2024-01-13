@@ -1,6 +1,8 @@
+// Problem 1: use the switch statement to print out the day of the week
+
 const n = 3; // input n will be in range of 0 to 6 (Sun - Sat)
 
-function getDay(n) {
+function solution(n) {
     let day = '';
     switch (n) {
         case 0: day = 'Sunday'; break;
@@ -15,4 +17,4 @@ function getDay(n) {
     return day;
 }
 
-console.log(getDay(n));
+console.log(solution(n));
