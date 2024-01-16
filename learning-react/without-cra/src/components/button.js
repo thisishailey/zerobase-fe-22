@@ -1,7 +1,7 @@
 import React from "react";
 
-export default function Button() {
-    const [key, setKey] = React.useState(true);
+function Button(props) {
+    const [state, setState] = React.useState(true);
 
     const btnStyle = {
         display: 'flex',
@@ -14,26 +14,28 @@ export default function Button() {
         fontFamily: 'Verdana, sans-serif',
         fontSize: '2rem',
         userSelect: 'none',
-        webkitUserSelect: 'none',
+        WebkitUserSelect: 'none',
         cursor: 'pointer',
     }
 
     const clickBtnStyle = {
         ...btnStyle,
-        background: '#86B6F6',
-        color: '#EEF5FF',
+        background: props.mainColor,
+        color: props.color,
     }
 
     const clickedBtnStyle = {
         ...btnStyle,
-        background: '#EEF5FF',
-        color: '#86B6F6',
-        border: '1px solid #86B6F6',
+        background: props.color,
+        color: props.mainColor,
+        border: '1px solid ' + props.mainColor,
     }
 
     return (
-        <div onClick={() => setKey(!key)} style={key ? clickBtnStyle : clickedBtnStyle}>
-            {key ? "click" : "clicked!"}
+        <div onClick={() => setState(!state)} style={state ? clickBtnStyle : clickedBtnStyle}>
+            {state ? props.textBf : props.textAf}
         </div>
     );
 }
+
+export default Button;
