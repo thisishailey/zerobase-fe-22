@@ -9,7 +9,7 @@ function Button(props) {
         justifyContent: 'center',
         width: '200px',
         height: '80px',
-        margin: '200px auto',
+        margin: '100px auto',
         borderRadius: '14px',
         fontFamily: 'Verdana, sans-serif',
         fontSize: '2rem',
@@ -22,6 +22,7 @@ function Button(props) {
         ...btnStyle,
         background: props.mainColor,
         color: props.color,
+        border: '1px solid ' + props.color,
     }
 
     const clickedBtnStyle = {
