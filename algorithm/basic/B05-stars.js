@@ -9,13 +9,13 @@ function answer(num) {
 
 /* test case */
 let input = [
-  // TC-1 result="*****"
+  // TC-1 output="*****"
   5,
-  // TC-2 result="*******"
+  // TC-2 output="*******"
   7,
-  // TC-3 result="************"
+  // TC-3 output="************"
   12,
-  // TC-4 result=""
+  // TC-4 output=""
   0,
 ];
 
