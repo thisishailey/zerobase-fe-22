@@ -1,25 +1,20 @@
 /*** 3. 반 평균 ***/
 
-/* user code */
+/* my solution */
 function answer(score) {
-  let average = 0;
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
-  return average;
+  let avg = 0;
+  for (let i = 0; i < score.length; i++) avg += score[i];
+  avg /= score.length;
+  return avg.toFixed(2);
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=82.00
   [80, 95, 65, 70, 100],
-  // TC: 2
+  // TC-2 output=73.86
   [82, 77, 51, 64, 73, 90, 80],
-  // TC: 3
+  // TC-3 output=81.13
   [100, 71, 59, 88, 72, 75, 91, 93],
 ];
 
