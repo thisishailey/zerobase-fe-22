@@ -1,27 +1,27 @@
 /*** 5. 무한 뺄셈 ***/
 
-/* user code */
+/* my solution */
 function answer(s, e) {
   let sequence = [];
   sequence.push(s);
   sequence.push(e);
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
+  while (e >= 0) {
+    n = s - e;
+    sequence.push(n);
+    s = e;
+    e = n;
+  }
+  sequence.pop();
   return sequence;
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=[ 9, 3, 6 ]
   [9, 3],
-  // TC: 2
+  // TC-2 output=[ 6, 3, 3, 0, 3 ]
   [6, 3],
-  // TC: 3
+  // TC-3 output=[ 13, 7, 6, 1, 5 ]
   [13, 7],
 ];
 
