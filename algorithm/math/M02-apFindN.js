@@ -10,11 +10,11 @@ function answer(a, d, value) {
 
 /* test case */
 let input = [
-  // TC-1 output=
+  // TC-1 output=4
   [1, 2, 7],
-  // TC-2 output=
+  // TC-2 output=-1
   [2, 3, 10],
-  // TC-3 output=
+  // TC-3 output=5
   [3, 5, 23],
 ];
 

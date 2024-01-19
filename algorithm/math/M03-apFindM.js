@@ -1,31 +1,26 @@
 /* 2. 잃어버린 카드 찾기 */
 
 /* my solution */
-function answer(a, b, c) {
-  let number = 0;
-
-  // sort
-  num = [a, b, c];
+function answer() {
+  const num = [...arguments];
   num.sort((x, y) => x - y);
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
+  let number = num[1] - num[0];
+  for (let i = 1; i < num.length - 1; i++) {
+    const d = num[i + 1] - num[i];
+    if (d !== number) d > number ? number += num[i] : number = num[0] + d;
+  }
   return number;
 }
 
 /* test case */
 let input = [
-  // TC-1 output=
+  // TC-1 output=4
   [1, 7, 10],
 
-  // TC-2 output=
+  // TC-2 output=13
   [3, 8, 18],
 
-  // TC-3 output=
+  // TC-3 output=8
   [2, 5, 11],
 ];
 
