@@ -1,25 +1,19 @@
 /*** 2. 나누기와 대소비교 ***/
 
-/* user code */
+/* my solution */
 function answer(a, b, c, d) {
-  let result;
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
-  return result;
+  if (a / b > c / d) return 1;
+  else if (a / b < c / d) return -1;
+  else return 0;
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=1
   [14, 2, 6, 6],
-  // TC: 2
+  // TC-2 output=-1
   [6, 7, 8, 9],
-  // TC: 3
+  // TC-3 output=0
   [18, 2, 36, 4],
 ];
 

@@ -1,25 +1,19 @@
 /*** 1. 대소비교 ***/
 
-/* user code */
+/* my solution */
 function answer(x, y) {
-  let result = "";
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
-  return result;
+  if (x > y) return '>';
+  else if (x < y) return '<';
+  else return '=';
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output='<'
   [3, 5],
-  // TC: 2
+  // TC-2 output='>'
   [7, 4],
-  // TC: 3
+  // TC-3 output='='
   [2, 2],
 ];
 
