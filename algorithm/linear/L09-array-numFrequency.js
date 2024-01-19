@@ -1,38 +1,32 @@
 /* 숫자 빈도수 구하기 */
 
-/* user code */
+/* my solution */
 function answer(s, e) {
   let result = [];
 
-  // 0. 각 자릿수 별 index => 0
   for (let i = 0; i < 10; i++) {
     result[i] = 0;
   }
 
-  // 1. s <= n <= e
-  let num;
   for (let i = s; i <= e; i++) {
-    num = i;
-    // 2. n => % /
-    while (num != 0) {
-      result[num % 10]++;
-      num /= 10;
-      num = parseInt(num);
+    const str = i.toString().split('');
+    for (let j = 0; j < str.length; j++) {
+      result[str[j]]++;
     }
   }
 
   return result;
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=[ 1, 10, 2, 9, 1, 1, 1, 1, 0, 1 ]
   [129, 137],
 
-  // TC: 2
+  // TC-2 output=[ 100, 614, 101, 101, 189, 201, 201, 201, 201, 119 ]
   [1412, 1918],
 
-  // TC: 3
+  // TC-3 output=[ 1503, 1527, 1503, 1502, 2343, 2503, 2512, 2512, 2505, 1686 ]
   [4159, 9182],
 ];
 

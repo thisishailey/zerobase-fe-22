@@ -1,27 +1,22 @@
 /* 벽돌 옮기기 */
 
-/* user code */
-function answer(blocks) {
+/* my solution */
+function answer(bricks) {
   let result = 0;
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
+  const avg = bricks.reduce((a, c) => a + c) / bricks.length;
+  bricks.filter(e => e > avg).forEach(e => result += (e - avg));
   return result;
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=5
   [5, 2, 4, 1, 7, 5],
 
-  // TC: 2
+  // TC-2 output=6
   [12, 8, 10, 11, 9, 5, 8],
 
-  // TC: 3
+  // TC-3 output=21
   [27, 14, 19, 11, 26, 25, 23, 15],
 ];
 
