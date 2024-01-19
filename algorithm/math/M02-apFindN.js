@@ -1,15 +1,10 @@
 /* 1. 등차수열의 항 찾기 */
 
 /* my solution */
-function answer(a, d, n) {
+function answer(a, d, value) {
   let index = -1;
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
+  const diff = (value - a);
+  if (diff % d === 0) index = (diff / d) + 1;
   return index;
 }
 
