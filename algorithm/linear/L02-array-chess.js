@@ -4,8 +4,7 @@
 function answer(chess) {
   // K(1), Q(1), R(2), B(2), K(2), P(8)
   const realChess = [1, 1, 2, 2, 2, 8];
-  let result = chess.map((e, i) => { return realChess[i] - e; });
-  return result;
+  return chess.map((e, i) => { return realChess[i] - e; });
 }
 
 /* test case */
