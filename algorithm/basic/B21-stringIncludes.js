@@ -1,21 +1,17 @@
 /* 7. 스팸 메일 */
 
-/* user code */
+/* my solution */
 function answer(str) {
-  let spam_flag;
-
-  spam_flag = str.toLowerCase().includes("advert");
-
-  return spam_flag;
+  return str.toLowerCase().includes('advert');
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=false
   "RE: Request documents",
-  // TC: 2
+  // TC-2 output=true
   "[Advertisement] free mobile!",
-  // TC: 3
+  // TC-3 output=true
   "50% off this week (advertising)",
 ];
 

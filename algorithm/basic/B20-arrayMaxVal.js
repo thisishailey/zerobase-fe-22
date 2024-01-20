@@ -1,26 +1,27 @@
 /* 6. 배열 내 최대값 구하기 */
 
-/* user code */
+/* my solution */
 function answer(arr) {
-  let max;
-
-  max = Number.MIN_SAFE_INTEGER;
+  // solution #1
+  let max = Number.MIN_SAFE_INTEGER;
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
+    if (arr[i] > max) max = arr[i];
   }
-
   return max;
+  // solution #2
+  arr.sort((x, y) => y - x);
+  return arr[0];
+  // solution #3
+  return Math.max(...arr);
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=6
   [1, 6, 5, 2, 3],
-  // TC: 2
+  // TC-2 output=41
   [19, 41, 23, -4, 17],
-  // TC: 3
+  // TC-3 output=-27
   [-64, -27, -41, -33, -59],
 ];
 
