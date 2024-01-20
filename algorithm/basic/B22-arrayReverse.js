@@ -2,9 +2,20 @@
 
 /* my solution */
 function answer(arr) {
+  // solution #1
   const result = [];
   for (let i = arr.length - 1; i >= 0; i--) result.push(arr[i]);
   return result;
+  // solution #2
+  let tmp;
+  for (let i = 0; i < arr.length / 2; i++) {
+    tmp = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = tmp;
+  }
+  return arr;
+  // solution #3
+  return arr.reverse();
 }
 
 /* test case */
