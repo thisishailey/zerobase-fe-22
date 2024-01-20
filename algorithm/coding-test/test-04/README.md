@@ -73,7 +73,7 @@ function solution(A) {
 
 ``` javascript
 function solution(n) {
-    const b = n.toString(2).split('')
+    const b = n.toString(2).split('');
     let maxDist = 1;
     b.forEach((e, i) => {
         if (e === '1') {
@@ -85,7 +85,7 @@ function solution(n) {
                 }
             }
         }
-    })
+    });
     return maxDist;
 }
 ```
