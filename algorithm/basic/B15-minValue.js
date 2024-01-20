@@ -1,25 +1,20 @@
 /* 1. 최소값 구하기 */
 
-/* user code */
+/* my solution */
 function answer(x, y) {
-  let min;
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
-  return min;
+  // solution #1
+  return Math.min(x, y);
+  // solution #2
+  return x > y ? y : x;
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=3
   [16, 3],
-  // TC: 2
+  // TC-2 output=-3
   [-3, 1],
-  // TC: 3
+  // TC-3 output=525
   [1000, 525],
 ];
 

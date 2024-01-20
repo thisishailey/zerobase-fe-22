@@ -1,25 +1,19 @@
 /* 2. 제곱 구현 */
 
-/* user code */
+/* my solution */
 function answer(x, y) {
   let result = 1;
-
-  // 코드 구현 시작 영역
-
-  // …
-
-  // 코드 구현 종료 영역
-
+  for (let i = 0; i < y; i++) result *= x;
   return result;
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=8
   [2, 3],
-  // TC: 2
+  // TC-2 output=4096
   [4, 6],
-  // TC: 3
+  // TC-3 output=1
   [1, 100],
 ];
 

@@ -1,21 +1,21 @@
 /* 3. 놀이기구 입장 제한 */
 
-/* user code */
+/* my solution */
 function answer(user) {
-  let permit;
-
-  permit = user.height >= 150;
-
-  return permit;
+  // solution #1
+  if (user.height < 150) return false;
+  return true;
+  // solution #2
+  return user.height < 150 ? false : true;
 }
 
-/* main code */
+/* test case */
 let input = [
-  // TC: 1
+  // TC-1 output=true
   { name: "john", age: 27, height: 181 },
-  // TC: 2
+  // TC-2 output=false
   { name: "alice", age: 12, height: 148 },
-  // TC: 3
+  // TC-3 output=true
   { name: "bob", age: 14, height: 156 },
 ];
 
