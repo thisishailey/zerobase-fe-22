@@ -1,23 +1,25 @@
 import createCustomElement from '../utils/dom.js';
+import { getCartToggleButton } from './cartToggleButton.js';
 
-const getProductCard = ({ imgSrc, name, discountPercent, price, originalPrice }, parentNode) => {
+const getProductCard = (productInfo, parentNode) => {
+    const { imgSrc, name, discountPercent, price, originalPrice } = productInfo;
+
     // <<<<< product card
     const productCard = createCustomElement('div', { className: 'product-card' }, parentNode);
 
     // <<<<< product image
     const productImageCon = createCustomElement('div', { className: 'product-image-con' }, productCard);
-    const itemImage = createCustomElement('img', { src: imgSrc, alt: name }, productImageCon);
-    const cartButton = createCustomElement('button', { className: 'cart-toggle-btn', type: 'button' }, productImageCon);
-    const cartImage = createCustomElement('img', { className: 'cart-image', src: './public/assets/cart.png' }, cartButton);
+    createCustomElement('img', { src: imgSrc, alt: name }, productImageCon);
+    getCartToggleButton(productImageCon, productInfo);
     // product image >>>>>
 
     // <<<<< product description
     const productDescription = createCustomElement('div', { className: 'product-description' }, productCard);
-    const productName = createCustomElement('div', { className: 'product-name', innerHTML: name }, productDescription);
+    createCustomElement('div', { className: 'product-name', innerHTML: name }, productDescription);
     const productPriceCon = createCustomElement('div', { className: 'product-price-con' }, productDescription);
-    const productDiscount = createCustomElement('div', { className: 'product-discount-percent', innerHTML: `${discountPercent}%` }, productPriceCon);
-    const productPrice = createCustomElement('div', { className: 'product-price', innerHTML: `${price.toLocaleString()}원` }, productPriceCon);
-    const productOriginalPrice = createCustomElement('div', { className: 'product-original-price', innerHTML: `${originalPrice.toLocaleString()}원` }, productDescription);
+    createCustomElement('div', { className: 'product-discount-percent', innerHTML: `${discountPercent}%` }, productPriceCon);
+    createCustomElement('div', { className: 'product-price', innerHTML: `${price.toLocaleString()}원` }, productPriceCon);
+    createCustomElement('div', { className: 'product-original-price', innerHTML: `${originalPrice.toLocaleString()}원` }, productDescription);
     // product description >>>>>
 
     // product card >>>>>

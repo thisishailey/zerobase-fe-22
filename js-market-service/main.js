@@ -1,8 +1,9 @@
 // main.js
 
-import getProductList from "./module/productList.js";
+import getProductSection from "./module/productSection.js";
 
-getProductList(
+getProductSection(
+    '인기 상품',
     [
         {
             "id": 1,
