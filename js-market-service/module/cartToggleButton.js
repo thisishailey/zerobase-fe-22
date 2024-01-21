@@ -5,12 +5,15 @@ const getCartToggleButton = (parentNode, productInfo) => {
     const cartButton = createCustomElement('button', {
         className: 'cart-toggle-btn', type: 'button', onclick: () => {
             if (isInCart(productInfo)) {
-                cartImage.src = './public/assets/cart.png';
-                removeCartInfo(productInfo);
+                if (confirm("이미 담긴 상품입니다. 상품을 장바구니에서 삭제하시겠습니까?")) {
+                    cartImage.src = './public/assets/cart.png';
+                    removeCartInfo(productInfo);
+                }
             }
             else {
                 cartImage.src = './public/assets/cartDisabled.png';
                 addCartInfo(productInfo);
+                if (confirm("장바구니에 상품을 담았습니다. 장바구니 페이지로 이동하시겠습니까?")) location = './cart.html';
             }
         }
     }, parentNode);
