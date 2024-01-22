@@ -1,4 +1,4 @@
-import createCustomElement from '../utils/dom.js';
+import createCustomElement from '../utils/createElement.js';
 import getProductCard from './productCard.js';
 
 const getProductList = (productInfoList, parentNode) => {

@@ -1,5 +1,5 @@
 import getProductList from "./productList.js";
-import createCustomElement from "../utils/dom.js";
+import createCustomElement from "../utils/createElement.js";
 
 const getProductSection = (sectionName, productInfoList, parentNode) => {
     const productSection = createCustomElement('section', { className: 'product-list-section' }, parentNode);

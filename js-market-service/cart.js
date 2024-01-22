@@ -2,8 +2,9 @@
 
 import getProductList from "./module/productList.js";
 import { getCartInfo } from "./module/cartToggleButton.js";
-import createCustomElement from "./utils/dom.js";
-import CART_COOKIE_KEY from "./constants/cart.js";
+import createCustomElement from "./utils/createElement.js";
+import CART_INFO_KEY from "./constants/cartInfo.js";
+import setPayInfo from "./module/cartCheckout.js";
 
 const cartProductList = getCartInfo();
 const parentNode = document.querySelector('section');
@@ -22,6 +23,8 @@ if (cartProductList.length < 1) {
 }
 
 document.querySelector('#remove-all-button').onclick = () => {
-    localStorage.removeItem(CART_COOKIE_KEY);
-    location.reload();
+    localStorage.removeItem(CART_INFO_KEY);
+    if (confirm('상품을 모두 삭제하시겠습니까?')) location.reload();
 }
+
+setPayInfo();
