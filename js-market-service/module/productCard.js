@@ -23,6 +23,7 @@ const getProductCard = (productInfo, parentNode) => {
     // product description >>>>>
 
     // product card >>>>>
+    return productCard;
 }
 
 export default getProductCard;

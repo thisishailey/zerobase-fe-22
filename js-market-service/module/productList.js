@@ -6,6 +6,7 @@ const getProductList = (productInfoList, parentNode) => {
     productInfoList.forEach((info) => {
         getProductCard(info, productListContainer);
     });
+    return productListContainer;
 }
 
 export default getProductList;

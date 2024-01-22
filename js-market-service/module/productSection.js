@@ -7,6 +7,7 @@ const getProductSection = (sectionName, productInfoList, parentNode) => {
     createCustomElement('span', { className: 'section-title-highlight' }, sectionTitle);
     createCustomElement('span', { innerHTML: sectionName }, sectionTitle);
     getProductList(productInfoList, productSection);
+    return productSection;
 }
 
 export default getProductSection;
