@@ -1,11 +1,11 @@
 // main.js
 
 import getProductSection from "./module/productSection.js";
+import fetchSectionListData from "./module/fetchData.js";
 
 try {
-    const res = await fetch('./public/mock/sectionListData.json');
-    const data = await res.json();
-    data.sectionInfoList.forEach(e => {
+    const sectionListData = await fetchSectionListData();
+    sectionListData.forEach(e => {
         getProductSection(e.sectionTitle, e.productList, document.body);
     });
 } catch (error) {
