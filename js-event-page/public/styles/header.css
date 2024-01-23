@@ -4,7 +4,8 @@ header {
   top: 0;
   z-index: 10;
 }
-#title{
+
+#title {
   display: block;
   font-size: 2rem;
   font-weight: bold;
@@ -12,13 +13,16 @@ header {
   padding: 1rem;
   background-color: white;
 }
-#tab-menu{
+
+#tab-menu {
   background-color: rgb(111, 164, 255);
 }
-#tab-menu>button{
+
+#tab-menu>button {
   font-size: 1.2rem;
   padding: 1rem;
 }
-#tab-menu>button:hover{
+
+#tab-menu>button:hover {
   background-color: rgba(255, 255, 255, 0.616);
 }
