@@ -9,8 +9,11 @@ const priceElements = {
     totalPrice: document.querySelector('#total-price')
 }
 
+
+// ------ main function ------ //
+
 const setPayInfo = () => {
-    // calculate the total of all cart items and set innerHTML accordingly
+    // calculate the total of all cart items and set the innerHTML accordingly
 
     const prices = {
         // values to be inserted in the innerHTML later (initial value = 0)
@@ -28,7 +31,7 @@ const setPayInfo = () => {
     });
 
     if (0 < prices.totalPrice && prices.totalPrice < FREE_DELIVERY) {
-        // if below the free delivery price, add a delivery fee
+        // if the price is below the free delivery price, add a delivery fee
         prices.deliveryPrice = DELIVERY_FEE;
         prices.totalPrice += prices.deliveryPrice;
     }
