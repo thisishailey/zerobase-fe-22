@@ -1,4 +1,5 @@
 import createCustomElement from "../utils/createElement.js";
+import SELECTED_SNACK from "../constants/selectedSnack.js";
 
 const snackCardInfo = [
     {
@@ -37,15 +38,19 @@ const getSnackCardList = () => {
     const snackCardList = createCustomElement('div', { className: 'snack-card-list', onclick: (e) => setSelectEvent(e) }, false);
     parentNode.insertBefore(snackCardList, siblingNode);
     getSnackCard(snackCardInfo, snackCardList);
+    setSubmitEvent(parentNode.querySelector('.participate-button'), snackCardList);
 }
 
 
-// ------ function for getSnackCardList ------ //
+// ------ functions for getSnackCardList ------ //
 
 const getSnackCard = (info, parentNode) => {
     info.forEach(e => {
         const card = createCustomElement('button', { className: 'snack-card', id: 'select-' + e.id }, parentNode);
-        if (e.id === 1) card.classList.add('select');
+        const selectedCard = Number(localStorage.getItem(SELECTED_SNACK));
+        if (selectedCard) {
+            if (e.id === selectedCard) card.classList.add('select');
+        }
         createCustomElement('img', { src: e.src, alt: e.name }, card);
         const cardDesc = createCustomElement('div', { className: 'snack-description' }, card);
         createCustomElement('div', { innerHTML: e.name }, cardDesc);
@@ -55,8 +60,16 @@ const getSnackCard = (info, parentNode) => {
 
 const setSelectEvent = (e) => {
     if (e.target === e.currentTarget) return;
-    document.querySelector('.select').classList.remove('select');
+    e.currentTarget.querySelector('.select')?.classList.remove('select');
     e.target.closest('button.snack-card').classList.add('select');
+}
+
+const setSubmitEvent = (btn, snackCardList) => {
+    btn.onclick = () => {
+        const selectedCard = snackCardList.querySelector('.select');
+        if (!selectedCard) { alert('선택된 카드가 없습니다.'); return; }
+        localStorage.setItem(SELECTED_SNACK, selectedCard.id.split('-')[1]);
+    }
 }
 
 export default getSnackCardList;
