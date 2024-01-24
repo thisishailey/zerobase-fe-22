@@ -1,5 +1,6 @@
 import createCustomElement from "../utils/createElement.js";
 import { startTimer, stopTimer, isTimerStart } from "../utils/timer.js";
+import { handleOpenModal, handleCloseModal } from "../utils/modal.js";
 
 const timer = document.querySelector('.game-time');
 
