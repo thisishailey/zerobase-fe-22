@@ -1,10 +1,12 @@
-body{
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 button {
   outline: none;
   background: transparent;
@@ -12,7 +14,8 @@ button {
   padding: 0;
   cursor: pointer;
 }
-section{
+
+section {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -23,7 +26,8 @@ section{
   border: 3px solid rgb(74, 74, 74);
   overflow: hidden;
 }
-#game-field{
+
+#game-field {
   background-color: lightblue;
   flex: 1 1;
   height: 100%;
@@ -33,22 +37,28 @@ section{
   align-items: center;
 }
 
-.goto-home-button, .retry-button{
+.goto-home-button,
+.retry-button {
   display: block;
   width: 30px;
   height: 30px;
 }
-.goto-home-button>img, .retry-button>img{
+
+.goto-home-button>img,
+.retry-button>img {
   width: 100%;
   height: 100%;
 }
-a{
-  text-decoration: none!important;
+
+a {
+  text-decoration: none !important;
 }
-#game-field{
+
+#game-field {
   display: flex;
   flex-direction: column;
 }
-.game-description{
+
+.game-description {
   margin: 20px 0;
 }
