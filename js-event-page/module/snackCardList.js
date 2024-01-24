@@ -1,5 +1,6 @@
 import createCustomElement from "../utils/createElement.js";
 import SELECTED_SNACK from "../constants/selectedSnack.js";
+import getResultContainer from "./snackResult.js";
 
 const snackCardInfo = [
     {
@@ -38,7 +39,7 @@ const getSnackCardList = () => {
     const snackCardList = createCustomElement('div', { className: 'snack-card-list', onclick: (e) => setSelectEvent(e) }, false);
     parentNode.insertBefore(snackCardList, siblingNode);
     getSnackCard(snackCardInfo, snackCardList);
-    setSubmitEvent(parentNode.querySelector('.participate-button'), snackCardList);
+    setSubmitEvent(parentNode.querySelector('.participate-button'), snackCardList, snackCardInfo);
 }
 
 
@@ -49,7 +50,7 @@ const getSnackCard = (info, parentNode) => {
         const card = createCustomElement('button', { className: 'snack-card', id: 'select-' + e.id }, parentNode);
         const selectedCard = Number(localStorage.getItem(SELECTED_SNACK));
         if (selectedCard) {
-            if (e.id === selectedCard) card.classList.add('select');
+            if (e.id === selectedCard) { card.classList.add('select'); getResultContainer(selectedCard, info); }
         }
         createCustomElement('img', { src: e.src, alt: e.name }, card);
         const cardDesc = createCustomElement('div', { className: 'snack-description' }, card);
@@ -64,11 +65,13 @@ const setSelectEvent = (e) => {
     e.target.closest('button.snack-card').classList.add('select');
 }
 
-const setSubmitEvent = (btn, snackCardList) => {
+const setSubmitEvent = (btn, list, info) => {
     btn.onclick = () => {
-        const selectedCard = snackCardList.querySelector('.select');
+        const selectedCard = list.querySelector('.select');
         if (!selectedCard) { alert('선택된 카드가 없습니다.'); return; }
-        localStorage.setItem(SELECTED_SNACK, selectedCard.id.split('-')[1]);
+        const selectedID = selectedCard.id.split('-')[1];
+        localStorage.setItem(SELECTED_SNACK, selectedID);
+        getResultContainer(selectedID, info);
     }
 }
 

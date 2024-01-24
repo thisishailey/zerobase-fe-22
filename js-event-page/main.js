@@ -2,6 +2,8 @@ import countUp from "./utils/numberCountUp.js";
 import setTabMenu from "./module/tabMenu.js";
 import getSnackCardList from "./module/snackCardList.js";
 
+onload = () => { scroll({ top: 0, left: 0, behavior: 'smooth' }); }
+
 const data = { participant: 1341513412 }
 
 const participantCount = document.getElementById('participate-number');

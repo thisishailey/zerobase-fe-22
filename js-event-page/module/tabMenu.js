@@ -1,3 +1,5 @@
+import smoothScrollTo from "../utils/targetScroll.js";
+
 // tab menu buttons
 const selectMenu = document.querySelector('#anchor-to-select');
 const resultMenu = document.querySelector('#anchor-to-result');
@@ -8,10 +10,6 @@ const selectSection = document.querySelector('#participate-section');
 const resultSection = document.querySelector('#result-section');
 const mbtiSection = document.querySelector('#mbti-section');
 
-// function that smoothly scrolls to the targeted element
-const smoothScrollTo = (target) => {
-    scroll({ top: target.offsetTop, left: 0, behavior: 'smooth' });
-}
 
 // ------ main function ------ //
 
