@@ -1,7 +1,7 @@
-const retryEvent = (retryButton) => {
+const setRetryEvent = (retryButton) => {
     retryButton.onclick = () => {
         location.reload();
     }
 }
 
-export default retryEvent;
+export default setRetryEvent;
