@@ -1,4 +1,4 @@
-const MAX_TIME = 5;
+const MAX_TIME = 3600 * 24;
 let isTimerStart = false;
 let intervalID;
 
