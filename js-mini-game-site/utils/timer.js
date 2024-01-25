@@ -2,6 +2,8 @@ const MAX_TIME = 3600 * 24;
 let isTimerStart = false;
 let intervalID;
 
+const timer = document.querySelector('.game-time');
+
 const startTimer = (timer, timeOver) => {
     let time = 0;
     isTimerStart = true;
@@ -30,4 +32,4 @@ const getformattedTime = (time) => {
     return `${hr}:${min}:${sec}`
 }
 
-export { startTimer, stopTimer, isTimerStart };
+export { timer, startTimer, stopTimer, isTimerStart };

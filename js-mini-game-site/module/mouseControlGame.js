@@ -1,9 +1,7 @@
 import createCustomElement from "../utils/createElement.js";
-import { startTimer, stopTimer, isTimerStart } from "../utils/timer.js";
-import handleOpenModal from "../utils/modal.js";
+import { timer, startTimer, stopTimer, isTimerStart } from "../utils/timer.js";
+import { handleGameWin, handleGameLose } from "../utils/gameHandler.js";
 import { MOUSE_CONTROL_SCORE } from "../constants/gameScore.js";
-
-const timer = document.querySelector('.game-time');
 
 const setMouseControlGame = (row, col, start, end, walls) => {
     const boxContainer = createCustomElement('div', { id: 'control-box-container' }, document.querySelector('#game-field'));
@@ -32,7 +30,8 @@ const setMouseControlGame = (row, col, start, end, walls) => {
                 box.onmouseover = (e) => {
                     if (!isTimerStart) return;
                     e.target.innerHTML = '';
-                    stopTimer(handleGameWin);
+                    handleGameWin(MOUSE_CONTROL_SCORE)
+                    stopTimer();
                 }
             }
             walls.forEach(wall => {
@@ -54,18 +53,6 @@ const setMouseControlGame = (row, col, start, end, walls) => {
             }
         }
     }
-}
-
-const handleGameWin = () => {
-    handleOpenModal({ title: '성공 🥳', desc: `${timer.innerHTML}만에 성공하였습니다!` });
-    const originalScore = localStorage.getItem(MOUSE_CONTROL_SCORE);
-    if (!originalScore || timer.dataset.time < originalScore) {
-        localStorage.setItem(MOUSE_CONTROL_SCORE, timer.dataset.time);
-    }
-}
-
-const handleGameLose = () => {
-    handleOpenModal({ title: '실패 😭', desc: '실패하였습니다...' });
 }
 
 export default setMouseControlGame;

@@ -1,5 +1,5 @@
-import { startTimer, stopTimer, isTimerStart } from "../utils/timer.js";
-import handleOpenModal from "../utils/modal.js";
+import { timer, startTimer, stopTimer, isTimerStart } from "../utils/timer.js";
+import { handleGameWin, handleGameLose } from "../utils/gameHandler.js";
 import { TOUCH_NUMBER_SCORE } from "../constants/gameScore.js";
 
 const RAND_MIN_HEIGHT = 20;
@@ -9,7 +9,7 @@ const RAND_MAX_WIDTH = 90;
 
 const numberGameContainer = document.querySelector('#number-field');
 const numberButtons = numberGameContainer.querySelectorAll('.number-button');
-const timer = document.querySelector('.game-time');
+const retryButton = document.querySelector('#header .retry-button');
 
 const setTouchNumberGame = () => {
     numberButtons.forEach(e => {
@@ -25,7 +25,8 @@ const setTouchNumberGame = () => {
             } else if (isTimerStart) {
                 if (number === numberButtons.length && numberChecker()) {
                     e.target.style.display = 'none';
-                    stopTimer(handleGameWin);
+                    handleGameWin(TOUCH_NUMBER_SCORE);
+                    stopTimer();
                 } else {
                     if (!numberChecker(number)) stopTimer(handleGameLose);
                     e.target.style.display = 'none';
@@ -33,6 +34,9 @@ const setTouchNumberGame = () => {
             }
         }
     });
+    retryButton.onclick = () => {
+        location.reload();
+    }
 }
 
 let clickedNum = [];
@@ -51,18 +55,6 @@ const numberChecker = (n) => {
             return false;
         }
     }
-}
-
-const handleGameWin = () => {
-    handleOpenModal({ title: '성공 🥳', desc: `${timer.innerHTML}만에 성공하였습니다!` });
-    const originalScore = localStorage.getItem(TOUCH_NUMBER_SCORE);
-    if (!originalScore || timer.dataset.time < originalScore) {
-        localStorage.setItem(TOUCH_NUMBER_SCORE, timer.dataset.time);
-    }
-}
-
-const handleGameLose = () => {
-    handleOpenModal({ title: '실패 😭', desc: '실패하였습니다...' });
 }
 
 export default setTouchNumberGame;
