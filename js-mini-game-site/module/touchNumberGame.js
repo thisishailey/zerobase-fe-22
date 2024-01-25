@@ -15,6 +15,7 @@ const setTouchNumberGame = () => {
     numberButtons.forEach(e => {
         e.style.top = Math.floor(Math.random() * (RAND_MAX_HEIGHT - RAND_MIN_HEIGHT) + RAND_MIN_HEIGHT) + '%';
         e.style.left = Math.floor(Math.random() * (RAND_MAX_WIDTH - RAND_MIN_WIDTH) + RAND_MIN_WIDTH) + '%';
+        e.style.display = 'block';
         e.onclick = (e) => {
             const number = Number(e.target.innerHTML);
             if (isNaN(number)) return;
