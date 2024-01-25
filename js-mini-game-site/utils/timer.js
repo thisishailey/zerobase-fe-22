@@ -1,6 +1,7 @@
 const MAX_TIME = 3600 * 24;
-let isTimerStart = false;
+
 let intervalID;
+let isTimerStart = false;
 
 const timer = document.querySelector('.game-time');
 
@@ -8,7 +9,7 @@ const startTimer = (timer, timeOver) => {
     let time = 0;
     isTimerStart = true;
     intervalID = setInterval(() => {
-        timer.innerHTML = getformattedTime(++time);
+        timer.innerHTML = getFormattedTime(++time);
         timer.dataset.time = time;
         if (time > MAX_TIME) {
             clearInterval(intervalID);
@@ -24,7 +25,7 @@ const stopTimer = (gameOver) => {
     gameOver?.();
 }
 
-const getformattedTime = (time) => {
+const getFormattedTime = (time) => {
     const sec = String(time % 60).padStart(2, '0');
     const min = String(Math.floor(time % 3600 / 60)).padStart(2, '0');
     const hr = String(Math.floor(time / 3600)).padStart(2, '0');
@@ -32,4 +33,4 @@ const getformattedTime = (time) => {
     return `${hr}:${min}:${sec}`
 }
 
-export { timer, startTimer, stopTimer, isTimerStart };
+export { timer, startTimer, stopTimer, getFormattedTime, isTimerStart };
