@@ -1,6 +1,7 @@
 import { timer, startTimer, stopTimer, isTimerStart } from "../utils/timer.js";
 import { handleGameWin, handleGameLose } from "../utils/gameHandler.js";
 import { TOUCH_NUMBER_SCORE } from "../constants/gameScore.js";
+import retryEvent from "../utils/retryButton.js";
 
 const RAND_MIN_HEIGHT = 20;
 const RAND_MAX_HEIGHT = 80;
@@ -35,9 +36,7 @@ const setTouchNumberGame = () => {
             }
         }
     });
-    retryButton.onclick = () => {
-        location.reload();
-    }
+    retryEvent(retryButton);
 }
 
 let clickedNum = [];
