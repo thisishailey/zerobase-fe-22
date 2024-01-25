@@ -20,13 +20,15 @@ const setTouchNumberGame = () => {
             if (isNaN(number)) return;
             if (!isTimerStart && number === Number(numberButtons[0].innerHTML)) {
                 numberChecker(number);
+                e.target.style.display = 'none';
                 startTimer(timer, handleGameLose);
             } else if (isTimerStart) {
                 if (number === numberButtons.length && numberChecker()) {
+                    e.target.style.display = 'none';
                     stopTimer(handleGameWin);
                 } else {
                     if (!numberChecker(number)) stopTimer(handleGameLose);
-                    console.log(clickedNum);
+                    e.target.style.display = 'none';
                 }
             }
         }
