@@ -29,6 +29,6 @@
   display: flex;
   justify-content: center;
 }
-.modal-button-container>.goto-home-button{
+.modal-button-container>.home-button{
   margin-right: 20px;
 }

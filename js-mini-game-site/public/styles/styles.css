@@ -37,14 +37,14 @@ section {
   align-items: center;
 }
 
-.goto-home-button,
+.home-button,
 .retry-button {
   display: block;
   width: 30px;
   height: 30px;
 }
 
-.goto-home-button>img,
+.home-button>img,
 .retry-button>img {
   width: 100%;
   height: 100%;

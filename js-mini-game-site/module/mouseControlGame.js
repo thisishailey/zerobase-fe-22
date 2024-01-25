@@ -1,6 +1,7 @@
 import createCustomElement from "../utils/createElement.js";
 import { startTimer, stopTimer, isTimerStart } from "../utils/timer.js";
-import { handleOpenModal, handleCloseModal } from "../utils/modal.js";
+import handleOpenModal from "../utils/modal.js";
+import { MOUSE_CONTROL_SCORE } from "../constants/gameScore.js";
 
 const timer = document.querySelector('.game-time');
 
@@ -56,13 +57,15 @@ const setMouseControlGame = (row, col, start, end, walls) => {
 }
 
 const handleGameWin = () => {
-    alert('YOU WIN!');
-    timer.innerHTML = '00:00:00';
+    handleOpenModal({ title: '성공 🥳', desc: `${timer.innerHTML}만에 성공하였습니다!` });
+    const originalScore = localStorage.getItem(MOUSE_CONTROL_SCORE);
+    if (!originalScore || timer.dataset.time < originalScore) {
+        localStorage.setItem(MOUSE_CONTROL_SCORE, timer.dataset.time);
+    }
 }
 
 const handleGameLose = () => {
-    alert('YOU LOSE. GAME OVER :(');
-    timer.innerHTML = '00:00:00';
+    handleOpenModal({ title: '실패 😭', desc: '실패하였습니다...' });
 }
 
 export default setMouseControlGame;

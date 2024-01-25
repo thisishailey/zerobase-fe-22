@@ -7,6 +7,7 @@ const startTimer = (timer, timeOver) => {
     isTimerStart = true;
     intervalID = setInterval(() => {
         timer.innerHTML = getformattedTime(++time);
+        timer.dataset.time = time;
         if (time > MAX_TIME) {
             clearInterval(intervalID);
             isTimerStart = false;
