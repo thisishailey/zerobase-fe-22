@@ -102,6 +102,22 @@ class LinkedList {
     this.length--;
     return node.data;
   }
+
+  indexOf(value) {
+    let node = this.head, i = 0;
+
+    while (node !== null) {
+      if (node.data === value) return i;
+      node = node.next;
+      i++;
+    }
+
+    return -1;
+  }
+
+  remove2(value) {
+    return this.removeAt(this.indexOf(value));
+  }
 }
 
 const ll = new LinkedList();
@@ -114,12 +130,8 @@ ll.insert('abc', 2);
 ll.printNode();
 console.log('\nList Size: ' + ll.size());
 
-ll.remove(123);
-
-ll.printNode();
-console.log('\nList Size: ' + ll.size());
-
-ll.removeAt(1);
+console.log(ll.indexOf(123));
+ll.remove2('abc');
 
 ll.printNode();
 console.log('\nList Size: ' + ll.size());
