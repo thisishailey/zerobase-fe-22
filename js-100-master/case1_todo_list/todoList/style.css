@@ -13,7 +13,7 @@ button {
   cursor: pointer;
 }
 
-button > i {
+button>i {
   pointer-events: none;
 }
 
@@ -69,7 +69,7 @@ h2 {
   border-radius: 8px;
 }
 
-.todos {
+.todo {
   margin-top: 106px;
   overflow: auto;
 }
@@ -89,19 +89,19 @@ h2 {
   align-items: center;
 }
 
-.content > input[type='checkbox'] {
+.content>input[type='checkbox'] {
   transform: scale(1.5);
   margin-left: 10px;
 }
 
-.content > label {
+.content>label {
   font-size: 16px;
   margin-left: 20px;
   padding-top: 4px;
   width: 100%;
 }
 
-.content > input[type='text'] {
+.content>input[type='text'] {
   font-size: 16px;
   margin-left: 20px;
   padding-top: 4px;
@@ -113,7 +113,7 @@ h2 {
   width: 118px;
 }
 
-.item_buttons > button {
+.item_buttons>button {
   width: 42px;
   height: 42px;
   color: #555555;
@@ -121,7 +121,7 @@ h2 {
   border-radius: 8px;
 }
 
-.item_buttons > button:first-child {
+.item_buttons>button:first-child {
   background-color: #bad4f5;
   margin-right: 8px;
 }
