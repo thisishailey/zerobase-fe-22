@@ -130,10 +130,6 @@ h2 {
   appearance: auto !important;
 }
 
-.item input[type='text'] {
-  display: none;
-}
-
-.edit_buttons {
+.hide {
   display: none;
 }

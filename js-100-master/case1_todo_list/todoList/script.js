@@ -1,6 +1,8 @@
 ; (function () {
     'use strict';
 
+    // util
+
     const get = (target) => {
         return document.querySelector(target);
     }
@@ -17,11 +19,15 @@
         return e;
     }
 
+    // constants
+
     const API_ENDPOINT = 'http://localhost:3000/todo';
     const $todoForm = get('form.todo_form');
     const $todoFormInput = get('input.todo_input');
     const $todo = get('div.todo');
     let todoId;
+
+    // create todo
 
     const createTodoElement = (item, parentNode) => {
         const { id, content, completed } = item;
@@ -29,10 +35,10 @@
         const innerHTML = `
             <div class='content'>
                 <input type='checkbox' class='todo_checkbox' ${isChecked} />
-                <label>${content}</label>
-                <input type='text' value=${content} />
+                <label class='content_mode'>${content}</label>
+                <input class='edit_mode hide' type='text' value='${content}' />
             </div>
-            <div class='item_buttons content_buttons'>
+            <div class='item_buttons content_buttons content_mode'>
                 <button class='todo_edit_button'>
                     <i class='far fa-edit'></i>
                 </button>
@@ -40,7 +46,7 @@
                     <i class='far fa-trash-alt'></i>
                 </button>
             </div>
-            <div class='item_buttons edit_buttons'>
+            <div class='item_buttons edit_buttons edit_mode hide'>
                 <button class='todo_edit_confirm_button'>
                     <i class='fas fa-check'></i>
                 </button>
@@ -53,13 +59,28 @@
         const $todoItem = createCustomElement('div', { className: 'item', innerHTML: innerHTML }, parentNode);
         $todoItem.dataset.id = id;
 
+        setEditOnEnterEvent($todoItem);
+
         return $todoItem;
     }
+
+    const setEditOnEnterEvent = ($todoItem) => {
+        const $todoInput = $todoItem.querySelector('input.edit_mode');
+        const $todoEditButton = $todoItem.querySelector('.todo_edit_confirm_button');
+        $todoInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                $todoEditButton.click();
+            }
+        });
+    }
+
+    // render & get todo
 
     const renderTodo = (todo) => {
         $todo.innerHTML = '';
         todo.forEach(e => createTodoElement(e, $todo));
-        todoId = todo[todo.length - 1].id;
+        todoId = todo[todo.length - 1]?.id || 0;
     }
 
     const getTodo = () => {
@@ -68,6 +89,8 @@
             .then((todo) => renderTodo(todo))
             .catch((err) => console.error(err));
     }
+
+    // add todo
 
     const addTodo = (e) => {
         e.preventDefault();
@@ -88,6 +111,8 @@
         });
     }
 
+    // toggle todo checkbox
+
     const toggleTodo = (target) => {
         const itemId = target.closest('div.item').dataset.id;
         const completed = target.checked;
@@ -100,11 +125,71 @@
             .catch((err) => console.error(err));
     }
 
+    // change todo mode
+
+    const changeMode = (target, mode) => {
+        const $item = target.closest('div.item');
+        if (mode === 'edit') {
+            $item.querySelectorAll('.edit_mode').forEach(e => e.classList.remove('hide'));
+            $item.querySelectorAll('.content_mode').forEach(e => e.classList.add('hide'));
+        } else if (mode === 'content') {
+            $item.querySelectorAll('.content_mode').forEach(e => e.classList.remove('hide'));
+            $item.querySelectorAll('.edit_mode').forEach(e => e.classList.add('hide'));
+            $item.querySelector('input.edit_mode').value = $item.querySelector('label.content_mode').innerHTML;
+        }
+    }
+
+    // edit & remove todo
+
+    const editTodo = (target) => {
+        const $item = target.closest('div.item');
+        const itemId = $item.dataset.id;
+        const content = $item.querySelector('input.edit_mode').value;
+        fetch(API_ENDPOINT + '/' + itemId, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content })
+        })
+            .then(getTodo)
+            .catch((err) => console.error(err));
+    }
+
+    const removeTodo = (target) => {
+        const itemId = target.closest('div.item').dataset.id;
+        fetch(API_ENDPOINT + '/' + itemId, { method: 'DELETE' })
+            .then(getTodo)
+            .catch((err) => console.error(err));
+    }
+
+
+    // init
+
     const init = () => {
         window.addEventListener('DOMContentLoaded', getTodo);
         $todoForm.addEventListener('submit', addTodo);
         $todo.addEventListener('click', (e) => {
-            if (e.target.className === 'todo_checkbox') toggleTodo(e.target);
+            switch (e.target.className) {
+                case 'todo_checkbox':
+                    toggleTodo(e.target);
+                    break;
+
+                case 'todo_edit_button':
+                    changeMode(e.target, 'edit');
+                    break;
+                case 'todo_edit_cancel_button':
+                    changeMode(e.target, 'content');
+                    break;
+
+                case 'todo_edit_confirm_button':
+                    editTodo(e.target);
+                    break;
+                case 'todo_remove_button':
+                    removeTodo(e.target);
+                    break;
+
+                default:
+                    break;
+            }
         });
     }
 
