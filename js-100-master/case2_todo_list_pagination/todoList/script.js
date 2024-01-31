@@ -19,13 +19,20 @@
         return e;
     }
 
-    // constants
+    // constants & variables
 
     const API_ENDPOINT = 'http://localhost:3000/todo';
+    const PAGE_ON_SCREEN = 5;
+    const ITEM_PER_PAGE = 5;
+    const CURRENT_PAGE_KEY = 'currentPage';
+    let todoId, currentPage;
+
+    currentPage = localStorage.getItem(CURRENT_PAGE_KEY) || 1;
+
     const $todoForm = get('form.todo_form');
     const $todoFormInput = get('input.todo_input');
     const $todo = get('div.todo');
-    let todoId;
+    const $pagination = get('div.pagination');
 
     // create todo
 
@@ -75,19 +82,69 @@
         });
     }
 
-    // render & get todo
-
-    const renderTodo = (todo) => {
-        $todo.innerHTML = '';
-        todo.forEach(e => createTodoElement(e, $todo));
-        todoId = todo[todo.length - 1]?.id || 0;
-    }
+    // get, render & paginate todo
 
     const getTodo = () => {
-        fetch(API_ENDPOINT)
+        fetch(API_ENDPOINT + '?_page=' + currentPage + '&_per_page=' + ITEM_PER_PAGE)
             .then((res) => res.json())
-            .then((todo) => renderTodo(todo))
+            .then((data) => renderTodo(data))
             .catch((err) => console.error(err));
+    }
+
+    const renderTodo = (data) => {
+        const todo = data['data'];
+        const itemCount = data['items'];
+        $todo.innerHTML = '';
+        todo.forEach(e => createTodoElement(e, $todo));
+        todoId = itemCount;
+        paginate(data);
+    }
+
+    const paginate = (data) => {
+        let innerHTML = '';
+
+        const pageCount = data['pages'];
+        const prevPage = data['prev'];
+        const nextPage = data['next'];
+
+        let currentPageGroup = currentPage % PAGE_ON_SCREEN;
+        if (currentPageGroup === 0) currentPageGroup = 5;
+        const firstPageButton = currentPage - currentPageGroup + 1;
+        const lastPageButton = Math.min(pageCount, currentPage - currentPageGroup + 5);
+
+        if (prevPage > 0) {
+            innerHTML += `<button class='pageToButton' data-page-to=${prevPage}>이전</button>`;
+        } else {
+            innerHTML += `<div class='empty'></div>`;
+        }
+
+        for (let i = firstPageButton; i <= lastPageButton; i++) {
+            innerHTML += `<button class="pageButton" id="page_${i}">${i}</button>`;
+        }
+
+        if (nextPage > 0) {
+            innerHTML += `<button class='pageToButton' data-page-to=${nextPage}>다음</button>`;
+        } else {
+            innerHTML += `<div class='empty'></div>`;
+        }
+
+        $pagination.innerHTML = innerHTML;
+        $pagination.addEventListener('click', setChangePageEvent);
+
+        const $currentPage = get(`.pageButton#page_${currentPage}`);
+        $currentPage.style.color = '#fff';
+        $currentPage.style.background = '#bad4f5';
+    }
+
+    const setChangePageEvent = (e) => {
+        if (e.target.className === 'pageButton') {
+            currentPage = Number(e.target.innerText);
+        } else if (e.target.className === 'pageToButton') {
+            currentPage = Number(e.target.dataset.pageTo);
+        } else return;
+
+        localStorage.setItem(CURRENT_PAGE_KEY, currentPage);
+        getTodo();
     }
 
     // add todo
