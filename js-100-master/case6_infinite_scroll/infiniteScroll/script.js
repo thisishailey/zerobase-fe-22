@@ -26,6 +26,7 @@
     const API_ENDPOINT = 'https://jsonplaceholder.typicode.com/posts?';
     const LIMIT = 5;
     const $postContainer = get('.posts');
+    const $loader = get('.loader');
     let currentPage = 0;
 
     // get & load post
@@ -42,13 +43,22 @@
 
     const loadPost = async () => {
         currentPage++;
+        displayLoader(true);
 
-        const res = await getPost();
-        if (res.length < 1) {
-            window.removeEventListener('scroll', onScroll);
+        try {
+            const res = await getPost();
+            if (res.length < 1) {
+                window.removeEventListener('scroll', onScroll);
+            }
+
+            createPost(res);
+
+        } catch (err) {
+            console.error(err);
+
+        } finally {
+            displayLoader(false);
         }
-
-        createPost(res);
     }
 
     // create post
@@ -65,6 +75,12 @@
 
             createCustomElement('div', { className: 'post', innerHTML: postInnerHTML }, $postContainer);
         });
+    }
+
+    // show & hide loader
+
+    const displayLoader = (isDisplay) => {
+        isDisplay ? $loader.classList.add('show') : $loader.classList.remove('show');
     }
 
     // scroll event
