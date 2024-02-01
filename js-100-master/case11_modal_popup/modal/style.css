@@ -9,18 +9,18 @@ button {
   height: 60px;
   margin: 0 auto;
   display: block;
-  background-color: #4a5e72;
+  background-color: #E6A4B4;
   color: #fff;
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .box {
   width: 600px;
   height: 400px;
   margin: 16px auto;
-  background-color: #123;
+  background-color: #F5EEE6;
 }
 
 .modal {
@@ -44,15 +44,24 @@ button {
   height: auto;
   padding: 24px;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
+}
+
+.modal_wrap hr {
+  border: 0.5px solid #A9A9A9;
 }
 
 .modal_header {
   font-size: 24px;
+  padding: 4px 0;
+  margin-bottom: 12px;
 }
 
 .modal_body {
-  padding: 12px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px 0;
+  margin-bottom: 24px;
 }
 
 .modal_footer {
@@ -62,16 +71,18 @@ button {
 }
 
 .modal_button {
-  width: 50%;
+  width: 48%;
   height: 48px;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #fff;
 }
 
 .modal_button.cancel {
   margin-right: 4px;
 }
+
 .modal_button.confirm {
   margin-left: 4px;
-  background-color: #4ae7c2;
+  background-color: #E6A4B4;
 }
