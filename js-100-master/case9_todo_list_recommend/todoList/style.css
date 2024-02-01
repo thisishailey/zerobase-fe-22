@@ -1,5 +1,3 @@
-@charset "utf-8";
-
 body {
   background-color: #a7cfff;
   color: #555555;
@@ -15,7 +13,7 @@ button {
   cursor: pointer;
 }
 
-button > i {
+button>i {
   pointer-events: none;
 }
 
@@ -26,7 +24,7 @@ button > i {
   transform: translate(-50%, -50%);
   background-color: #fff;
   width: 600px;
-  height: 530px;
+  height: 500px;
   padding: 24px;
   overflow: hidden;
   display: flex;
@@ -71,9 +69,8 @@ h2 {
   border-radius: 8px;
 }
 
-.todos {
+.todo {
   margin-top: 106px;
-  margin-bottom: 25px;
   overflow: auto;
 }
 
@@ -92,19 +89,19 @@ h2 {
   align-items: center;
 }
 
-.content > input[type='checkbox'] {
+.content>input[type='checkbox'] {
   transform: scale(1.5);
   margin-left: 10px;
 }
 
-.content > label {
+.content>label {
   font-size: 16px;
   margin-left: 20px;
   padding-top: 4px;
   width: 100%;
 }
 
-.content > input[type='text'] {
+.content>input[type='text'] {
   font-size: 16px;
   margin-left: 20px;
   padding-top: 4px;
@@ -116,7 +113,7 @@ h2 {
   width: 118px;
 }
 
-.item_buttons > button {
+.item_buttons>button {
   width: 42px;
   height: 42px;
   color: #555555;
@@ -124,7 +121,7 @@ h2 {
   border-radius: 8px;
 }
 
-.item_buttons > button:first-child {
+.item_buttons>button:first-child {
   background-color: #bad4f5;
   margin-right: 8px;
 }
@@ -133,18 +130,14 @@ h2 {
   appearance: auto !important;
 }
 
-.item input[type='text'] {
-  display: none;
-}
-
-.edit_buttons {
+.hide {
   display: none;
 }
 
 .pagination {
   position: absolute;
   left: 50%;
-  bottom: 25px;
+  bottom: 15px;
   transform: translateX(-50%);
   display: flex;
 }
@@ -152,8 +145,16 @@ h2 {
 .pagination button {
   width: 50px;
   height: 30px;
-  color: #555555;
+  color: #bad4f5;
+  background: #fff;
+  border: 1px solid #bad4f5;
   margin: 0 2px;
   font-weight: 700;
   border-radius: 6px;
+}
+
+.pagination div.empty {
+  width: 50px;
+  height: 30px;
+  margin: 0 2px;
 }
