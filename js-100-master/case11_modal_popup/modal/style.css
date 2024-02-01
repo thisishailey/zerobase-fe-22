@@ -1,7 +1,24 @@
+* {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 button {
   border: 0;
   outline: none;
   cursor: pointer;
+}
+
+body.scroll_lock {
+  overflow: hidden;
+  height: 100%;
+}
+
+.box {
+  width: 600px;
+  height: 400px;
+  margin: 16px auto;
+  background-color: #F5EEE6;
 }
 
 .modal_open_button {
@@ -16,13 +33,6 @@ button {
   border-radius: 8px;
 }
 
-.box {
-  width: 600px;
-  height: 400px;
-  margin: 16px auto;
-  background-color: #F5EEE6;
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -33,6 +43,10 @@ button {
   background-color: rgb(0 0 0 / 50%);
   height: 100%;
   overflow: hidden;
+}
+
+.modal.show {
+  display: block;
 }
 
 .modal_wrap {
