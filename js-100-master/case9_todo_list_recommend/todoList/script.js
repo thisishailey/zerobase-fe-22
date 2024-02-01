@@ -37,15 +37,20 @@
     // create todo
 
     const createTodoElement = (item, parentNode) => {
-        const { id, content, completed } = item;
+        const { id, content, completed, favorite } = item;
         const isChecked = completed ? 'checked' : '';
+        const isFavorite = favorite ? 'active' : 'inactive';
         const innerHTML = `
             <div class='content'>
                 <input type='checkbox' class='todo_checkbox' ${isChecked} />
-                <label class='content_mode'>${content}</label>
+                <label class='todo_text content_mode'>${content}</label>
                 <input class='edit_mode hide' type='text' value='${content}' />
             </div>
             <div class='item_buttons content_buttons content_mode'>
+                <button class='todo_favorite_button ${isFavorite}'>
+                    <i class='far fa-star'></i>
+                    <i class='fas fa-star'></i>
+                </button>
                 <button class='todo_edit_button'>
                     <i class='far fa-edit'></i>
                 </button>
@@ -218,6 +223,21 @@
             .catch((err) => console.error(err));
     }
 
+    // favorite todo
+
+    const favoriteTodo = (target) => {
+        const $item = target.closest('div.item');
+        const itemId = $item.dataset.id;
+        const favorite = !$item.querySelector('.todo_favorite_button').classList.contains('active');
+        fetch(API_ENDPOINT + '/' + itemId, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ favorite })
+        })
+            .then(getTodo)
+            .catch((err) => console.error(err));
+    }
+
 
     // init
 
@@ -231,6 +251,7 @@
                     break;
 
                 case 'todo_edit_button':
+                case 'todo_text content_mode':
                     changeMode(e.target, 'edit');
                     break;
                 case 'todo_edit_cancel_button':
@@ -242,6 +263,11 @@
                     break;
                 case 'todo_remove_button':
                     removeTodo(e.target);
+                    break;
+
+                case 'todo_favorite_button inactive':
+                case 'todo_favorite_button active':
+                    favoriteTodo(e.target);
                     break;
 
                 default:

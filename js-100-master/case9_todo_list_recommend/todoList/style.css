@@ -83,7 +83,7 @@ h2 {
 }
 
 .content {
-  width: 100%;
+  width: calc(100% - 165px);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -99,6 +99,9 @@ h2 {
   margin-left: 20px;
   padding-top: 4px;
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
 }
 
 .content>input[type='text'] {
@@ -110,7 +113,7 @@ h2 {
 }
 
 .item_buttons {
-  width: 118px;
+  flex-shrink: 0;
 }
 
 .item_buttons>button {
@@ -121,8 +124,28 @@ h2 {
   border-radius: 8px;
 }
 
-.item_buttons>button:first-child {
+.item_buttons>.todo_favorite_button {
+  background-color: #FFF3CF;
+  margin-right: 8px;
+}
+
+.item_buttons>.todo_favorite_button i {
+  display: none;
+  color: #E8C872;
+}
+
+.item_buttons>.todo_favorite_button.inactive i.far {
+  display: block;
+}
+
+.item_buttons>.todo_favorite_button.active i.fas {
+  display: block;
+}
+
+.item_buttons>.todo_edit_button,
+.item_buttons>.todo_edit_confirm_button {
   background-color: #bad4f5;
+  color: #637A9F;
   margin-right: 8px;
 }
 
