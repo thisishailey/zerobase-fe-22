@@ -38,10 +38,31 @@
     }
   }
 
+  // preview event
+
+  const setPreviewEvent = () => {
+    for (let i = 0; i < $contentList.length; i++) {
+      const $videoPreview = $contentList[i].querySelector('picture');
+      $videoPreview.addEventListener('mouseover', previewOnMouseOver);
+      $videoPreview.addEventListener('mouseout', previewOnMouseOut);
+    }
+  }
+
+  const previewOnMouseOver = (e) => {
+    const $webpSource = e.target.parentNode.querySelector('source');
+    $webpSource.setAttribute('srcset', './assets/sample.webp');
+  }
+
+  const previewOnMouseOut = (e) => {
+    const $webpSource = e.target.parentNode.querySelector('source');
+    $webpSource.setAttribute('srcset', './assets/sample.jpg');
+  }
+
   // init
 
   const init = () => {
     setSearchEvent();
+    setPreviewEvent();
   }
 
   init();
