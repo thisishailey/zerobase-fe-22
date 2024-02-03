@@ -1,12 +1,13 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import 'webpack-dev-server'
 
 const config: webpack.Configuration = {
     mode: 'development',
     entry: './src/index.tsx',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve('./dist'),
         filename: 'bundle.js',
     },
     plugins: [
@@ -18,6 +19,10 @@ const config: webpack.Configuration = {
         rules: [{ test: /\.js$/, use: 'babel-loader', }]
     },
     optimization: { minimizer: [], },
+    devServer: {
+        static: './dist',
+        hot: true
+    }
 };
 
 export default config;
