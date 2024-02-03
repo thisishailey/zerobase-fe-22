@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Button(props) {
-    const [state, setState] = React.useState(true);
+    const [state, setState] = useState(true);
 
     const btnStyle = {
         display: 'flex',
