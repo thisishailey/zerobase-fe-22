@@ -9,6 +9,7 @@ const config: webpack.Configuration = {
     output: {
         path: path.resolve('./dist'),
         filename: 'bundle.js',
+        clean: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -16,12 +17,12 @@ const config: webpack.Configuration = {
         }),
     ],
     module: {
-        rules: [{ test: /\.js$/, use: 'babel-loader', }]
+        rules: [{ test: /\.tsx$/, use: 'babel-loader', }],
     },
     optimization: { minimizer: [], },
     devServer: {
         static: './dist',
-        hot: true
+        hot: true,
     }
 };
 
