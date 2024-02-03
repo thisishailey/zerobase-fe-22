@@ -40,7 +40,7 @@ function Button({ mainColor, color, textBf, textAf }: ButtonProps) {
     }
 
     return (
-        <div onClick={() => setState(!state)} style={state ? clickBtnStyle : clickedBtnStyle}>
+        <div className="AppButton" onClick={() => setState(!state)} style={state ? clickBtnStyle : clickedBtnStyle}>
             {state ? textBf : textAf}
         </div>
     )
