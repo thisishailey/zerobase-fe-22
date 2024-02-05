@@ -26,7 +26,9 @@ export function App() {
       {cards.length > 0 ?
         <button className='drawButton' onClick={draw}>Draw</button> :
         <div>There is no more card left to draw...</div>}
-      {drawnCards.length > 0 && <BusinessCard cardInfo={drawnCards[drawnCards.length - 1]} />}
+      <section className='cardSection'>
+        {drawnCards.length > 0 && drawnCards.map(card => <BusinessCard key={card.phoneNumber} cardInfo={card} />)}
+      </section>
     </div>
   );
 }
