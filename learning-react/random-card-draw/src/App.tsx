@@ -3,9 +3,9 @@ import './App.css';
 import data from './data/cards';
 import BusinessCard from './component/BusinessCard';
 
-type CardData = typeof data[0];
+export type CardData = typeof data[0];
 
-export default function App() {
+export function App() {
   const [cards, setCards] = useState<CardData[]>([])
   const [drawnCards, setDrawnCards] = useState<CardData[]>([])
 
@@ -23,8 +23,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <button onClick={draw}>Draw</button>
-      <BusinessCard />
+      {cards.length > 0 ?
+        <button className='drawButton' onClick={draw}>Draw</button> :
+        <div>There is no more card left to draw...</div>}
+      {drawnCards.length > 0 && <BusinessCard cardInfo={drawnCards[drawnCards.length - 1]} />}
     </div>
   );
 }

@@ -1,3 +1,44 @@
 .App {
+  margin: 50px auto;
   text-align: center;
+}
+
+.drawButton {
+  width: 200px;
+  height: 80px;
+  border: 0;
+  margin: 20px;
+  border-radius: 14px;
+  font-size: 30px;
+  color: #fff;
+  background-color: #ABC4AA;
+}
+
+.businessCard {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  width: 360px;
+  height: 140px;
+  padding: 30px;
+  border: 2px solid #C8B6A6;
+  border-radius: 20px;
+  margin: 20px auto;
+  font-size: 20px;
+  font-weight: 500;
+  color: #675D50;
+  background-color: #F3DEBA;
+}
+
+.businessCardItem {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.businessCardItem.keys {
+  text-align: left;
+  color: #A9907E;
+  font-weight: bold;
 }
