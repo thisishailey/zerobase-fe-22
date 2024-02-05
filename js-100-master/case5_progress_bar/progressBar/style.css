@@ -1,42 +1,43 @@
 .header {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  height: 80px;
-  background-color: #fff;
-  text-align: center;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    text-align: center;
 }
 
 .header h1 {
-  padding-top: 24px;
-  font-size: 24px;
-  font-weight: 500;
-  color: #86A789;
+    padding-top: 24px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #86a789;
 }
 
 .progress-container {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 8px;
-  background: #EEEDEB;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 8px;
+    background: #eeedeb;
 }
 
 .progress-bar {
-  width: 0%;
-  height: 8px;
-  background: #9DBC98;
-  transition: width 0.1s cubic-bezier(0.8, 0.3, 0.2, 0.1);
+    width: 0%;
+    height: 8px;
+    background: #9dbc98;
+    transition: width 0.1s ease-out;
+    -webkit-transition: width 0.1s ease-out;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
 }
 
 .content img {
-  display: block;
-  margin: 30px auto;
+    display: block;
+    margin: 30px auto;
 }
