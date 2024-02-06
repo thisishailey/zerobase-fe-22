@@ -1,0 +1,151 @@
+.Header {
+    width: 100vw;
+    height: 104px;
+    background-color: rgb(1, 4, 9);
+    box-shadow: rgb(48, 54, 61) 0px -1px 0px 0px inset;
+    color: rgb(230, 237, 243);
+    font-size: 14px;
+    line-height: 21px;
+    overflow-wrap: break-word;
+    text-size-adjust: 100%;
+}
+
+.headerBars {
+    width: 100%;
+}
+
+.hoverButton {
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(177, 186, 196, 0.12);
+    }
+}
+
+.globalBar {
+    @extend .headerBars;
+    height: 56px;
+    padding: 16px 16px 8px 16px;
+    display: flex;
+    gap: 12px;
+
+    .globalBar_start {
+        flex: 1 1 auto;
+        display: flex;
+        gap: 8px;
+        height: 100%;
+
+        .globalBar__sidePanel {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgb(48, 54, 61);
+            border-radius: 6px;
+            background-color: rgb(1, 4, 9);
+            cursor: pointer;
+
+            .globalBar__burgerMenu {
+                width: 20px;
+                height: 20px;
+                padding-top: 2px;
+                background-color: rgb(1, 4, 9);
+            }
+        }
+
+        .globalBar__homeButton {
+            margin-left: 8px;
+
+            .globalBar__githubIcon {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        .globalBar__breadCrumb {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+
+            .repos {
+                @extend .hoverButton;
+            }
+
+            .seperator {
+                color: rgb(132, 141, 151);
+            }
+
+            .currentRepos {
+                @extend .repos;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .globalBar_end {
+        flex: 0 1 auto;
+        display: flex;
+        justify-content: flex-end;
+        height: 100%;
+        max-height: 32px;
+    }
+}
+
+.localBar {
+    @extend .headerBars;
+    height: 48px;
+    padding: 0 16px;
+
+    .localBar_nav {
+        width: 100%;
+        height: 100%;
+        padding-top: 8px;
+
+        .localBar__navList {
+            display: flex;
+            gap: 8px;
+
+            .localBar__navItem {
+                @extend .hoverButton;
+                list-style: none;
+                display: flex;
+                align-items: center;
+                width: auto;
+                height: 30px;
+                font-weight: 500;
+
+                .icon {
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 6px;
+                }
+            }
+
+            .localBar__navItem__current {
+                @extend .localBar__navItem;
+                font-weight: bold;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -11px;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    border-bottom: 2px solid rgb(247, 129, 102);
+                }
+
+                span {
+                    width: 20px;
+                    height: 20px;
+                    margin-left: 8px;
+                    border-radius: 24px;
+                    background-color: rgba(110, 118, 129, 0.4);
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

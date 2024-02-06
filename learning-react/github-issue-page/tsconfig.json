@@ -20,8 +20,10 @@
     "noEmit": true,
     "noImplicitAny": true,
     "jsx": "react-jsx"
-  },
-  "include": [
-    "src"
-  ]
+	},
+	"include": [
+    "src", 
+	"env.d.ts"
+	],
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
 }
