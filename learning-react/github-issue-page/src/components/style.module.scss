@@ -1,7 +1,7 @@
 .Header {
     width: 100vw;
     height: 104px;
-    background-color: rgb(1, 4, 9);
+    background-color: rgb(2, 4, 10);
     box-shadow: rgb(48, 54, 61) 0px -1px 0px 0px inset;
     color: rgb(230, 237, 243);
     font-size: 14px;
@@ -43,14 +43,14 @@
             height: 32px;
             border: 1px solid rgb(48, 54, 61);
             border-radius: 6px;
-            background-color: rgb(1, 4, 9);
+            background-color: rgb(2, 4, 10);
             cursor: pointer;
 
             .globalBar__burgerMenu {
                 width: 20px;
                 height: 20px;
                 padding-top: 2px;
-                background-color: rgb(1, 4, 9);
+                background-color: rgb(2, 4, 10);
             }
         }
 
