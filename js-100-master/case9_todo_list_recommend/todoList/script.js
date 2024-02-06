@@ -1,11 +1,11 @@
-; (function () {
+(function () {
     'use strict';
 
     // util
 
     const get = (target) => {
         return document.querySelector(target);
-    }
+    };
 
     const createCustomElement = (tagName, propertyMap, parentNode) => {
         const e = document.createElement(tagName);
@@ -17,7 +17,7 @@
         if (parentNode) parentNode.appendChild(e);
 
         return e;
-    }
+    };
 
     // constants & variables
 
@@ -68,42 +68,54 @@
             </div>
         `;
 
-        const $todoItem = createCustomElement('div', { className: 'item', innerHTML: innerHTML }, parentNode);
+        const $todoItem = createCustomElement(
+            'div',
+            { className: 'item', innerHTML: innerHTML },
+            parentNode
+        );
         $todoItem.dataset.id = id;
 
         setEditOnEnterEvent($todoItem);
 
         return $todoItem;
-    }
+    };
 
     const setEditOnEnterEvent = ($todoItem) => {
         const $todoInput = $todoItem.querySelector('input.edit_mode');
-        const $todoEditButton = $todoItem.querySelector('.todo_edit_confirm_button');
-        $todoInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
+        const $todoEditButton = $todoItem.querySelector(
+            '.todo_edit_confirm_button'
+        );
+        $todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
                 e.preventDefault();
                 $todoEditButton.click();
             }
         });
-    }
+    };
 
     // get, render & paginate todo
 
     const getTodo = () => {
-        fetch(API_ENDPOINT + '?_page=' + currentPage + '&_per_page=' + ITEM_PER_PAGE)
+        fetch(
+            API_ENDPOINT +
+                '?_page=' +
+                currentPage +
+                '&_per_page=' +
+                ITEM_PER_PAGE
+        )
             .then((res) => res.json())
             .then((data) => renderTodo(data))
             .catch((err) => console.error(err));
-    }
+    };
 
     const renderTodo = (data) => {
         const todo = data['data'];
         const itemCount = data['items'];
         $todo.innerHTML = '';
-        todo.forEach(e => createTodoElement(e, $todo));
+        todo.forEach((e) => createTodoElement(e, $todo));
         todoId = itemCount;
         paginate(data);
-    }
+    };
 
     const paginate = (data) => {
         let innerHTML = '';
@@ -115,7 +127,10 @@
         let currentPageGroup = currentPage % PAGE_ON_SCREEN;
         if (currentPageGroup === 0) currentPageGroup = 5;
         const firstPageButton = currentPage - currentPageGroup + 1;
-        const lastPageButton = Math.min(pageCount, currentPage - currentPageGroup + 5);
+        const lastPageButton = Math.min(
+            pageCount,
+            currentPage - currentPageGroup + 5
+        );
 
         if (prevPage > 0) {
             innerHTML += `<button class='pageToButton' data-page-to=${prevPage}>이전</button>`;
@@ -139,7 +154,7 @@
         const $currentPage = get(`.pageButton#page_${currentPage}`);
         $currentPage.style.color = '#fff';
         $currentPage.style.background = '#bad4f5';
-    }
+    };
 
     const setChangePageEvent = (e) => {
         if (e.target.className === 'pageButton') {
@@ -150,7 +165,7 @@
 
         localStorage.setItem(CURRENT_PAGE_KEY, currentPage);
         getTodo();
-    }
+    };
 
     // add todo
 
@@ -159,19 +174,22 @@
 
         const input = $todoFormInput.value;
         if (!input) return;
+        else $todoFormInput.value = '';
 
         const todo = {
             content: input,
             completed: false,
-            id: `${++todoId}`
+            id: `${++todoId}`,
         };
 
         fetch(API_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(todo)
-        });
-    }
+            body: JSON.stringify(todo),
+        })
+            .then(getTodo)
+            .catch((err) => console.error(err));
+    };
 
     // toggle todo checkbox
 
@@ -181,25 +199,34 @@
         fetch(API_ENDPOINT + '/' + itemId, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ completed })
+            body: JSON.stringify({ completed }),
         })
             .then(getTodo)
             .catch((err) => console.error(err));
-    }
+    };
 
     // change todo mode
 
     const changeMode = (target, mode) => {
         const $item = target.closest('div.item');
         if (mode === 'edit') {
-            $item.querySelectorAll('.edit_mode').forEach(e => e.classList.remove('hide'));
-            $item.querySelectorAll('.content_mode').forEach(e => e.classList.add('hide'));
+            $item
+                .querySelectorAll('.edit_mode')
+                .forEach((e) => e.classList.remove('hide'));
+            $item
+                .querySelectorAll('.content_mode')
+                .forEach((e) => e.classList.add('hide'));
         } else if (mode === 'content') {
-            $item.querySelectorAll('.content_mode').forEach(e => e.classList.remove('hide'));
-            $item.querySelectorAll('.edit_mode').forEach(e => e.classList.add('hide'));
-            $item.querySelector('input.edit_mode').value = $item.querySelector('label.content_mode').innerHTML;
+            $item
+                .querySelectorAll('.content_mode')
+                .forEach((e) => e.classList.remove('hide'));
+            $item
+                .querySelectorAll('.edit_mode')
+                .forEach((e) => e.classList.add('hide'));
+            $item.querySelector('input.edit_mode').value =
+                $item.querySelector('label.content_mode').innerHTML;
         }
-    }
+    };
 
     // edit & remove todo
 
@@ -210,34 +237,35 @@
         fetch(API_ENDPOINT + '/' + itemId, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content })
+            body: JSON.stringify({ content }),
         })
             .then(getTodo)
             .catch((err) => console.error(err));
-    }
+    };
 
     const removeTodo = (target) => {
         const itemId = target.closest('div.item').dataset.id;
         fetch(API_ENDPOINT + '/' + itemId, { method: 'DELETE' })
             .then(getTodo)
             .catch((err) => console.error(err));
-    }
+    };
 
     // favorite todo
 
     const favoriteTodo = (target) => {
         const $item = target.closest('div.item');
         const itemId = $item.dataset.id;
-        const favorite = !$item.querySelector('.todo_favorite_button').classList.contains('active');
+        const favorite = !$item
+            .querySelector('.todo_favorite_button')
+            .classList.contains('active');
         fetch(API_ENDPOINT + '/' + itemId, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ favorite })
+            body: JSON.stringify({ favorite }),
         })
             .then(getTodo)
             .catch((err) => console.error(err));
-    }
-
+    };
 
     // init
 
@@ -274,7 +302,7 @@
                     break;
             }
         });
-    }
+    };
 
     init();
 })();

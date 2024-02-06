@@ -1,11 +1,11 @@
-; (function () {
+(function () {
     'use strict';
 
     // util
 
     const get = (target) => {
         return document.querySelector(target);
-    }
+    };
 
     const createCustomElement = (tagName, propertyMap, parentNode) => {
         const e = document.createElement(tagName);
@@ -17,7 +17,7 @@
         if (parentNode) parentNode.appendChild(e);
 
         return e;
-    }
+    };
 
     // constants
 
@@ -56,39 +56,45 @@
             </div>
         `;
 
-        const $todoItem = createCustomElement('div', { className: 'item', innerHTML: innerHTML }, parentNode);
+        const $todoItem = createCustomElement(
+            'div',
+            { className: 'item', innerHTML: innerHTML },
+            parentNode
+        );
         $todoItem.dataset.id = id;
 
         setEditOnEnterEvent($todoItem);
 
         return $todoItem;
-    }
+    };
 
     const setEditOnEnterEvent = ($todoItem) => {
         const $todoInput = $todoItem.querySelector('input.edit_mode');
-        const $todoEditButton = $todoItem.querySelector('.todo_edit_confirm_button');
-        $todoInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
+        const $todoEditButton = $todoItem.querySelector(
+            '.todo_edit_confirm_button'
+        );
+        $todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
                 e.preventDefault();
                 $todoEditButton.click();
             }
         });
-    }
+    };
 
     // render & get todo
 
     const renderTodo = (todo) => {
         $todo.innerHTML = '';
-        todo.forEach(e => createTodoElement(e, $todo));
+        todo.forEach((e) => createTodoElement(e, $todo));
         todoId = todo[todo.length - 1]?.id || 0;
-    }
+    };
 
     const getTodo = () => {
         fetch(API_ENDPOINT)
             .then((res) => res.json())
             .then((todo) => renderTodo(todo))
             .catch((err) => console.error(err));
-    }
+    };
 
     // add todo
 
@@ -97,19 +103,22 @@
 
         const input = $todoFormInput.value;
         if (!input) return;
+        else $todoFormInput.value = '';
 
         const todo = {
             content: input,
             completed: false,
-            id: `${++todoId}`
+            id: `${++todoId}`,
         };
 
         fetch(API_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(todo)
-        });
-    }
+            body: JSON.stringify(todo),
+        })
+            .then(getTodo)
+            .catch((err) => console.error(err));
+    };
 
     // toggle todo checkbox
 
@@ -119,25 +128,34 @@
         fetch(API_ENDPOINT + '/' + itemId, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ completed })
+            body: JSON.stringify({ completed }),
         })
             .then(getTodo)
             .catch((err) => console.error(err));
-    }
+    };
 
     // change todo mode
 
     const changeMode = (target, mode) => {
         const $item = target.closest('div.item');
         if (mode === 'edit') {
-            $item.querySelectorAll('.edit_mode').forEach(e => e.classList.remove('hide'));
-            $item.querySelectorAll('.content_mode').forEach(e => e.classList.add('hide'));
+            $item
+                .querySelectorAll('.edit_mode')
+                .forEach((e) => e.classList.remove('hide'));
+            $item
+                .querySelectorAll('.content_mode')
+                .forEach((e) => e.classList.add('hide'));
         } else if (mode === 'content') {
-            $item.querySelectorAll('.content_mode').forEach(e => e.classList.remove('hide'));
-            $item.querySelectorAll('.edit_mode').forEach(e => e.classList.add('hide'));
-            $item.querySelector('input.edit_mode').value = $item.querySelector('label.content_mode').innerHTML;
+            $item
+                .querySelectorAll('.content_mode')
+                .forEach((e) => e.classList.remove('hide'));
+            $item
+                .querySelectorAll('.edit_mode')
+                .forEach((e) => e.classList.add('hide'));
+            $item.querySelector('input.edit_mode').value =
+                $item.querySelector('label.content_mode').innerHTML;
         }
-    }
+    };
 
     // edit & remove todo
 
@@ -148,19 +166,18 @@
         fetch(API_ENDPOINT + '/' + itemId, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content })
+            body: JSON.stringify({ content }),
         })
             .then(getTodo)
             .catch((err) => console.error(err));
-    }
+    };
 
     const removeTodo = (target) => {
         const itemId = target.closest('div.item').dataset.id;
         fetch(API_ENDPOINT + '/' + itemId, { method: 'DELETE' })
             .then(getTodo)
             .catch((err) => console.error(err));
-    }
-
+    };
 
     // init
 
@@ -191,7 +208,7 @@
                     break;
             }
         });
-    }
+    };
 
     init();
 })();
