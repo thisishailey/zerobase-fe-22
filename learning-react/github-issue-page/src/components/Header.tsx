@@ -7,11 +7,15 @@ function GlobalBar() {
     return (
         <div className={styles.globalBar}>
             <div className={styles.globalBar_start}>
-                <button className={styles.globalBar__sidePanel}>
+                <button
+                    className={styles.globalBar__sidePanel}
+                    aria-label='Side Panel'
+                >
                     <img
                         className={styles.globalBar__burgerMenu}
                         src={burgerMenu}
-                        alt='side panel'
+                        alt='Side Panel'
+                        aria-hidden
                     ></img>
                 </button>
                 <a
@@ -22,12 +26,18 @@ function GlobalBar() {
                     <img
                         className={styles.globalBar__githubIcon}
                         src={githubIcon}
-                        alt='GitHub Icon'
+                        alt='Homepage'
+                        aria-hidden
                     ></img>
                 </a>
-                <div className={styles.globalBar__breadCrumb}>
+                <div
+                    className={styles.globalBar__breadcrumb}
+                    aria-label='Breadcrumb'
+                >
                     <span className={styles.repos}>kfbkhw</span>
-                    <span className={styles.seperator}>/</span>
+                    <span className={styles.seperator} aria-hidden>
+                        /
+                    </span>
                     <span className={styles.currentRepos}>zerobase-fe-22</span>
                 </div>
             </div>
@@ -56,7 +66,7 @@ function LocalBar() {
                                 className={styles.icon}
                                 src={e.src}
                                 alt=''
-                                aria-hidden={true}
+                                aria-hidden
                             />
                             {e.name}
                             {e.name === currentTab.name && (
