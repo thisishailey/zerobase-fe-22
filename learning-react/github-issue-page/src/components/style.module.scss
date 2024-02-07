@@ -181,9 +181,10 @@ a:focus-visible {
 
 .Issue {
     width: 100vw;
+    max-width: 1260px;
     height: auto;
     padding: 0 32px;
-    margin-top: 24px;
+    margin: 24px auto 0;
 }
 
 .issueMenu {
