@@ -1,5 +1,9 @@
 // ---------------------------------- Global ---------------------------------- //
 
+a:focus-visible {
+    outline: 2px solid rgb(47, 129, 247);
+}
+
 .sr_only {
     position: absolute;
     overflow: hidden;
@@ -60,6 +64,14 @@
             border-radius: 6px;
             background-color: rgb(2, 4, 10);
             cursor: pointer;
+
+            &:hover {
+                border-color: rgb(139, 148, 158);
+            }
+
+            &:focus-visible {
+                outline: 2px solid rgb(47, 129, 247);
+            }
 
             .globalBar__burgerMenu {
                 width: 20px;
@@ -226,10 +238,6 @@
                     color: rgb(47, 129, 247);
                     text-decoration-color: rgb(47, 129, 247);
                     text-decoration-line: underline;
-                }
-
-                &:focus-visible {
-                    outline: 2px solid rgb(47, 129, 247);
                 }
             }
         }
