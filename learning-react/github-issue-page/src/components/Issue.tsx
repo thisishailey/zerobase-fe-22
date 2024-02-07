@@ -53,10 +53,16 @@ function IssueMenu() {
 }
 
 function IssueContent() {
+    const lightbulb: IconProp = ['fas', 'lightbulb'];
     return (
         <div className={styles.issueContent}>
             <div className={styles.issueContent_header}></div>
             <div className={styles.issueContent_list}></div>
+            <div className={styles.issueContent_tip}>
+                <FontAwesomeIcon icon={lightbulb} />
+                <strong>ProTip!</strong>
+                Click a checkbox on the left to edit multiple issues at once.
+            </div>
         </div>
     );
 }
