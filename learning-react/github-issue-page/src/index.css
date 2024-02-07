@@ -15,5 +15,12 @@
 }
 
 body {
-    background-color: rgb(12, 17, 23);
+    background-color: rgb(13, 17, 23);
+}
+
+a {
+    color: inherit;
+    outline-color: inherit;
+    text-decoration-color: inherit;
+    text-decoration: none;
 }
