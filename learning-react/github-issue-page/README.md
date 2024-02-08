@@ -1,11 +1,13 @@
-# Random Card Draw App
+# GitHub Issue Page Clone
 
-An app to draw cards randomly.
+Clone GitHub issue page
 
 ## Tech Stack
 
 -   HTML
 -   CSS
+-   CSS Modules
+-   SCSS Modules
 -   TypeScript
 -   React
 -   CRA
