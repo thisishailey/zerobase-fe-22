@@ -1,0 +1,72 @@
+@use 'theme';
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.heading {
+    margin: 40px auto;
+    font-weight: 600;
+    font-size: 48px;
+    letter-spacing: 4px;
+    color: theme.$gray-400;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 360px;
+    width: 90%;
+    height: 50px;
+
+    .input {
+        flex-grow: 1;
+        min-width: 280px;
+        height: 50px;
+        padding: 10px;
+        border: 1px solid theme.$gray-200;
+        border-radius: 6px;
+        font-size: 20px;
+        background-color: theme.$gray-000;
+        transition: border 100ms;
+
+        &:hover {
+            box-shadow: 0 0 3px 0.1px theme.$theme;
+        }
+
+        &:focus {
+            border: 2px solid theme.$theme;
+        }
+    }
+
+    .inputButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 50px;
+        border-radius: 6px;
+        color: theme.$gray-000;
+        fill: theme.$gray-000;
+        background-color: theme.$theme;
+        cursor: pointer;
+        transition: all 100ms;
+
+        &:hover {
+            fill: theme.$theme;
+            background-color: theme.$gray-000;
+            border: 2px solid theme.$theme;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
