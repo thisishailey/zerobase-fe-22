@@ -1,9 +1,13 @@
-import { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useRef } from 'react';
 import styles from '../styles/style.module.scss';
 
-export default function Input() {
+interface inputProps {
+    setTask: React.Dispatch<React.SetStateAction<string>>;
+    setSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Input({ setTask, setSubmitted }: inputProps) {
     const inputRef = useRef<HTMLInputElement>(null);
-    const [task, setTask] = useState('');
 
     function handleChange() {
         setTask(inputRef.current?.value as string);
@@ -12,7 +16,7 @@ export default function Input() {
     function handleSubmit(e: FormEvent) {
         e.preventDefault();
         if (inputRef.current) inputRef.current.value = '';
-        console.log(task);
+        setSubmitted(true);
     }
 
     return (

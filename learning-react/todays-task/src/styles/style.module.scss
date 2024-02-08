@@ -34,14 +34,15 @@
         border-radius: 6px;
         font-size: 20px;
         background-color: theme.$gray-000;
-        transition: border 100ms;
+        transition: all 200ms, border 0s;
 
         &:hover {
-            box-shadow: 0 0 3px 0.1px theme.$theme;
+            box-shadow: 0 0 4px 0.1px theme.$theme;
         }
 
         &:focus {
             border: 2px solid theme.$theme;
+            box-shadow: none;
         }
     }
 
@@ -56,7 +57,7 @@
         fill: theme.$gray-000;
         background-color: theme.$theme;
         cursor: pointer;
-        transition: all 100ms;
+        transition: all 200ms;
 
         &:hover {
             fill: theme.$theme;
@@ -67,6 +68,46 @@
         svg {
             width: 24px;
             height: 24px;
+        }
+    }
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 60px;
+    margin: 20px 0;
+
+    .filterCount {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .filterList {
+        display: flex;
+        gap: 4px;
+
+        .filterButton {
+            width: 100px;
+            height: 36px;
+            border: 1px solid theme.$theme;
+            border-radius: 18px;
+            font-size: 15px;
+            color: theme.$theme;
+            background-color: theme.$gray-000;
+            transition: all 200ms;
+
+            &:hover {
+                border-color: theme.$important;
+            }
+
+            &:focus {
+                color: theme.$gray-000;
+                background-color: theme.$theme;
+                border-color: theme.$theme;
+            }
         }
     }
 }
