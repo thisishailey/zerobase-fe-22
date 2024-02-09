@@ -1,12 +1,12 @@
 import { FormEvent, useRef } from 'react';
 import styles from '../styles/style.module.scss';
 
-interface inputProps {
+interface InputProps {
     setTask: React.Dispatch<React.SetStateAction<string>>;
     setSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Input({ setTask, setSubmitted }: inputProps) {
+export default function Input({ setTask, setSubmitted }: InputProps) {
     const inputRef = useRef<HTMLInputElement>(null);
 
     function handleChange() {

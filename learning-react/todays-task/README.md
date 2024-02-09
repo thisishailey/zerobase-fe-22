@@ -1,30 +1,56 @@
-# React + TypeScript + Vite
+# Today's Task App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An app for daily task management (aka. todo list)
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   HTML
+-   SCSS Modules
+-   TypeScript
+-   React
+-   Vite
+-   SWC
+-   Node.js
+-   npm
+-   ESLint
+-   Prettier
+-   Git
 
-## Expanding the ESLint configuration
+## Functional Requirement
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Create
 
-- Configure the top-level `parserOptions` property like this:
+-   Create new task using the HTML Form element.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+    -   A task object should have `id: number`, `content: string`, `checked: boolean`.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Read
+
+-   Get and render a list of tasks.
+
+    -   A task list is an array of task objects.
+    -   A task list, if exists, is stored in the local storage.
+
+-   Re-render a filtered list on a filter button click.
+
+    -   There are three filters: `All` (default), `To Do`, `Completed`.
+    -   Filter tasks based on their `checked` values.
+    -   Use `useMemo()` for better performance.
+
+### Update
+
+-   Edit a task content.
+
+    -   Enable edit on a mouse click.
+    -   Exit edit on enter or a button click and update the task content.
+
+-   Check or uncheck a task.
+
+    -   Manage check status using `useState()`.
+    -   Strikethrough the task content if checked.
+
+-   Render a newly created task after Create.
+
+### Delete
+
+-   Remove the selected task.

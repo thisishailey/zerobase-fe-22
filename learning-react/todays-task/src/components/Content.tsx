@@ -60,7 +60,13 @@ export default function Content() {
                     {checked ? 'DONE!' : 'TODO'}
                 </div>
                 <label
-                    className={editMode ? styles.hidden : styles.taskContent}
+                    className={
+                        editMode
+                            ? styles.hidden
+                            : checked
+                            ? `${styles.taskContent} ${styles.taskChecked}`
+                            : styles.taskContent
+                    }
                     onClick={handleEditMode}
                 >
                     {content}

@@ -4,12 +4,34 @@ import Input from './components/Input';
 import Filter from './components/Filter';
 import Content from './components/Content';
 
-function App() {
+interface Task {
+    id: number;
+    content: string;
+    checked: boolean;
+}
+
+const taskList: Task[] = [];
+
+export default function App() {
     const [task, setTask] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [filter, setFilter] = useState('All');
 
-    if (submitted) console.log(task);
+    function createTask(task: string) {
+        const taskObj: Task = {
+            id: taskList.length,
+            content: task,
+            checked: false,
+        };
+        taskList.push(taskObj);
+        console.log(taskList);
+    }
+
+    if (submitted) {
+        setSubmitted(false);
+        createTask(task);
+    }
+
     if (filter !== 'All') console.log(filter);
 
     return (
@@ -21,5 +43,3 @@ function App() {
         </div>
     );
 }
-
-export default App;

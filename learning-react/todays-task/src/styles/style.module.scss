@@ -176,6 +176,11 @@
             color: theme.$gray-500;
             background-color: theme.$gray-000;
         }
+        .taskContent.taskChecked {
+            text-decoration-line: line-through;
+            text-decoration-color: theme.$gray-400;
+            text-decoration-thickness: 0.8px;
+        }
 
         .taskButton {
             display: flex;

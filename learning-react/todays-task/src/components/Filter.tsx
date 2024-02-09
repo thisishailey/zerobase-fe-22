@@ -1,10 +1,10 @@
 import styles from '../styles/style.module.scss';
 
-interface filterProps {
+interface FilterProps {
     setFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Filter({ setFilter }: filterProps) {
+export default function Filter({ setFilter }: FilterProps) {
     const filterList = ['All', 'To Do', 'Completed'];
 
     function handleFilter(e: React.MouseEvent) {
