@@ -1,26 +1,14 @@
-import { FormEvent, useRef } from 'react';
 import styles from '../styles/style.module.scss';
+import { PlusIcon } from './Icon';
 
 interface InputProps {
-    setTask: React.Dispatch<React.SetStateAction<string>>;
-    setSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+    onChange: (e: React.ChangeEvent<Element>) => void;
+    onSubmit: (e: React.FormEvent<Element>) => void;
 }
 
-export default function Input({ setTask, setSubmitted }: InputProps) {
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    function handleChange() {
-        setTask(inputRef.current?.value as string);
-    }
-
-    function handleSubmit(e: FormEvent) {
-        e.preventDefault();
-        if (inputRef.current) inputRef.current.value = '';
-        setSubmitted(true);
-    }
-
+export default function Input({ onChange, onSubmit }: InputProps) {
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={onSubmit}>
             <input
                 className={styles.input}
                 type='text'
@@ -28,15 +16,16 @@ export default function Input({ setTask, setSubmitted }: InputProps) {
                 minLength={1}
                 maxLength={50}
                 placeholder='Type your Task here!'
-                ref={inputRef}
-                onChange={handleChange}
+                onChange={onChange}
+                autoCapitalize='off'
+                autoCorrect='off'
                 autoComplete='off'
+                autoSave='off'
+                aria-autocomplete='none'
                 autoFocus
             />
             <button className={styles.inputButton} type='submit'>
-                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
-                    <path d='M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z' />
-                </svg>
+                <PlusIcon />
             </button>
         </form>
     );

@@ -109,13 +109,12 @@
                 border-color: theme.$important;
                 box-shadow: 0 0 3px 0.01px theme.$important;
             }
-
-            &:focus {
-                color: theme.$gray-000;
-                background-color: theme.$theme;
-                border-color: theme.$theme;
-                box-shadow: none;
-            }
+        }
+        .filterButton.currentFilter {
+            color: theme.$gray-000;
+            background-color: theme.$theme;
+            border-color: theme.$theme;
+            box-shadow: none;
         }
     }
 }

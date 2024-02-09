@@ -29,7 +29,6 @@ An app for daily task management (aka. todo list)
 -   Get and render a list of tasks.
 
     -   A task list is an array of task objects.
-    -   A task list, if exists, is stored in the local storage.
 
 -   Re-render a filtered list on a filter button click.
 
@@ -50,6 +49,8 @@ An app for daily task management (aka. todo list)
     -   Strikethrough the task content if checked.
 
 -   Render a newly created task after Create.
+
+-   Update the task count.
 
 ### Delete
 
