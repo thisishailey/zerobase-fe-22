@@ -15,7 +15,11 @@ export default function Checkbox({
 }: CheckboxProps) {
     return (
         <div
-            className={styles.taskCheck}
+            className={
+                checked
+                    ? `${styles.taskCheck} ${styles.taskChecked}`
+                    : styles.taskCheck
+            }
             onClick={onClick}
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}

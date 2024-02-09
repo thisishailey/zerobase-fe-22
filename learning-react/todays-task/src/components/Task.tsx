@@ -4,13 +4,17 @@ import { TaskType } from '../App';
 import Checkbox from './Task_Checkbox';
 import TaskContent from './Task_Content';
 import OptionButtons from './Task_OptionButtons';
-
 interface TaskProps {
     task: TaskType;
-    onRemoveClick: (e: React.MouseEvent) => void;
+    updateTaskInfo: (id: number, content?: string) => void;
+    onRemoveClick: (id: number) => void;
 }
 
-export default function Task({ task, onRemoveClick }: TaskProps) {
+export default function Task({
+    task,
+    updateTaskInfo,
+    onRemoveClick,
+}: TaskProps) {
     const [checked, setChecked] = useState(task.checked);
     const [content, setContent] = useState(task.content);
     const [editMode, setEditMode] = useState(false);
@@ -21,18 +25,19 @@ export default function Task({ task, onRemoveClick }: TaskProps) {
         setChecked(!checked);
         const target = e.target as HTMLDivElement;
         target.classList.toggle(`${styles.taskChecked}`);
+        updateTaskInfo(task.id);
     }
 
     function handleCheckMouseIn(e: React.MouseEvent) {
         const target = e.target as HTMLDivElement;
         target.innerHTML = 'DONE?';
-        target.classList.toggle(`${styles.taskHovered}`);
+        target.classList.add(`${styles.taskHovered}`);
     }
 
     function handleCheckMouseOut(e: React.MouseEvent) {
         const target = e.target as HTMLDivElement;
         target.innerHTML = checked ? 'DONE!' : 'TODO';
-        target.classList.toggle(`${styles.taskHovered}`);
+        target.classList.remove(`${styles.taskHovered}`);
     }
 
     // -------------- TaskContent -------------- //
@@ -50,6 +55,7 @@ export default function Task({ task, onRemoveClick }: TaskProps) {
 
     function handleEditConfirm() {
         setEditMode(false);
+        updateTaskInfo(task.id, content);
     }
 
     // -------------- Task Element -------------- //
@@ -63,6 +69,7 @@ export default function Task({ task, onRemoveClick }: TaskProps) {
                 checked={checked}
             />
             <TaskContent
+                id={task.id.toString()}
                 checked={checked}
                 content={content}
                 editMode={editMode}
@@ -71,6 +78,7 @@ export default function Task({ task, onRemoveClick }: TaskProps) {
                 onEditClick={handleEditConfirm}
             />
             <OptionButtons
+                id={task.id}
                 editMode={editMode}
                 onEditClick={handleEditConfirm}
                 onRemoveClick={onRemoveClick}

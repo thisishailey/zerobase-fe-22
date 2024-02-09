@@ -14,7 +14,7 @@ export default function Input({ onChange, onSubmit }: InputProps) {
                 type='text'
                 name='task'
                 minLength={1}
-                maxLength={50}
+                maxLength={40}
                 placeholder='Type your Task here!'
                 onChange={onChange}
                 autoCapitalize='off'

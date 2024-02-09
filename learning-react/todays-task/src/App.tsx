@@ -1,8 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import styles from './styles/style.module.scss';
 import Input from './components/Input';
 import Filter from './components/Filter';
 import TaskContainer from './components/TaskContainer';
+
+const dummyTasks = [
+    {
+        id: 1,
+        content: 'task of the day',
+        checked: true,
+    },
+    {
+        id: 2,
+        content: "finish making today's task app",
+        checked: false,
+    },
+];
 
 export interface TaskType {
     id: number;
@@ -11,18 +24,24 @@ export interface TaskType {
 }
 
 export function App() {
-    const [taskList, setTaskList] = useState<TaskType[]>([]);
+    const [taskList, setTaskList] = useState<TaskType[]>(dummyTasks);
     const [task, setTask] = useState('');
+    const [taskCount, setTaskCount] = useState(taskList.length);
     const [filter, setFilter] = useState('All');
+    const filteredTasks = useMemo(
+        () => filterTasks(taskList, filter),
+        [taskList, filter]
+    );
 
     // -------------- Create -------------- //
 
     function createTask(task: string) {
         const taskObj: TaskType = {
-            id: taskList.length,
+            id: Date.now(),
             content: task,
             checked: false,
         };
+
         setTaskList(taskList.concat(taskObj));
     }
 
@@ -33,10 +52,12 @@ export function App() {
 
     function handleTaskSubmit(e: React.FormEvent) {
         e.preventDefault();
+
+        createTask(task);
+
         const target = e.target as HTMLFormElement;
         const input = target.firstElementChild as HTMLInputElement;
         input.value = '';
-        createTask(task);
     }
 
     // -------------- Read -------------- //
@@ -45,22 +66,65 @@ export function App() {
 
     function handleFilter(e: React.MouseEvent) {
         const target = e.target as HTMLButtonElement;
-        target.parentElement
-            ?.getElementsByClassName(filter)[0]
-            .classList.remove(styles.currentFilter);
-        setFilter(target.innerText);
+
+        const prevFilter = target.parentElement?.getElementsByClassName(
+            filter
+        )[0] as HTMLButtonElement;
+        prevFilter.classList.remove(styles.currentFilter);
+
         target.classList.add(styles.currentFilter);
+
+        setFilter(target.innerText);
     }
 
-    useEffect(() => {
-        console.log(filter);
-    }, [filter]);
+    function filterTasks(tasks: TaskType[], filter: string) {
+        return tasks.filter((e) => {
+            if (filter === 'All') {
+                return true;
+            } else if (filter === 'To Do') {
+                return e.checked === false;
+            } else if (filter === 'Completed') {
+                return e.checked === true;
+            } else return false;
+        });
+    }
 
     // -------------- Update -------------- //
 
     useEffect(() => {
+        setTaskCount(taskList.length);
         console.log(taskList);
     }, [taskList]);
+
+    function updateTaskInfo(id: number, content?: string) {
+        if (content) {
+            setTaskList(
+                taskList.map((e) => {
+                    if (e.id !== id) {
+                        return e;
+                    } else {
+                        return { ...e, content: content };
+                    }
+                })
+            );
+        } else {
+            setTaskList(
+                taskList.map((e) => {
+                    if (e.id !== id) {
+                        return e;
+                    } else {
+                        return { ...e, checked: !e.checked };
+                    }
+                })
+            );
+        }
+    }
+
+    // -------------- Delete -------------- //
+
+    function handleRemove(id: number) {
+        setTaskList(taskList.filter((e) => e.id !== id));
+    }
 
     return (
         <div className={styles.wrap}>
@@ -69,12 +133,21 @@ export function App() {
                 onChange={handleTaskInputChange}
                 onSubmit={handleTaskSubmit}
             />
-            <Filter
-                currentFilter={filter}
-                filters={filterList}
-                onClick={handleFilter}
-            />
-            <TaskContainer tasks={taskList} />
+            {taskCount > 0 && (
+                <>
+                    <Filter
+                        taskCount={taskCount}
+                        currentFilter={filter}
+                        filters={filterList}
+                        onClick={handleFilter}
+                    />
+                    <TaskContainer
+                        tasks={filteredTasks ? filteredTasks : taskList}
+                        updateTaskInfo={updateTaskInfo}
+                        onRemoveClick={handleRemove}
+                    />
+                </>
+            )}
         </div>
     );
 }

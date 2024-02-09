@@ -2,12 +2,14 @@ import styles from '../styles/style.module.scss';
 import { MinusIcon, ConfirmIcon } from './Icon';
 
 interface OptionButtonsProps {
+    id: number;
     editMode: boolean;
     onEditClick: () => void;
-    onRemoveClick: (e: React.MouseEvent) => void;
+    onRemoveClick: (id: number) => void;
 }
 
 export default function OptionButtons({
+    id,
     editMode,
     onEditClick,
     onRemoveClick,
@@ -20,7 +22,7 @@ export default function OptionButtons({
                         ? `${styles.taskRemove} ${styles.hidden}`
                         : styles.taskRemove
                 }
-                onClick={onRemoveClick}
+                onClick={() => onRemoveClick(id)}
             >
                 <MinusIcon />
             </button>

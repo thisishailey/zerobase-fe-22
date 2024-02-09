@@ -1,6 +1,7 @@
 import styles from '../styles/style.module.scss';
 
 interface TaskContentProps {
+    id: string;
     checked: boolean;
     content: string;
     editMode: boolean;
@@ -10,6 +11,7 @@ interface TaskContentProps {
 }
 
 export default function TaskContent({
+    id,
     checked,
     content,
     editMode,
@@ -28,19 +30,20 @@ export default function TaskContent({
                         : styles.taskContent
                 }
                 onClick={onContentClick}
+                htmlFor={id}
             >
                 {content}
             </label>
             <input
                 className={editMode ? styles.taskContent : styles.hidden}
-                name='task-content'
+                id={id}
                 value={content}
                 onChange={onInputChange}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') onEditClick();
                 }}
                 minLength={1}
-                maxLength={50}
+                maxLength={40}
                 autoCapitalize='off'
                 autoCorrect='off'
                 autoComplete='off'

@@ -50,8 +50,11 @@ An app for daily task management (aka. todo list)
 
 -   Render a newly created task after Create.
 
--   Update the task count.
+-   Update the task count under following occasions:
+    -   Create task
+    -   Delete task
+    -   Filter tasks
 
 ### Delete
 
--   Remove the selected task.
+-   Remove the selected task using its ID.
