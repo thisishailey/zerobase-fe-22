@@ -20,7 +20,7 @@ const dummyTasks = [
 const filterList = {
     0: 'All',
     1: 'To Do',
-    2: 'Complete',
+    2: 'Done',
 } as const;
 
 type filterType = (typeof filterList)[keyof typeof filterList];
