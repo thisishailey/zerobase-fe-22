@@ -17,6 +17,15 @@ const dummyTasks = [
     },
 ];
 
+enum filterList {
+    'All',
+    'To Do',
+    'Completed',
+}
+
+const filters = Object.values(filterList) as string[];
+filters.slice(0, filters.length / 2);
+
 export interface TaskType {
     id: number;
     content: string;
@@ -27,7 +36,7 @@ export function App() {
     const [taskList, setTaskList] = useState<TaskType[]>(dummyTasks);
     const [task, setTask] = useState('');
     const [taskCount, setTaskCount] = useState(taskList.length);
-    const [filter, setFilter] = useState('All');
+    const [filter, setFilter] = useState(filterList[0]);
     const filteredTasks = useMemo(
         () => filterTasks(taskList, filter),
         [taskList, filter]
@@ -62,8 +71,6 @@ export function App() {
 
     // -------------- Read -------------- //
 
-    const filterList = ['All', 'To Do', 'Completed'];
-
     function handleFilter(e: React.MouseEvent) {
         const target = e.target as HTMLButtonElement;
 
@@ -79,11 +86,11 @@ export function App() {
 
     function filterTasks(tasks: TaskType[], filter: string) {
         return tasks.filter((e) => {
-            if (filter === 'All') {
+            if (filter === filterList[0]) {
                 return true;
-            } else if (filter === 'To Do') {
+            } else if (filter === filterList[1]) {
                 return e.checked === false;
-            } else if (filter === 'Completed') {
+            } else if (filter === filterList[2]) {
                 return e.checked === true;
             } else return false;
         });
@@ -138,7 +145,7 @@ export function App() {
                     <Filter
                         taskCount={taskCount}
                         currentFilter={filter}
-                        filters={filterList}
+                        filters={filters}
                         onClick={handleFilter}
                     />
                     <TaskContainer
