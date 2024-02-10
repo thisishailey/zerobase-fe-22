@@ -14,7 +14,7 @@ export default function TaskContainer({
     onRemoveClick,
 }: TaskContainerProps) {
     return (
-        <main className={styles.content}>
+        <section className={styles.content}>
             {tasks.map((e) => (
                 <Task
                     task={e}
@@ -23,6 +23,6 @@ export default function TaskContainer({
                     key={e.id}
                 />
             ))}
-        </main>
+        </section>
     );
 }

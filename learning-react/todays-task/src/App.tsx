@@ -24,7 +24,7 @@ enum filterList {
 }
 
 const filters = Object.values(filterList) as string[];
-filters.slice(0, filters.length / 2);
+filters.splice(filters.length / 2);
 
 export interface TaskType {
     id: number;
@@ -100,8 +100,11 @@ export function App() {
 
     useEffect(() => {
         setTaskCount(taskList.length);
-        console.log(taskList);
     }, [taskList]);
+
+    useEffect(() => {
+        setTaskCount(filteredTasks.length);
+    }, [filteredTasks]);
 
     function updateTaskInfo(id: number, content?: string) {
         if (content) {
@@ -133,15 +136,12 @@ export function App() {
         setTaskList(taskList.filter((e) => e.id !== id));
     }
 
-    return (
-        <div className={styles.wrap}>
-            <h1 className={styles.heading}>Today's Task</h1>
-            <Input
-                onChange={handleTaskInputChange}
-                onSubmit={handleTaskSubmit}
-            />
-            {taskCount > 0 && (
-                <>
+    // -------------- Main -------------- //
+
+    function Main() {
+        if (taskCount > 0) {
+            return (
+                <main>
                     <Filter
                         taskCount={taskCount}
                         currentFilter={filter}
@@ -153,8 +153,30 @@ export function App() {
                         updateTaskInfo={updateTaskInfo}
                         onRemoveClick={handleRemove}
                     />
-                </>
-            )}
+                </main>
+            );
+        } else if (taskList.length > 0) {
+            return (
+                <main>
+                    <Filter
+                        taskCount={taskCount}
+                        currentFilter={filter}
+                        filters={filters}
+                        onClick={handleFilter}
+                    />
+                </main>
+            );
+        } else return;
+    }
+
+    return (
+        <div className={styles.wrap}>
+            <h1 className={styles.heading}>Today's Task</h1>
+            <Input
+                onChange={handleTaskInputChange}
+                onSubmit={handleTaskSubmit}
+            />
+            <Main />
         </div>
     );
 }
