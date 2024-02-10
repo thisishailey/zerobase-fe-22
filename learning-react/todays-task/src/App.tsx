@@ -17,14 +17,13 @@ const dummyTasks = [
     },
 ];
 
-enum filterList {
-    'All',
-    'To Do',
-    'Completed',
-}
+const filterList = {
+    0: 'All',
+    1: 'To Do',
+    2: 'Complete',
+} as const;
 
-const filters = Object.values(filterList) as string[];
-filters.splice(filters.length / 2);
+type filterType = (typeof filterList)[keyof typeof filterList];
 
 export interface TaskType {
     id: number;
@@ -36,7 +35,7 @@ export function App() {
     const [taskList, setTaskList] = useState<TaskType[]>(dummyTasks);
     const [task, setTask] = useState('');
     const [taskCount, setTaskCount] = useState(taskList.length);
-    const [filter, setFilter] = useState(filterList[0]);
+    const [filter, setFilter] = useState<filterType>(filterList[0]);
     const filteredTasks = useMemo(
         () => filterTasks(taskList, filter),
         [taskList, filter]
@@ -81,7 +80,7 @@ export function App() {
 
         target.classList.add(styles.currentFilter);
 
-        setFilter(target.innerText);
+        setFilter(target.innerText as filterType);
     }
 
     function filterTasks(tasks: TaskType[], filter: string) {
@@ -145,7 +144,7 @@ export function App() {
                     <Filter
                         taskCount={taskCount}
                         currentFilter={filter}
-                        filters={filters}
+                        filters={Object.values(filterList)}
                         onClick={handleFilter}
                     />
                     <TaskContainer
@@ -161,7 +160,7 @@ export function App() {
                     <Filter
                         taskCount={taskCount}
                         currentFilter={filter}
-                        filters={filters}
+                        filters={Object.values(filterList)}
                         onClick={handleFilter}
                     />
                 </main>
