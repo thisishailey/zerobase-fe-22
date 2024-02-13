@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './styles.module.css';
 
 function App() {
@@ -6,49 +7,66 @@ function App() {
         video: true,
     };
 
-    class WebRTC {
-        constructor() {
-            this.media = new MediaSource();
-            this.recorder;
-            this.blobs;
-            this.$videoPlay = get('video.play');
-            this.$videoRecord = get('video.record');
-            this.$btnPlay = get('button.btn_play');
-            this.$btnRecord = get('button.btn_record');
-            this.$btnDownload = get('button.btn_download');
-            this.$webRTC = get('section.webrtc');
-            navigator.mediaDevices
-                .getUserMedia(allowUser)
-                .then((media) => this.success(media));
+    function WebRTC() {
+        const [recordDisabled, setRecordDisabled] = useState(true);
+        const [videoPlayURL, setVideoPlayURL] = useState('');
+        const [isRecording, setIsRecording] = useState(false);
+
+        navigator.mediaDevices
+            .getUserMedia(allowUser)
+            .then((media) => success(media));
+
+        function success(media: MediaStream) {
+            setRecordDisabled(false);
+            if (window.URL) {
+                setVideoPlayURL(window.URL.createObjectURL(media));
+            } else {
+                setVideoPlayURL(media);
+            }
         }
 
-        success(media) {
-            this.$btnRecord.remove;
+        function startRecord() {
+            setIsRecording(true);
         }
-    }
 
-	function WebRTC () {
-		return (
+        function stopRecord() {
+            setIsRecording(false);
+        }
+
+        return (
             <section className={styles.webrtc}>
                 <div className={styles.videoWrap}>
-                    <video src="" className="play" autoPlay muted></video>
-                    <video src="" className={styles.hide} autoPlay loop></video>
+                    <video
+                        src={videoPlayURL}
+                        className={isRecording ? styles.hide : ''}
+                        autoPlay
+                        muted
+                    ></video>
+                    <video
+                        src=""
+                        className={isRecording ? '' : styles.hide}
+                        autoPlay
+                        loop
+                    ></video>
                 </div>
                 <div className={styles.btnWrap}>
-                    <button className="btn_play">Play</button>
-                    <button className="btn_record" disabled>
-                        Record
+                    <button disabled={isRecording}>Play</button>
+                    <button
+                        disabled={recordDisabled}
+                        onClick={isRecording ? stopRecord : startRecord}
+                    >
+                        {isRecording ? 'Stop' : 'Record'}
                     </button>
-                    <button className="btn_download">Download</button>
+                    <button disabled={isRecording}>Download</button>
                 </div>
             </section>
         );
-	}
+    }
 
     return (
         <main className={styles.main}>
             <h1 className={styles.heading}>WebRTC</h1>
-			<WebRTC/>
+            <WebRTC />
         </main>
     );
 }
