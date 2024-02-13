@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-main {
+.main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,35 +14,35 @@ main {
     user-select: none;
 }
 
-h1 {
+.heading {
     margin-bottom: 40px;
     font-size: 40px;
     font-weight: 500;
     color: #8cb9bd;
 }
 
+.webrtc {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
 .hide {
     display: none;
 }
 
-.webrtc {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.video video {
+.videoWrap video {
     width: calc(400px * (16 / 9));
     height: 400px;
 }
 
-.btn {
+.btnWrap {
     display: flex;
     gap: 10px;
 }
 
-.btn button {
+.btnWrap button {
     width: 160px;
     height: 60px;
     border-radius: 8px;
@@ -55,6 +55,6 @@ h1 {
     cursor: pointer;
 }
 
-.btn button:hover {
+.btnWrap button:hover {
     filter: brightness(1.1);
 }
