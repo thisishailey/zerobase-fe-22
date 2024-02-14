@@ -1,15 +1,19 @@
 import styles from '../styles.module.css';
 
-export default function Video({ isRecording }: { isRecording: boolean }) {
+export default function Video({
+    hasRecordedVideo,
+}: {
+    hasRecordedVideo: boolean;
+}) {
     return (
         <div className={styles.videoWrap}>
             <video
-                className={isRecording ? styles.hide : 'playVideo'}
+                className={hasRecordedVideo ? styles.hide : 'videoFromCamera'}
                 autoPlay
                 muted
             ></video>
             <video
-                className={isRecording ? 'recordVideo' : styles.hide}
+                className={hasRecordedVideo ? 'recordedVideo' : styles.hide}
                 autoPlay
                 loop
             ></video>
