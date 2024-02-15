@@ -44,7 +44,7 @@ class PriorityQueue {
     }
 
     front() {
-        return this.array.length == 0 ? undefined : this.array[0].data;
+        return this.array.length === 0 ? undefined : this.array[0].data;
     }
 
     clear() {
