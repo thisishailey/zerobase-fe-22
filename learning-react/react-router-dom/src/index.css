@@ -69,3 +69,30 @@ hr {
     color: #fff;
     cursor: pointer;
 }
+
+.postWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 90%;
+    margin: 10px 0 60px;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+}
+
+.postTitle {
+    display: flex;
+    align-items: center;
+}
+
+.postTitle * {
+    margin: 10px;
+}
+
+.postBody {
+    width: 100%;
+    padding: 0 30px;
+}
