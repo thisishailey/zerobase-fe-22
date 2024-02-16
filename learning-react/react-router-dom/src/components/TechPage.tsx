@@ -1,8 +1,17 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 export default function TechPage() {
+    const navigate = useNavigate();
+
     return (
         <>
+            <button
+                className="homeBtn"
+                type="button"
+                onClick={() => navigate('/')}
+            >
+                Home
+            </button>
             <Link to={''}>
                 <h1>TechPage</h1>
             </Link>
