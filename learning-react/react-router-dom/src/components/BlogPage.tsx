@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 interface Data {
     userId: number;
@@ -8,26 +9,42 @@ interface Data {
     body: string;
 }
 
+function useFetch(url: string) {
+    const [success, setSuccess] = useState(false);
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        axios
+            .get(url)
+            .then((res) => {
+                setSuccess(true);
+                setData(res.data);
+            })
+            .catch((err) => setError(err));
+    }, [url]);
+
+    return { success, data, error };
+}
+
 export default function BlogPage() {
     const navigate = useNavigate();
     const [data, setData] = useState<Data[]>([]);
 
-    useEffect(() => {
-        async function fetchData() {
-            const res = await fetch(
-                'https://jsonplaceholder.typicode.com/posts'
-            );
-            const data = await res.json();
-            return data;
-        }
+    // useEffect(() => {
+    //     axios
+    //         .get('https://jsonplaceholder.typicode.com/posts')
+    //         .then((res) => {
+    //             setData(res.data);
+    //         })
+    //         .catch((err) => console.error(err));
+    // }, []);
 
-        fetchData().then(
-            (data) => {
-                setData(data);
-            },
-            (err) => console.error(err)
-        );
-    }, []);
+    const fetchInfo = useFetch('https://jsonplaceholder.typicode.com/posts');
+
+    fetchInfo.success
+        ? setData(fetchInfo.data!)
+        : console.error(fetchInfo.error);
 
     function toggleBody(body: string, id: number) {
         const postElement = document.getElementById('post' + id.toString());
