@@ -10,41 +10,43 @@ interface Data {
 }
 
 function useFetch(url: string) {
-    const [success, setSuccess] = useState(false);
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<Data[]>();
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const controller = new AbortController();
         axios
-            .get(url)
+            .get(url, { signal: controller.signal })
             .then((res) => {
-                setSuccess(true);
                 setData(res.data);
             })
-            .catch((err) => setError(err));
+            .catch((err) => setError(err))
+            .finally(() => controller.abort());
     }, [url]);
 
-    return { success, data, error };
+    return { data, error };
 }
 
 export default function BlogPage() {
     const navigate = useNavigate();
-    const [data, setData] = useState<Data[]>([]);
+    const [data, setData] = useState<Data[]>();
+    const [error, setError] = useState<string>('');
 
-    // useEffect(() => {
-    //     axios
-    //         .get('https://jsonplaceholder.typicode.com/posts')
-    //         .then((res) => {
-    //             setData(res.data);
-    //         })
-    //         .catch((err) => console.error(err));
-    // }, []);
+    useEffect(() => {
+        axios
+            .get('https://jsonplaceholder.typicode.com/posts')
+            .then((res) => {
+                setData(res.data);
+            })
+            .catch((err) => {
+                console.error(err);
+                setError(err.message);
+            });
+    }, []);
 
-    const fetchInfo = useFetch('https://jsonplaceholder.typicode.com/posts');
-
-    fetchInfo.success
-        ? setData(fetchInfo.data!)
-        : console.error(fetchInfo.error);
+    // const { data, error } = useFetch(
+    //     'https://jsonplaceholder.typicode.com/posts'
+    // );
 
     function toggleBody(body: string, id: number) {
         const postElement = document.getElementById('post' + id.toString());
@@ -70,21 +72,25 @@ export default function BlogPage() {
             </button>
             <h1>BlogPage</h1>
             <div className="postWrap">
-                {data.map((e) => (
-                    <div
-                        className="post"
-                        id={'post' + e.id.toString()}
-                        key={e.id}
-                    >
+                {data ? (
+                    data.map((e) => (
                         <div
-                            className="postTitle"
-                            onClick={() => toggleBody(e.body, e.id)}
+                            className="post"
+                            id={'post' + e.id.toString()}
+                            key={e.id}
                         >
-                            <span>{e.id}</span>
-                            <h2>{e.title}</h2>
+                            <div
+                                className="postTitle"
+                                onClick={() => toggleBody(e.body, e.id)}
+                            >
+                                <span>{e.id}</span>
+                                <h2>{e.title}</h2>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                ) : (
+                    <div>{error}</div>
+                )}
             </div>
         </>
     );
