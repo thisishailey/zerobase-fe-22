@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
 
@@ -28,20 +27,6 @@ const toggleBody = (body: string, id: number) => {
 export default function BlogPage() {
     const URL = 'https://jsonplaceholder.typicode.com/posts';
     const navigate = useNavigate();
-    // const [data, setData] = useState<Data[]>();
-    // const [error, setError] = useState<string>('');
-
-    // useEffect(() => {
-    //     axios
-    //         .get(URL)
-    //         .then((res) => {
-    //             setData(res.data);
-    //         })
-    //         .catch((err) => {
-    //             console.error(err);
-    //             setError(err.message);
-    //         });
-    // }, []);
 
     const { data, error, isLoading } = useSWR(URL, fetcher);
 
@@ -71,9 +56,9 @@ export default function BlogPage() {
 
     if (isLoading)
         return (
-            <div>
+            <>
                 <h1>Loading...</h1>
-            </div>
+            </>
         );
 
     return (
