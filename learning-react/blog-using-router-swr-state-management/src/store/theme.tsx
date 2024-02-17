@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 
 type ModeType = 'light' | 'dark';
 
-export interface Theme {
+interface Theme {
     mode: ModeType;
     changeMode: (mode: ModeType) => void;
 }
