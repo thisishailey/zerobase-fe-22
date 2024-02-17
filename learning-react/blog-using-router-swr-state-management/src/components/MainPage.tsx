@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ModeViewer from './Theme';
 
 export default function MainPage() {
     return (
@@ -7,6 +8,7 @@ export default function MainPage() {
             <div className="links">
                 <Link to={'blog'}>Blog</Link> | <Link to={'tech'}>Tech</Link>
             </div>
+            <ModeViewer />
         </>
     );
 }

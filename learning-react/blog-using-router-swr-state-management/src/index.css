@@ -61,14 +61,16 @@ hr {
     margin: 30px;
 }
 
-.homeBtn,
-.reloadBtn {
+button {
     width: 100px;
     height: 40px;
     border-radius: 6px;
-    background-color: #a0a0a0;
     color: #fff;
     cursor: pointer;
+}
+
+.homeBtn {
+    background-color: #a0a0a0;
 }
 
 .reloadBtn {
@@ -101,4 +103,28 @@ hr {
 .postBody {
     width: 100%;
     padding: 0 30px;
+}
+
+.lightMode,
+.darkMode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 100px;
+    border: 1px solid #a0a0a0;
+    background-color: #fff;
+    color: #a0a0a0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.darkMode {
+    background-color: #a0a0a0;
+    color: #fff;
+}
+
+.changeMode {
+    margin-left: 20px;
+    background-color: #879fc7;
 }
