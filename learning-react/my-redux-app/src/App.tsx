@@ -1,39 +1,26 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchUser, FetchUserRes } from './modules/account/api';
-import {
-    fetchUserRequest,
-    fetchUserSuccess,
-    fetchUserFailure,
-    Account,
-} from './modules/account/account';
+import { useAppSelector, useAppDispatch } from './state/hooks';
+import { AccountState, fetchUserThunk } from './state/account/accountSlice';
 import './index.css';
 
 function App() {
-    const account = useSelector((state: { account: Account }) => state.account);
-    const { loading, name, email } = account;
-    const dispatch = useDispatch();
+    const account = useAppSelector((state: AccountState) => state);
+    const dispatch = useAppDispatch();
 
-    const handleClick = async () => {
-        dispatch(fetchUserRequest());
-        try {
-            const res = (await fetchUser()) as FetchUserRes;
-            dispatch(fetchUserSuccess({ name: res.name, email: res.email }));
-        } catch {
-            dispatch(fetchUserFailure());
-        }
+    const handleGetUserInfo = () => {
+        dispatch(fetchUserThunk());
     };
 
     return (
         <div className="App">
-            <button className="getInfoBtn" onClick={handleClick}>
+            <button className="getInfoBtn" onClick={handleGetUserInfo}>
                 Get User Info
             </button>
-            {loading ? (
+            {account.loading ? (
                 <p>loading...</p>
-            ) : name && email ? (
+            ) : account.name && account.email ? (
                 <>
-                    <p>Name: {name}</p>
-                    <p>Email: {email}</p>
+                    <p>Name: {account.name}</p>
+                    <p>Email: {account.email}</p>
                 </>
             ) : null}
         </div>

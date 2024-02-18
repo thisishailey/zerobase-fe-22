@@ -7,7 +7,7 @@ export const fetchUser = () => {
     });
 };
 
-export interface FetchUserRes {
+export interface FetchUserPayload {
     name: string;
     email: string;
 }
