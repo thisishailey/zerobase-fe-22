@@ -35,3 +35,59 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+h1 {
+    margin: 20px;
+}
+
+button {
+    width: 100px;
+    height: 40px;
+    margin: 20px;
+    border-radius: 6px;
+    background-color: royalblue;
+    color: #fff;
+    cursor: pointer;
+}
+
+section.edit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    width: 80%;
+    margin: 40px;
+}
+
+.edit > * {
+    width: 100%;
+}
+
+.edit h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.edit span {
+    margin-left: 10px;
+}
+
+.edit form label {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.edit form input {
+    width: 60%;
+    padding: 4px 10px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    margin-left: 10px;
+    font-size: 20px;
+    transition: border 300ms;
+}
+
+.edit form input:focus {
+    border-color: royalblue;
+}
