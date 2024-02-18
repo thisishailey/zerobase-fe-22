@@ -3,7 +3,10 @@ import { AccountState, fetchUserThunk } from './state/account/accountSlice';
 import './index.css';
 
 function App() {
-    const account = useAppSelector((state: AccountState) => state);
+    const loading = useAppSelector((state: AccountState) => state.loading);
+    const name = useAppSelector((state: AccountState) => state.name);
+    const email = useAppSelector((state: AccountState) => state.email);
+
     const dispatch = useAppDispatch();
 
     const handleGetUserInfo = () => {
@@ -15,12 +18,12 @@ function App() {
             <button className="getInfoBtn" onClick={handleGetUserInfo}>
                 Get User Info
             </button>
-            {account.loading ? (
+            {loading ? (
                 <p>loading...</p>
-            ) : account.name && account.email ? (
+            ) : name && email ? (
                 <>
-                    <p>Name: {account.name}</p>
-                    <p>Email: {account.email}</p>
+                    <p>Name: {name}</p>
+                    <p>Email: {email}</p>
                 </>
             ) : null}
         </div>
