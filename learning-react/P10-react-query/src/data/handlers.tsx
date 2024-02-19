@@ -11,13 +11,17 @@ export const handlers = [
     }),
 
     http.put('/update-nickname', ({ request }) => {
-        const nickname = new URL(request.url).searchParams.get(
-            'nickname'
-        ) as string;
-        const updated = db.user.update({
-            where: { id: { equals: 1 } },
-            data: { nickname: nickname },
-        });
-        return HttpResponse.json(updated);
+        return new Promise((resolve) =>
+            setTimeout(() => {
+                const nickname = new URL(request.url).searchParams.get(
+                    'nickname'
+                ) as string;
+                const updated = db.user.update({
+                    where: { id: { equals: 1 } },
+                    data: { nickname: nickname },
+                });
+                return resolve(HttpResponse.json(updated));
+            }, 1000)
+        );
     }),
 ];

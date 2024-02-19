@@ -1,9 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getUser, updateNickname } from '../data/api';
 
 export default function Edit() {
     const [inputValue, setInputValue] = useState('');
+    const queryClient = useQueryClient();
 
     const { isPending, isError, data, error } = useQuery({
         queryKey: ['user'],
@@ -12,6 +13,9 @@ export default function Edit() {
 
     const mutation = useMutation({
         mutationFn: updateNickname,
+        onSuccess: () => {
+            queryClient.invalidateQueries();
+        },
     });
 
     const handleChange = (e: ChangeEvent) => {
@@ -21,7 +25,11 @@ export default function Edit() {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        mutation.mutate(inputValue);
+        inputValue.split('').length > 2
+            ? mutation.mutate(inputValue)
+            : alert(
+                  'Enter a valid nickname. \nA nickname should have more than two characters.'
+              );
     };
 
     return (
@@ -52,9 +60,9 @@ export default function Edit() {
                     </form>
                     <div className="updateStatus">
                         {mutation.isPending ? (
-                            <span>Updating Nickname</span>
+                            <span>Updating...</span>
                         ) : mutation.isError ? (
-                            <span>Update failed...</span>
+                            <span>Update Failed: {mutation.error.message}</span>
                         ) : mutation.isSuccess ? (
                             <span>Successfully Updated!</span>
                         ) : null}
