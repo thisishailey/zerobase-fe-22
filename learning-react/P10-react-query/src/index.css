@@ -60,11 +60,13 @@ section {
     margin: 40px;
 }
 
-.loading {
+.loading,
+.error {
     align-items: center;
 }
 
-.loading span {
+.loading span,
+.error span {
     font-size: 24px;
 }
 
@@ -77,7 +79,7 @@ section {
     font-weight: 500;
 }
 
-.edit span {
+.edit h3 span {
     margin-left: 10px;
 }
 
@@ -98,4 +100,12 @@ section {
 
 .edit form input:focus {
     border-color: royalblue;
+}
+
+.updateStatus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    font-size: 24px;
 }
