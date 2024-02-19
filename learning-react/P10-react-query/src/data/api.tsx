@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const getUser = () => {
-    let data;
-    axios.get('/user').then((res) => (data = res.data));
-    return data;
+export const getUser = async () => {
+    return axios.get('/user').then((res) => {
+        return res.data;
+    });
 };
 
 export const updateNickname = (nickname: string) => {

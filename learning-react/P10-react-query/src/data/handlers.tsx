@@ -3,8 +3,11 @@ import { db } from './db';
 
 export const handlers = [
     http.get('/user', () => {
-        const data = db.user.getAll()[0];
-        return HttpResponse.json(data);
+        return new Promise((resolve) =>
+            setTimeout(() => {
+                return resolve(HttpResponse.json(db.user.getAll()[0]));
+            }, 1000)
+        );
     }),
 
     http.put('/update-nickname', ({ request }) => {
@@ -15,7 +18,6 @@ export const handlers = [
             where: { id: { equals: 1 } },
             data: { nickname: nickname },
         });
-
         return HttpResponse.json(updated);
     }),
 ];

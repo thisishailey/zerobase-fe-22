@@ -13,3 +13,9 @@ db.user.create({
     nickname: 'user',
     email: 'user@gmail.com',
 });
+
+export interface UserDB {
+    id: number;
+    nickname: string;
+    email: string;
+}
