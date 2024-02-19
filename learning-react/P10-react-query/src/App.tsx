@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Suspense } from 'react';
 import './index.css';
 import Home from './pages/Home';
 import Edit from './pages/Edit';
@@ -13,15 +14,25 @@ const queryClient = new QueryClient({
     },
 });
 
+function Pending() {
+    return (
+        <section className="loading">
+            <span>Loading...</span>
+        </section>
+    );
+}
+
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="" element={<Home />} />
-                    <Route path="edit" element={<Edit />} />
-                </Routes>
-            </BrowserRouter>
+            <Suspense fallback={<Pending />}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="" element={<Home />} />
+                        <Route path="edit" element={<Edit />} />
+                    </Routes>
+                </BrowserRouter>
+            </Suspense>
         </QueryClientProvider>
     );
 }

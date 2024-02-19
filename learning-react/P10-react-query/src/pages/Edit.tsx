@@ -1,12 +1,16 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import {
+    useSuspenseQuery,
+    useMutation,
+    useQueryClient,
+} from '@tanstack/react-query';
 import { getUser, updateNickname } from '../data/api';
 
 export default function Edit() {
     const [inputValue, setInputValue] = useState('');
     const queryClient = useQueryClient();
 
-    const { isPending, isError, data, error } = useQuery({
+    const { isError, error, data } = useSuspenseQuery({
         queryKey: ['user'],
         queryFn: getUser,
     });
@@ -35,11 +39,7 @@ export default function Edit() {
     return (
         <>
             <h1>Edit</h1>
-            {isPending ? (
-                <section className="loading">
-                    <span>Loading...</span>
-                </section>
-            ) : isError ? (
+            {isError ? (
                 <section className="error">
                     <span>Error: {error!.message}</span>
                 </section>
@@ -56,6 +56,13 @@ export default function Edit() {
                                 value={inputValue}
                                 onChange={handleChange}
                                 name="newNickname"
+                                autoCapitalize="off"
+                                autoCorrect="off"
+                                autoComplete="off"
+                                autoFocus={true}
+                                minLength={3}
+                                maxLength={30}
+                                required={true}
                             />
                         </label>
                     </form>
