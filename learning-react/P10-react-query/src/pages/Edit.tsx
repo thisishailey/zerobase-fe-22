@@ -55,6 +55,7 @@ export default function Edit() {
                                 type="text"
                                 value={inputValue}
                                 onChange={handleChange}
+                                name="newNickname"
                             />
                         </label>
                     </form>

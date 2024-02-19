@@ -4,7 +4,14 @@ import './index.css';
 import Home from './pages/Home';
 import Edit from './pages/Edit';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: Infinity,
+            gcTime: 24 * (60 * 60),
+        },
+    },
+});
 
 function App() {
     return (
