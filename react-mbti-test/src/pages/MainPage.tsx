@@ -11,9 +11,8 @@ export default function Main() {
                 <Image></Image>
             </ImageBackground>
             <Description>
-                Discover the perfect cat that matches your personality <br />
-                based on the MBTI(Myers–Briggs Type Indicator) personality
-                types.
+                Discover the PURRfect CAT that matches YOUR personality <br />
+                based on the MBTI personality types.
             </Description>
             <StartTest>
                 <Link to={'test'}>

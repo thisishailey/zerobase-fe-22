@@ -4,14 +4,14 @@ import styled from 'styled-components';
 export default function Header() {
     return (
         <NavHeader>
-            <Link to={''}>
+            <Link to={'/'}>
                 <Heading>MeowBTI Test</Heading>
             </Link>
             <Nav>
-                <Link to={'test'}>
+                <Link to={'/test'}>
                     <NavItem>Test</NavItem>
                 </Link>
-                <Link to={'result'}>
+                <Link to={'/result'}>
                     <NavItem>Result</NavItem>
                 </Link>
             </Nav>
