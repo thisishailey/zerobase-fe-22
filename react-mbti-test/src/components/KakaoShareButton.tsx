@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { ShareButton } from '../pages/ResultPage';
 import { KAKAO_KEY } from '../constants/KakaoJSKey';
+import { URL } from '../constants/DeployedUrl';
 
 const Kakao = (window as any).Kakao;
 
 export default function KakaoShareButton({ result }: { result: string }) {
-    const URL = 'https://meowbti-test.netlify.app';
-
     useEffect(() => {
         if (!Kakao.isInitialized()) Kakao.init(KAKAO_KEY);
     }, []);
