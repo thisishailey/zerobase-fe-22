@@ -5,12 +5,12 @@ import '../../index.css';
 
 export default function EndTest() {
     const navigate = useNavigate();
-    const loaderRef = useRef<HTMLSpanElement>(null);
+    const loaderRef = useRef<HTMLDivElement>(null);
 
     const handleResultClick = (event: React.MouseEvent) => {
         const target = event.target as HTMLButtonElement;
         target.style.display = 'none';
-        loaderRef.current!.style.display = 'block';
+        loaderRef.current!.style.display = 'flex';
         setTimeout(() => {
             navigate('/result');
         }, 3000);
@@ -19,7 +19,10 @@ export default function EndTest() {
     return (
         <Wrap>
             <EndButton onClick={handleResultClick}>View the Result!</EndButton>
-            <Loader ref={loaderRef} className="loader"></Loader>
+            <Loader ref={loaderRef}>
+                Loading...
+                <span className="loader"></span>
+            </Loader>
         </Wrap>
     );
 }
@@ -50,6 +53,14 @@ const EndButton = styled.button`
     }
 `;
 
-const Loader = styled.span`
+const Loader = styled.div`
     display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    width: 100%;
+    font-family: 'Anta', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #ffffff;
 `;

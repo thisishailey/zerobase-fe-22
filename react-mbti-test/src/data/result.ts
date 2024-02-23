@@ -16,3 +16,7 @@ export const CatMBTI = {
     INFP: 'The Birman',
     INFJ: 'The Russian Blue',
 };
+
+export type MBTI = keyof typeof CatMBTI;
+
+export const listMBTI = Object.keys(CatMBTI);

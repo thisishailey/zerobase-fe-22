@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function StartTest() {
+interface StartProps {
+    resetResult: () => void;
+}
+
+export default function StartTest({ resetResult }: StartProps) {
     return (
         <Wrap>
             <Link to={'question'}>
-                <StartButton>Start Test</StartButton>
+                <StartButton onClick={resetResult}>Start Test</StartButton>
             </Link>
         </Wrap>
     );

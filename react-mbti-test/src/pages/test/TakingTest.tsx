@@ -51,13 +51,14 @@ const Wrap = styled.div`
     width: 100%;
     height: calc(100vh - 78px);
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #fffdf5;
 `;
 
 const Question = styled.h2`
-    padding: 20px;
+    padding: 20px 14%;
     font-size: 30px;
     font-weight: 500;
+    text-align: center;
     color: #ff8911;
 `;
 
@@ -69,7 +70,7 @@ const AnswerOptions = styled.div`
 const Answer = styled.button`
     width: 400px;
     height: 250px;
-    padding: 20px;
+    padding: 30px;
     border-radius: 24px;
     font-family: 'Anta', sans-serif;
     font-size: 24px;
