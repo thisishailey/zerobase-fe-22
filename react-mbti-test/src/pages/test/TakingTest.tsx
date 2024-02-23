@@ -1,13 +1,42 @@
-// import { Link } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { Questions } from '../../data/questionaire';
 
-export default function TakingTest() {
+interface TestProps {
+    updateResult: (newResult: string) => void;
+}
+
+export default function TakingTest({ updateResult }: TestProps) {
+    const data = Questions;
+    const [question, setQuestion] = useState(data[0]);
+    const answerRef = useRef<HTMLButtonElement>(null);
+    const navigate = useNavigate();
+
+    const handleAnswerClick = (event: React.MouseEvent) => {
+        const target = event.target as HTMLElement;
+
+        if (target.tagName !== 'BUTTON') return;
+
+        if (target === answerRef.current) {
+            updateResult(question.questionType[0]);
+        } else {
+            updateResult(question.questionType[1]);
+        }
+
+        if (question.id === data.length) {
+            navigate('end');
+        } else {
+            setQuestion(data[question.id]);
+        }
+    };
+
     return (
         <Wrap>
-            <Question>This is a question.</Question>
-            <AnswerOptions>
-                <Answer>This is the answer A.</Answer>
-                <Answer>This is the answer B.</Answer>
+            <Question>{question.question}</Question>
+            <AnswerOptions onClick={handleAnswerClick}>
+                <Answer ref={answerRef}>{question.answerA}</Answer>
+                <Answer>{question.answerB}</Answer>
             </AnswerOptions>
         </Wrap>
     );
@@ -27,6 +56,9 @@ const Wrap = styled.div`
 
 const Question = styled.h2`
     padding: 20px;
+    font-size: 30px;
+    font-weight: 500;
+    color: #ff8911;
 `;
 
 const AnswerOptions = styled.div`
@@ -37,17 +69,18 @@ const AnswerOptions = styled.div`
 const Answer = styled.button`
     width: 400px;
     height: 250px;
+    padding: 20px;
     border-radius: 24px;
     font-family: 'Anta', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
     color: #ffffff;
-    background-color: #ff8911;
+    background-color: #fba834;
     transition: all 300ms;
     cursor: pointer;
 
     &:hover {
         color: #ffffff;
-        background-color: #ffbb64;
+        background-color: #ff8911;
     }
 `;
