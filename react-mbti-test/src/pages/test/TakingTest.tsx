@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Questions } from '../../data/questionaire';
 
 interface TestProps {
@@ -10,6 +11,7 @@ interface TestProps {
 export default function TakingTest({ updateResult }: TestProps) {
     const data = Questions;
     const [question, setQuestion] = useState(data[0]);
+    const [progress, setProgress] = useState(0);
     const answerRef = useRef<HTMLButtonElement>(null);
     const navigate = useNavigate();
 
@@ -24,8 +26,12 @@ export default function TakingTest({ updateResult }: TestProps) {
             updateResult(question.questionType[1]);
         }
 
+        setProgress(Math.round((question.id / data.length) * 100));
+
         if (question.id === data.length) {
-            navigate('/test/end');
+            setTimeout(() => {
+                navigate('/test/end');
+            }, 1000);
         } else {
             setQuestion(data[question.id]);
         }
@@ -33,6 +39,9 @@ export default function TakingTest({ updateResult }: TestProps) {
 
     return (
         <Wrap>
+            <ProgressBarWrap>
+                <ProgressBar striped={true} animated={true} now={progress} />
+            </ProgressBarWrap>
             <Question>{question.question}</Question>
             <AnswerOptions onClick={handleAnswerClick}>
                 <Answer ref={answerRef}>{question.answerA}</Answer>
@@ -52,6 +61,13 @@ const Wrap = styled.div`
     height: calc(100vh - 78px);
     padding: 20px;
     background-color: #fffdf5;
+`;
+
+const ProgressBarWrap = styled.div`
+    position: absolute;
+    top: 78px;
+    width: 100%;
+    height: 10px;
 `;
 
 const Question = styled.h2`

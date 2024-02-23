@@ -32,6 +32,7 @@ const Title = styled.h2`
     width: 100%;
     padding: 60px 0;
     font-size: 48px;
+    font-weight: 500;
     text-align: center;
     color: #ff8911;
     background-color: #ffffff;
