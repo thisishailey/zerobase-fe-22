@@ -10,8 +10,7 @@ const type: QuestionType[] = [
 export const Questions: Question[] = [
     {
         id: 1,
-        question:
-            'Your friend got you a new kitty! What is your first reaction?',
+        question: 'Your friend got you a new cat! What is your first reaction?',
         answerA: 'Aww! Look at this cutie!! (Aggressively cuddles the cat)',
         answerB:
             'Woah.. she is so cute...! (Loves her but too shy to get close)',

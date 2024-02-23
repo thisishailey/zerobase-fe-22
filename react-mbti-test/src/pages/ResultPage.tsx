@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import KakaoShareButton from '../components/KakaoShareButton';
 import { CatMBTI, MBTI } from '../data/result';
 
 interface ResultProps {
@@ -11,6 +12,13 @@ interface ResultProps {
 
 export default function Result({ result, isResult, resetResult }: ResultProps) {
     const matchingCat = CatMBTI[result];
+    const navigate = useNavigate();
+
+    const handleTestClick = () => {
+        navigate('/test/question');
+        resetResult();
+    };
+
     return (
         <Section className="resultPage">
             <Header />
@@ -18,6 +26,12 @@ export default function Result({ result, isResult, resetResult }: ResultProps) {
                 <Wrap>
                     <Title>Your purrfect match is:</Title>
                     <Cat>{matchingCat}</Cat>
+                    <ButtonWrap>
+                        <RetryButton onClick={handleTestClick}>
+                            Retry
+                        </RetryButton>
+                        <KakaoShareButton result={matchingCat} />
+                    </ButtonWrap>
                 </Wrap>
             ) : (
                 <Wrap>
@@ -25,11 +39,9 @@ export default function Result({ result, isResult, resetResult }: ResultProps) {
                         Uh-oh... You need to take the test first to see the
                         result!
                     </Title>
-                    <Link to={'/test/question'}>
-                        <StartButton onClick={resetResult}>
-                            Start Test
-                        </StartButton>
-                    </Link>
+                    <StartButton onClick={handleTestClick}>
+                        Start Test
+                    </StartButton>
                 </Wrap>
             )}
         </Section>
@@ -64,7 +76,7 @@ const Cat = styled.h3`
     color: #ffffff;
 `;
 
-const StartButton = styled.button`
+const Button = styled.button`
     width: 300px;
     height: 60px;
     border-radius: 12px;
@@ -81,3 +93,19 @@ const StartButton = styled.button`
         background-color: #ff8911;
     }
 `;
+
+const ButtonWrap = styled.div`
+    display: flex;
+    gap: 20px;
+    margin-top: 80px;
+`;
+
+const RetryButton = styled(Button)`
+    width: 200px;
+`;
+
+export const ShareButton = styled(Button)`
+    width: 200px;
+`;
+
+const StartButton = styled(Button)``;
