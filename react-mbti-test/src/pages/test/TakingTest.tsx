@@ -25,7 +25,7 @@ export default function TakingTest({ updateResult }: TestProps) {
         }
 
         if (question.id === data.length) {
-            navigate('end');
+            navigate('/test/end');
         } else {
             setQuestion(data[question.id]);
         }
