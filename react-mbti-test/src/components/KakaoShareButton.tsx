@@ -5,7 +5,7 @@ import { KAKAO_KEY } from '../constants/KakaoJSKey';
 const Kakao = (window as any).Kakao;
 
 export default function KakaoShareButton({ result }: { result: string }) {
-    const URL = 'http://localhost:5173/';
+    const URL = 'https://meowbti-test.netlify.app';
 
     useEffect(() => {
         if (!Kakao.isInitialized()) Kakao.init(KAKAO_KEY);
@@ -17,7 +17,7 @@ export default function KakaoShareButton({ result }: { result: string }) {
             content: {
                 title: '🐈‍⬛🐈 MeowBTI Test Result 🐈🐈‍⬛',
                 description: `I got ${result} as my purrfect cat!`,
-                imageUrl: '/cat.png',
+                imageUrl: URL + '/cat.png',
                 link: {
                     mobileWebUrl: URL,
                     webUrl: URL,
