@@ -1,4 +1,4 @@
-export default function Search() {
+export default function Product() {
     return (
         <div className="min-h-screen">
             <main className="p-10">
