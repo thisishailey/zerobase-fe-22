@@ -21,7 +21,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body
+                className={
+                    inter.className +
+                    ' bg-neutral-50 text-neutral-700 dark:bg-neutral-700 dark:text-neutral-50'
+                }
+            >
                 <Header />
                 {children}
                 <Footer />

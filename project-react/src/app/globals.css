@@ -2,29 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    user-select: none;
-}
-
-:root {
-    --foreground-hex: #2b2b2b;
-    --background-hex: #fcfcfc;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-hex: #fcfcfc;
-        --background-hex: #4a4a4a;
-    }
-}
-
-body {
-    color: var(--foreground-hex);
-    background: var(--background-hex);
-}
-
-@layer utilities {
-    .text-balance {
-        text-wrap: balance;
+@layer base {
+    * {
+        user-select: none;
     }
 }
