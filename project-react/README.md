@@ -27,6 +27,7 @@
 
 ## To Do
 
--	Footer
--	
--   Dark mode toggle button - use Tailwind dark mode
+-   Footer
+-   Header - Menu side panel
+-   Home body
+-   Header - Dark mode toggle button (use Tailwind dark mode)

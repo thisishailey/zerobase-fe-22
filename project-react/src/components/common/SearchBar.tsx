@@ -23,7 +23,7 @@ export default function SearchBar({ isHeader }: { isHeader: boolean }) {
                 className={
                     showButton
                         ? 'hidden'
-                        : 'flex items-center justify-between w-60 p-1 px-2 pl-3 rounded-full bg-neutral-300 hover:bg-neutral-200 transition'
+                        : 'flex items-center justify-between w-60 p-1 px-2 pl-3 rounded-full bg-neutral-200 hover:bg-neutral-100 transition'
                 }
             >
                 <input

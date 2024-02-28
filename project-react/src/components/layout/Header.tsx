@@ -6,7 +6,7 @@ const isLoggedIn = false;
 
 export default function Header() {
     return (
-        <header className="sticky top-0 flex items-center justify-between h-20 px-10 shadow dark:shadow-md">
+        <header className="sticky top-0 flex items-center justify-between h-20 px-10 shadow dark:bg-neutral-600">
             <div className="flex-1 basis-0">
                 <NavButton>Menu</NavButton>
             </div>
