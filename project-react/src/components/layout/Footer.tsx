@@ -5,8 +5,8 @@ import { IoCallOutline } from 'react-icons/io5';
 
 export default function Footer() {
     return (
-        <footer className="flex flex-col items-center gap-6 p-10 text-sm shadow-inner dark:bg-neutral-600">
-            <div className="flex items-start justify-between w-full p-8 border-b border-solid ">
+        <footer className="flex flex-col items-center gap-12 p-12 text-sm shadow-inner dark:bg-neutral-600/30">
+            <div className="flex items-start justify-between w-full max-w-6xl p-6 pb-12 border-b border-solid border-neutral-400">
                 <div>
                     <h4 className="mb-3 font-semibold">About Us</h4>
                     <ul>
@@ -38,7 +38,7 @@ export default function Footer() {
                         <li className="mb-1 cursor-pointer">FAQ</li>
                     </ul>
                 </div>
-                <div className="mx-20">
+                <div className="ml-10 mr-20">
                     <h3 className="mb-3 font-semibold text-lg text-center">
                         Contact Us
                     </h3>
@@ -62,7 +62,7 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
-            <div className="flex items-center justify-between w-full p-2 m-4 text-xs">
+            <div className="flex items-center justify-between w-full max-w-6xl text-xs">
                 <div>
                     <span>© 2024 MyStore, Inc. All Rights Reserved.</span>
                 </div>
