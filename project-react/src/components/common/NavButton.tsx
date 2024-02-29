@@ -12,19 +12,19 @@ export default function NavButton(props: NavButtonProps) {
             {props.href ? (
                 <Link
                     href={props.href}
-                    className="py-1 px-3 rounded-full transition hover:bg-neutral-300/20"
+                    className="py-1 px-3 rounded-full transition hover:bg-neutral-300/20 navBtn"
                 >
                     {props.children}
                 </Link>
             ) : props.onClick ? (
                 <button
-                    className="py-1 px-3 rounded-full transition hover:bg-neutral-300/20"
+                    className="py-1 px-3 rounded-full transition hover:bg-neutral-300/20 navBtn"
                     onClick={props.onClick}
                 >
                     {props.children}
                 </button>
             ) : (
-                <button className="py-1 px-3 rounded-full transition hover:bg-neutral-300/20">
+                <button className="py-1 px-3 rounded-full transition hover:bg-neutral-300/20 navBtn">
                     {props.children}
                 </button>
             )}

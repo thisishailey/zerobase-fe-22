@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import NavButton from '../common/NavButton';
+import MenuButton from '../common/MenuButton';
 import DarkModeButton from '../common/DarkModeButton';
 import SearchBar from '../common/SearchBar';
 
@@ -9,7 +10,7 @@ export default function Header() {
     return (
         <header className="sticky top-0 flex items-center justify-between h-20 px-10 shadow dark:bg-neutral-600">
             <div className="flex-1 basis-0 flex items-center gap-4">
-                <NavButton>Menu</NavButton>
+                <MenuButton />
                 <DarkModeButton />
             </div>
             <h1 className="text-xl font-medium">
