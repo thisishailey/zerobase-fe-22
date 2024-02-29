@@ -2,10 +2,8 @@ import CarouselBanner from '@/components/home/CarouselBanner';
 
 export default function Home() {
     return (
-        <div className="min-h-screen">
-            <main>
-                <CarouselBanner />
-            </main>
-        </div>
+        <main className="max-w-screen-lg min-h-screen my-0 mx-auto">
+            <CarouselBanner />
+        </main>
     );
 }
