@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import NavButton from '../common/NavButton';
-import MenuButton from '../common/MenuButton';
-import DarkModeButton from '../common/DarkModeButton';
-import SearchBar from '../common/SearchBar';
+import NavButton from '../header/NavButton';
+import MenuButton from '../header/MenuButton';
+import DarkModeButton from '../header/DarkModeButton';
+import SearchBar from '../header/SearchBar';
 
 const isLoggedIn = false;
 

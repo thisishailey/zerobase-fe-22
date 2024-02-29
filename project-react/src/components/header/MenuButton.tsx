@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import NavButton from '../common/NavButton';
+import NavButton from './NavButton';
 import MenuPanel from './MenuPanel';
 
 export default function MenuButton() {
