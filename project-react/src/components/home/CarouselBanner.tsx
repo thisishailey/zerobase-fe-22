@@ -11,8 +11,8 @@ import shopping from '@/assets/shopping.jpg';
 export default function CarouselBanner() {
     return (
         <>
-            <div className="w-full max-h-[600px] bg-neutral-300">
-                <Carousel className="w-full h-full">
+            <div className="w-full max-h-[600px] mt-1 bg-neutral-400">
+                <Carousel className="w-full h-full" pause={'hover'}>
                     <CarouselItem>
                         <Image
                             src={bakery}

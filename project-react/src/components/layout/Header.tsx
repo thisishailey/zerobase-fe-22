@@ -8,12 +8,12 @@ const isLoggedIn = false;
 
 export default function Header() {
     return (
-        <header className="sticky top-0 flex items-center justify-between h-20 px-10 shadow dark:bg-neutral-600/30">
+        <header className="sticky top-0 flex items-center justify-between h-16 px-10 z-10 shadow bg-neutral-100 dark:bg-[#444444]">
             <div className="flex-1 basis-0 flex items-center gap-4">
                 <MenuButton />
                 <DarkModeButton />
             </div>
-            <h1 className="text-2xl font-medium">
+            <h1 className="text-xl font-semibold">
                 <Link href={'/'}>MY STORE</Link>
             </h1>
             <ul className="flex-1 basis-0 flex items-center justify-end gap-4">
