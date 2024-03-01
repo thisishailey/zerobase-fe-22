@@ -1,6 +1,6 @@
 import Page from '@/components/common/template/page';
 import CarouselBanner from '@/components/home/CarouselBanner';
-import ContentWrap from '@/components/common/template/wrap';
+import Wrap from '@/components/common/template/wrap';
 import HomeSection from '@/components/home/template/section';
 import { getProductData } from '@/api/products';
 import type Product from '@/types/productData';
@@ -21,7 +21,7 @@ export default async function Home() {
     return (
         <Page>
             <CarouselBanner />
-            <ContentWrap classList="min-h-screen p-10">
+            <Wrap classList="min-h-screen p-10">
                 {sectionList.map((section) => {
                     return (
                         <HomeSection
@@ -31,7 +31,7 @@ export default async function Home() {
                         />
                     );
                 })}
-            </ContentWrap>
+            </Wrap>
         </Page>
     );
 }

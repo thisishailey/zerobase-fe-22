@@ -1,19 +1,19 @@
-import type Product from '@/types/productData';
-import HomeSectionItem from './item';
+import type IProduct from '@/types/productData';
+import ProductCard from '../../common/template/productCard';
 
 interface SectionProps {
     title: string;
-    products: Product[];
+    products: IProduct[];
 }
 
 export default function HomeSection({ title, products }: SectionProps) {
     return (
         <div className="py-10">
             <h2 className="text-xl font-semibold">{title}</h2>
-            <div className="flex items-start justify-between">
+            <div className="grid grid-cols-1 min-[340px]:grid-cols-2 md:grid-cols-3 gap-4">
                 {products.map((product) => {
                     return (
-                        <HomeSectionItem
+                        <ProductCard
                             title={product.title}
                             price={product.price}
                             image={product.image}

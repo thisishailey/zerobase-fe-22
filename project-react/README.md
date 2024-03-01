@@ -27,11 +27,6 @@
 
 ## To Do
 
--   Home
-
-    -   Header - Menu side panel
-    -   Home body contents
-
 -   Products
 
     -   All products

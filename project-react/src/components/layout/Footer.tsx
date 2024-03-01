@@ -1,4 +1,4 @@
-import ContentWrap from '../common/template/wrap';
+import Wrap from '../common/template/wrap';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
@@ -7,7 +7,7 @@ import { IoCallOutline } from 'react-icons/io5';
 export default function Footer() {
     return (
         <footer className="fixed bottom-0 left-0 right-0 z-0 text-sm shadow-inner bg-gray-100 dark:bg-black">
-            <ContentWrap classList="flex flex-col items-center gap-12 p-12">
+            <Wrap classList="flex flex-col items-center gap-12 p-12">
                 <div className="flex items-start justify-between w-full p-6 pb-12 border-b border-solid border-neutral-400">
                     <div>
                         <h4 className="mb-3 font-semibold">About Us</h4>
@@ -78,7 +78,7 @@ export default function Footer() {
                         <span className="cursor-pointer">Privacy Policy</span>
                     </div>
                 </div>
-            </ContentWrap>
+            </Wrap>
         </footer>
     );
 }
