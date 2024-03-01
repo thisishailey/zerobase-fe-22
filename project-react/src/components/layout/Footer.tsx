@@ -6,7 +6,7 @@ import { IoCallOutline } from 'react-icons/io5';
 
 export default function Footer() {
     return (
-        <footer className="text-sm shadow-inner dark:bg-neutral-600/30">
+        <footer className="fixed bottom-0 left-0 right-0 z-[-10] text-sm shadow-inner dark:bg-neutral-600/30">
             <ContentWrap classList="flex flex-col items-center gap-12 p-12">
                 <div className="flex items-start justify-between w-full p-6 pb-12 border-b border-solid border-neutral-400">
                     <div>
