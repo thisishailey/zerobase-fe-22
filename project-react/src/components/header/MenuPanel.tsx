@@ -13,13 +13,19 @@ export default function MenuPanel({ onClick }: { onClick: () => void }) {
                 </div>
                 <div className="flex flex-col gap-10 p-10 text-3xl">
                     <div className="transition-all duration-300 hover:text-4xl">
-                        <Link href={'/'}>Home</Link>
+                        <Link href={'/'} onClick={onClick}>
+                            Home
+                        </Link>
                     </div>
                     <div className="transition-all duration-300 hover:text-4xl">
-                        <Link href={'/product'}>Products</Link>
+                        <Link href={'/product'} onClick={onClick}>
+                            Products
+                        </Link>
                     </div>
                     <div className="transition-all duration-300 hover:text-4xl">
-                        <Link href={'/account'}>Log In</Link>
+                        <Link href={'/account'} onClick={onClick}>
+                            Log In
+                        </Link>
                     </div>
                 </div>
                 <div className="p-4 text-center text-sm">
