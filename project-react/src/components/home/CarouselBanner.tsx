@@ -12,16 +12,19 @@ export default function CarouselBanner() {
 
     return (
         <>
-            <div className="w-full max-h-[600px] mt-1 bg-neutral-400">
+            <div className="w-full h-[600px] mt-1 bg-neutral-400">
                 <Carousel className="w-full h-full" pause={'hover'}>
                     {carouselItems.map((item, i) => {
                         return (
-                            <CarouselItem key={i}>
+                            <CarouselItem
+                                className="relative w-full h-[600px]"
+                                key={i}
+                            >
                                 <Image
-                                    className="my-0 mx-auto"
+                                    className="object-cover"
                                     src={item}
                                     alt={'carousel item'}
-                                    height={600}
+                                    fill={true}
                                     priority={i === 0}
                                 />
                             </CarouselItem>
