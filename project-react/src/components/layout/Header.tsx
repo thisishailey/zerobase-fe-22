@@ -4,8 +4,8 @@ import NavButton from '../header/NavButton';
 import MenuButton from '../header/MenuButton';
 import DarkModeButton from '../header/DarkModeButton';
 import SearchBar from '../header/SearchBar';
-
-const isLoggedIn = false;
+import { VscAccount } from 'react-icons/vsc';
+import { HiOutlineShoppingBag } from 'react-icons/hi2';
 
 export default function Header() {
     return (
@@ -15,7 +15,7 @@ export default function Header() {
                     <MenuButton />
                     <DarkModeButton />
                 </div>
-                <h1 className="text-xl font-semibold">
+                <h1 className="flex items-center text-xl font-semibold">
                     <Link href={'/'}>MY STORE</Link>
                 </h1>
                 <ul className="flex-1 basis-0 flex items-center justify-end gap-2">
@@ -24,11 +24,13 @@ export default function Header() {
                     </li>
                     <li>
                         <NavButton href={'/account'}>
-                            {isLoggedIn ? 'Account' : 'Log In'}
+                            <VscAccount />
                         </NavButton>
                     </li>
                     <li>
-                        <NavButton href={'/cart'}>Cart</NavButton>
+                        <NavButton href={'/cart'}>
+                            <HiOutlineShoppingBag />
+                        </NavButton>
                     </li>
                 </ul>
             </ContentWrap>

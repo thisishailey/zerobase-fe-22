@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { FiSearch } from 'react-icons/fi';
 import { IoCloseOutline } from 'react-icons/io5';
 import NavButton from './NavButton';
 
@@ -18,13 +19,15 @@ export default function SearchBar({ isHeader }: { isHeader: boolean }) {
     return (
         <>
             {showButton && (
-                <NavButton onClick={showSearchForm}>Search</NavButton>
+                <NavButton onClick={showSearchForm}>
+                    <FiSearch />
+                </NavButton>
             )}
             <form
                 className={
                     showButton
                         ? 'hidden'
-                        : 'flex items-center justify-between w-60 p-1 px-2 pl-3 rounded-full bg-neutral-200 hover:bg-neutral-300 dark:hover:bg-neutral-100 transition'
+                        : 'flex items-center justify-between w-60 p-1 px-2 pl-3 rounded-full border border-solid border-neutral-200 bg-neutral-200 hover:bg-neutral-50 transition'
                 }
             >
                 <input

@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import NavButton from './NavButton';
 import MenuPanel from './MenuPanel';
+import { FiMenu } from 'react-icons/fi';
 
 export default function MenuButton() {
     const menuRef = useRef(null);
@@ -39,7 +40,13 @@ export default function MenuButton() {
 
     return (
         <div ref={menuRef}>
-            <NavButton onClick={toggleMenu}>Menu</NavButton>
+            <NavButton
+                classList="flex items-center py-1.5"
+                onClick={toggleMenu}
+            >
+                <FiMenu className="inline" />
+                <span className="pl-2">Menu</span>
+            </NavButton>
             <MenuPanel onClick={toggleMenu} />
         </div>
     );

@@ -43,7 +43,7 @@ export default function DarkModeButton() {
 
     return (
         <button
-            className="p-2 rounded-full transition hover:bg-neutral-300/20"
+            className="p-2.5 rounded-full transition hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40"
             onClick={toggleDarkMode}
         >
             {isDarkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}
