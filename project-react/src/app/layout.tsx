@@ -25,7 +25,7 @@ export default function RootLayout({
             <body
                 className={
                     inter.className +
-                    ' bg-neutral-50 text-gray-700 dark:bg-neutral-700 dark:text-neutral-50'
+                    ' bg-neutral-50 text-gray-800 dark:bg-neutral-900 dark:text-neutral-50'
                 }
             >
                 <Header />
