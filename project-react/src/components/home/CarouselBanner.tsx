@@ -16,17 +16,15 @@ export default function CarouselBanner() {
                 <Carousel className="w-full h-full" pause={'hover'}>
                     {carouselItems.map((item, i) => {
                         return (
-                            <>
-                                <CarouselItem>
-                                    <Image
-                                        className="my-0 mx-auto"
-                                        src={item}
-                                        alt={'carousel item'}
-                                        height={600}
-                                        priority={i === 0}
-                                    />
-                                </CarouselItem>
-                            </>
+                            <CarouselItem key={i}>
+                                <Image
+                                    className="my-0 mx-auto"
+                                    src={item}
+                                    alt={'carousel item'}
+                                    height={600}
+                                    priority={i === 0}
+                                />
+                            </CarouselItem>
                         );
                     })}
                 </Carousel>
