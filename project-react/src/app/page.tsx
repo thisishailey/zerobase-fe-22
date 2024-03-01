@@ -1,9 +1,11 @@
 import CarouselBanner from '@/components/home/CarouselBanner';
+import ContentWrap from '@/components/common/ContentWrap';
 
 export default function Home() {
     return (
-        <main className="max-w-screen-lg min-h-screen my-0 mx-auto">
+        <main className="min-h-screen">
             <CarouselBanner />
+            <ContentWrap></ContentWrap>
         </main>
     );
 }
