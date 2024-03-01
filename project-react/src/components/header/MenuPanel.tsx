@@ -4,7 +4,7 @@ import { IoCloseOutline } from 'react-icons/io5';
 export default function MenuPanel({ onClick }: { onClick: () => void }) {
     return (
         <>
-            <div className="absolute top-[1vh] left-[1vh] flex flex-col justify-between w-[35vw] max-w-sm h-[98vh] rounded-xl bg-zinc-500/95 dark:bg-neutral-800/95 text-neutral-50 dark:text-neutral-300 hidden menu-side-panel">
+            <div className="absolute top-[1vh] left-[1vh] flex flex-col justify-between w-[35vw] max-w-sm h-[98vh] rounded-xl font-medium text-neutral-50 bg-gray-500/85 dark:bg-neutral-800/95 backdrop-blur-lg hidden menu-side-panel">
                 <div className="flex justify-end p-4 text-2xl">
                     <IoCloseOutline
                         className="cursor-pointer"
