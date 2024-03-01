@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ContentWrap from '../common/ContentWrap';
+import ContentWrap from '../common/template/wrap';
 import NavButton from '../header/NavButton';
 import MenuButton from '../header/MenuButton';
 import DarkModeButton from '../header/DarkModeButton';

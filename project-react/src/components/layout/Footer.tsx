@@ -1,4 +1,4 @@
-import ContentWrap from '../common/ContentWrap';
+import ContentWrap from '../common/template/wrap';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
