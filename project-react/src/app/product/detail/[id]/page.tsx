@@ -1,5 +1,12 @@
-export function generateStaticParams() {
-    return [{ id: '1' }, { id: '2' }, { id: '3' }];
+import { getProductData } from '@/api/products';
+import type IProduct from '@/types/productData';
+
+export async function generateStaticParams() {
+    const products: IProduct[] = await getProductData();
+
+    return products.map((product) => ({
+        id: product.id.toString(),
+    }));
 }
 
 export default function ProductDetail({ params }: { params: { id: string } }) {
