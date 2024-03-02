@@ -14,6 +14,7 @@ export default function HomeSection({ title, products }: SectionProps) {
                 {products.map((product) => {
                     return (
                         <ProductCard
+                            id={product.id}
                             title={product.title}
                             price={product.price}
                             image={product.image}

@@ -6,7 +6,7 @@ interface SortProps {
 }
 
 const sortList: { id: TSortOption; text: string; smallText: string }[] = [
-    { id: 'new', text: 'Latest Arrivals', smallText: 'Latest' },
+    { id: 'latest', text: 'Latest Arrivals', smallText: 'Latest' },
     { id: 'cheap', text: 'Price: Low to High', smallText: 'Lowest Price' },
     { id: 'expensive', text: 'Price: High to Low', smallText: 'Highest Price' },
 ];
@@ -66,10 +66,7 @@ export function SmallSort({ sortOption, changeSortOption }: SortProps) {
             >
                 {sortList.map((sort) => {
                     return (
-                        <option
-                            value={sort.id}
-                            key={sort.id}
-                        >
+                        <option value={sort.id} key={sort.id}>
                             {sort.smallText}
                         </option>
                     );

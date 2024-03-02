@@ -19,20 +19,19 @@
 
         -   Home
         -   Products
-        -   Log In / Account
+        -   Account
 
     -   Search
-    -   Log In / Account
+    -   Account
     -   Cart
 
 ## To Do
 
 -   Products
 
-    -   All products
-    -   Sort options
+    -   Product Detail Page
 
--   Log In / Account
+-   Account
 
     -   Check whether the user is logged in
 

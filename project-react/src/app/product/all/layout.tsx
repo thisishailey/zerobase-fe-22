@@ -14,7 +14,7 @@ export default function ProductAllLayout({
     cheap: React.ReactNode;
     expensive: React.ReactNode;
 }) {
-    const [sortOption, setSortOption] = useState<TSortOption>('new');
+    const [sortOption, setSortOption] = useState<TSortOption>('latest');
 
     const changeSortOption = (id: TSortOption) => {
         setSortOption(id);
@@ -36,7 +36,7 @@ export default function ProductAllLayout({
             </div>
             <div className="w-full md:w-4/5">
                 <h2 className="text-2xl font-semibold">All Products</h2>
-                {sortOption === 'new' && latest}
+                {sortOption === 'latest' && latest}
                 {sortOption === 'cheap' && cheap}
                 {sortOption === 'expensive' && expensive}
             </div>
