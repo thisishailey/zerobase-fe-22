@@ -18,7 +18,7 @@ export default function MenuPanel({ onClick }: { onClick: () => void }) {
                         </Link>
                     </div>
                     <div className="transition-all duration-300 hover:text-4xl">
-                        <Link href={'/product'} onClick={onClick}>
+                        <Link href={'/product/all'} onClick={onClick}>
                             Products
                         </Link>
                     </div>

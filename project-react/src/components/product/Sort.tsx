@@ -58,14 +58,16 @@ export function SmallSort({ sortOption, changeSortOption }: SortProps) {
             <select
                 name="sortOptions"
                 id="smallSort"
+                value={sortOption}
+                onChange={(e) =>
+                    changeSortOption(e.target.value as TSortOption)
+                }
                 className="p-1 outline-0 text-sm rounded border-1 border-solid border-gray-400 dark:border-neutral-600 dark:bg-neutral-800"
             >
                 {sortList.map((sort) => {
                     return (
                         <option
                             value={sort.id}
-                            selected={sortOption === sort.id}
-                            onClick={() => changeSortOption(sort.id)}
                             key={sort.id}
                         >
                             {sort.smallText}
