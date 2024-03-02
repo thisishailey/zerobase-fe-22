@@ -18,6 +18,7 @@ export default function ProductCard({ title, price, image }: CardProps) {
                     src={image}
                     alt={title}
                     fill={true}
+                    sizes="(max-width: 400px) 100vw, (max-width: 768px) 50vw, 33vw"
                     className="object-contain p-8"
                 />
             </div>
