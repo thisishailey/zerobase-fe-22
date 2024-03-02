@@ -1,5 +1,5 @@
 import { getProductData } from '@/api/products';
-import ProductCard from '@/components/common/template/productCard';
+import ProductCard from '@/components/common/ProductCard';
 import type IProduct from '@/types/productData';
 import type { TProductSort } from '@/types/sortOption';
 

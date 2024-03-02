@@ -1,5 +1,5 @@
 import type IProduct from '@/types/productData';
-import ProductCard from '../../common/template/productCard';
+import ProductCard from '@/components/common/ProductCard';
 
 interface SectionProps {
     title: string;
