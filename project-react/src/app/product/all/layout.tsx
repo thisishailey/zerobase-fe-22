@@ -34,7 +34,12 @@ export default function ProductAllLayout({
                     changeSortOption={changeSortOption}
                 />
             </div>
-            <div className="w-full md:w-4/5">{latest}</div>
+            <div className="w-full md:w-4/5">
+                <h2 className="text-2xl font-semibold">All Products</h2>
+                {sortOption === 'new' && latest}
+                {sortOption === 'cheap' && cheap}
+                {sortOption === 'expensive' && expensive}
+            </div>
         </>
     );
 }
