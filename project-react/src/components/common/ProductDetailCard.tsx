@@ -1,30 +1,37 @@
+import { getProductData } from '@/api/products';
+import type IProduct from '@/types/productData';
 import ProductImage from './ProductImage';
+import ProductDescription from '../product/ProductDescription';
+import { AddCartButton, PurchaseButton } from '../product/ProductButtons';
 
 interface CardProps {
-    // id: number;
-    // title: string;
-    // price: number;
-    // image: string;
+    id: string;
 }
 
-export default function ProductDetailCard() {
+export default async function ProductDetailCard({ id }: CardProps) {
+    const data: IProduct[] = await getProductData();
+    const product = data.find((e) => e.id.toString() === id) as IProduct;
+
     return (
-        <div className="flex flex-col w-full cursor-pointer hover:text-blue-700 dark:hover:text-white dark:hover:underline decoration-1">
-            {/* <Link href={`/product/detail/${id}`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full px-4 md:p-4">
             <ProductImage
-                image={image}
-                title={title}
-                classList="transition-all duration-300 hover:shadow-lg dark:brightness-[0.85] dark:hover:brightness-100"
+                image={product.image}
+                title={product.title}
+                classList="h-96 md:h-[500px]"
             />
-            <div>
-                <h3 className="text-xs md:text-sm lg:text-base xl:text-lg font-medium text-ellipsis overflow-hidden whitespace-nowrap pr-6 mb-2">
-                    {title}
-                </h3>
-                <span className="text-xs md:text-sm lg:text-base">
-                    ${price.toFixed(2)}
+            <div className="flex flex-col justify-center gap-8 md:gap-5 xl:gap-8">
+                <h2 className="text-xl sm:text-2xl xl:text-3xl font-medium text-center pb-4 border-b border-solid border-neutral-300 dark:border-neutral-700">
+                    {product.title}
+                </h2>
+                <span className="px-4 text-lg sm:text-xl xl:text-2xl font-semibold text-end">
+                    ${product.price.toFixed(2)}
                 </span>
+                <ProductDescription description={product.description} />
+                <div className="flex justify-between gap-3 min-[400px]:gap-6">
+                    <AddCartButton />
+                    <PurchaseButton />
+                </div>
             </div>
-        </Link> */}
         </div>
     );
 }

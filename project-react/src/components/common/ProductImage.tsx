@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 interface ProductImageProps {
@@ -12,7 +14,7 @@ export default function ProductImage({
     classList,
 }: ProductImageProps) {
     const defaultClasses =
-        'relative w-full h-48 sm:h-64 lg:h-80 xl:h-96 my-4 rounded-lg border border-solid border-neutral-50 bg-white overflow-hidden ';
+        'relative w-full rounded-lg border border-solid border-neutral-50 bg-white overflow-hidden ';
     const additionalClasses = classList || '';
 
     const productImageClasses = defaultClasses + additionalClasses;
@@ -27,6 +29,7 @@ export default function ProductImage({
                 fill={true}
                 sizes="(max-width: 400px) 100vw, (max-width: 768px) 50vw, 33vw"
                 className="object-contain p-8"
+                priority={true}
             />
         </div>
     );
