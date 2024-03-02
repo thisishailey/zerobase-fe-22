@@ -4,47 +4,35 @@ import { useState } from 'react';
 import Page from '@/components/common/template/page';
 import Wrap from '@/components/common/template/wrap';
 import Sort from '@/components/product/Sort';
+import { SmallSort } from '@/components/product/Sort';
 import type { TSortOption } from '@/types/sortOption';
-import { getProductData } from '@/api/products';
-import type IProduct from '@/types/productData';
-import ProductCard from '@/components/common/template/productCard';
+// import Products from '@/components/product/Products';
 
-export default async function Product() {
+export default function Product() {
     const [sortOption, setSortOption] = useState<TSortOption>('new');
 
-    const changeSortOption = (e: React.MouseEvent) => {
-        const label = e.target as HTMLLabelElement;
-        const id = label.htmlFor as TSortOption;
+    const changeSortOption = (id: TSortOption) => {
         setSortOption(id);
     };
 
-    const products: IProduct[] = await getProductData();
-
     return (
         <Page classList="py-10 px-4">
-            <Wrap classList="flex justify-between">
-                <div className="w-1/5 text-sm">
+            <Wrap classList="flex justify-between flex-col md:flex-row">
+                <div className="w-1/5 text-sm hidden md:block">
                     <Sort
                         sortOption={sortOption}
-                        onLabelClick={changeSortOption}
+                        changeSortOption={changeSortOption}
                     />
                 </div>
-                <div className="w-4/5">
-                    <h2 className="text-2xl font-semibold">All Products</h2>
-                    <div className="grid grid-cols-2">
-                        {products.map((product) => {
-                            return (
-                                <ProductCard
-                                    title={product.title}
-                                    price={product.price}
-                                    image={product.image}
-                                    key={product.id}
-                                />
-                            );
-                        })}
-                    </div>
+                <div className="block md:hidden flex justify-end">
+                    <SmallSort
+                        sortOption={sortOption}
+                        changeSortOption={changeSortOption}
+                    />
                 </div>
+                <div className="w-full md:w-4/5">{/* <Products /> */}</div>
             </Wrap>
+            <div className="h-12 mb-10"></div>
         </Page>
     );
 }

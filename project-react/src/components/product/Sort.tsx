@@ -2,24 +2,24 @@ import type { TSortOption } from '@/types/sortOption';
 
 interface SortProps {
     sortOption: TSortOption;
-    onLabelClick: (e: React.MouseEvent) => void;
+    changeSortOption: (id: TSortOption) => void;
 }
 
-export default function Sort({ sortOption, onLabelClick }: SortProps) {
-    const sortList = [
-        { id: 'new', text: 'Latest Arrivals' },
-        { id: 'cheap', text: 'Price: Low to High' },
-        { id: 'expensive', text: 'Price: High to Low' },
-    ];
+const sortList: { id: TSortOption; text: string; smallText: string }[] = [
+    { id: 'new', text: 'Latest Arrivals', smallText: 'Latest' },
+    { id: 'cheap', text: 'Price: Low to High', smallText: 'Lowest Price' },
+    { id: 'expensive', text: 'Price: High to Low', smallText: 'Highest Price' },
+];
 
+export default function Sort({ sortOption, changeSortOption }: SortProps) {
     return (
-        <fieldset>
-            <legend className="ml-4 mb-3 text-sm font-medium text-gray-500">
+        <fieldset className="flex flex-col gap-2">
+            <legend className="ml-4 text-xs lg:text-sm font-medium text-gray-500">
                 SORT BY
             </legend>
             {sortList.map((sort) => {
                 return (
-                    <div className="flex items-center mb-2" key={sort.id}>
+                    <div className="flex items-center" key={sort.id}>
                         <input
                             type="radio"
                             name="sort"
@@ -32,10 +32,10 @@ export default function Sort({ sortOption, onLabelClick }: SortProps) {
                             htmlFor={sort.id}
                             className={
                                 sortOption === sort.id
-                                    ? 'ml-3 cursor-pointer'
-                                    : 'ml-3 cursor-pointer text-gray-500'
+                                    ? 'ml-3 text-xs lg:text-sm cursor-pointer'
+                                    : 'ml-3 text-xs lg:text-sm cursor-pointer text-gray-500'
                             }
-                            onClick={onLabelClick}
+                            onClick={() => changeSortOption(sort.id)}
                         >
                             {sort.text}
                         </label>
@@ -43,5 +43,36 @@ export default function Sort({ sortOption, onLabelClick }: SortProps) {
                 );
             })}
         </fieldset>
+    );
+}
+
+export function SmallSort({ sortOption, changeSortOption }: SortProps) {
+    return (
+        <div className="flex items-center gap-2 mb-4">
+            <label
+                htmlFor="smallSort"
+                className="text-xs font-medium text-gray-500"
+            >
+                SORT BY
+            </label>
+            <select
+                name="sortOptions"
+                id="smallSort"
+                className="p-1 outline-0 text-sm rounded border-1 border-solid border-gray-400 dark:border-neutral-600 dark:bg-neutral-800"
+            >
+                {sortList.map((sort) => {
+                    return (
+                        <option
+                            value={sort.id}
+                            selected={sortOption === sort.id}
+                            onClick={() => changeSortOption(sort.id)}
+                            key={sort.id}
+                        >
+                            {sort.smallText}
+                        </option>
+                    );
+                })}
+            </select>
+        </div>
     );
 }
