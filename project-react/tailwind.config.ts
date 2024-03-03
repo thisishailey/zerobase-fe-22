@@ -13,6 +13,16 @@ const config: Config = {
                 'gradient-conic':
                     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
+            keyframes: {
+                spinQuarter: {
+                    from: {
+                        transform: 'rotate(90deg)',
+                    },
+                    to: {
+                        transform: 'rotate(0deg)',
+                    },
+                },
+            },
         },
     },
     darkMode: 'selector',

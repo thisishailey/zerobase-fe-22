@@ -13,7 +13,7 @@ export default function Header() {
             <Wrap classList="flex justify-between">
                 <div className="flex-1 basis-0 flex items-center gap-2">
                     <MenuButton />
-                    <DarkModeButton />
+                    <DarkModeButton classList="hidden sm:block" />
                 </div>
                 <h1 className="flex items-center text-xl font-semibold">
                     <Link href={'/'}>MY STORE</Link>
