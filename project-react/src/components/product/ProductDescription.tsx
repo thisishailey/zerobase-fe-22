@@ -23,7 +23,7 @@ export default function ProductDescription({ description }: DescProps) {
             <p className="hidden sm:block text-sm lg:text-base p-3 shadow-inner rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-700 bg-[#ffffff] dark:bg-neutral-800">
                 {description}
             </p>
-            <div className="block sm:hidden w-full min-w-60 rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-600 bg-[#ffffff] dark:bg-neutral-800">
+            <div className="block sm:hidden w-full min-w-48 rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-600 bg-[#ffffff] dark:bg-neutral-800">
                 <button
                     className="block sm:hidden flex items-center justify-between w-full p-1.5 px-3 text-base"
                     onClick={toggleInfo}

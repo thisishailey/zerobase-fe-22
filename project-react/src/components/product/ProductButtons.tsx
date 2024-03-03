@@ -5,7 +5,7 @@ export function AddCartButton() {
 
     return (
         <button
-            className="flex-1 min-w-28 py-3 text-base shadow-md rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-400 bg-[#ffffff] dark:bg-neutral-900 transition-all duration-500 hover:bg-blue-600 hover:text-white"
+            className="flex-1 min-w-24 py-3 text-base shadow-md rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-400 bg-[#ffffff] dark:bg-neutral-900 transition-all duration-500 hover:bg-blue-600 hover:text-white"
             onClick={addToCart}
         >
             Add to Cart
@@ -18,7 +18,7 @@ export function PurchaseButton() {
 
     return (
         <button
-            className="flex-1 min-w-28 py-3 text-base shadow-md rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-400 bg-[#ffffff] dark:bg-neutral-900 transition-all duration-500 hover:bg-blue-600 hover:text-white"
+            className="flex-1 min-w-24 py-3 text-base shadow-md rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-400 bg-[#ffffff] dark:bg-neutral-900 transition-all duration-500 hover:bg-blue-600 hover:text-white"
             onClick={purchaseProduct}
         >
             Purchase

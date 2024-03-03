@@ -17,7 +17,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
     return (
         <Wrap>
             <ProductDetailCard id={id} />
-            <div className="h-48"></div>
+            <div className="h-20"></div>
         </Wrap>
     );
 }
