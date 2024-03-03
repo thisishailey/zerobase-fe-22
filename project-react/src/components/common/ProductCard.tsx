@@ -16,6 +16,7 @@ export default function ProductCard({ id, title, price, image }: CardProps) {
                     image={image}
                     title={title}
                     classList="h-48 sm:h-64 lg:h-80 xl:h-96 my-4 transition-all duration-300 hover:shadow-lg dark:brightness-[0.85] dark:hover:brightness-100"
+                    imgClassList="hover:p-6 transition-all duration-300"
                 />
                 <div>
                     <h3 className="text-xs md:text-sm lg:text-base xl:text-lg font-medium text-ellipsis overflow-hidden whitespace-nowrap pr-6 mb-2">

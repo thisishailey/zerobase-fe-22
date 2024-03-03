@@ -6,21 +6,26 @@ interface ProductImageProps {
     image: string;
     title: string;
     classList?: string;
+    imgClassList?: string;
 }
 
 export default function ProductImage({
     image,
     title,
     classList,
+    imgClassList,
 }: ProductImageProps) {
-    const defaultClasses =
+    const defaultDivClasses =
         'relative w-full rounded-lg border border-solid border-neutral-50 bg-white overflow-hidden ';
-    const additionalClasses = classList || '';
+    const additionalDivClasses = classList || '';
+    const imgDivClasses = defaultDivClasses + additionalDivClasses;
 
-    const productImageClasses = defaultClasses + additionalClasses;
+    const defaultImgClasses = 'object-contain p-8 ';
+    const additionalImgClasses = imgClassList || '';
+    const imgClasses = defaultImgClasses + additionalImgClasses;
 
     return (
-        <div className={productImageClasses}>
+        <div className={imgDivClasses}>
             <Image
                 loader={() => image}
                 unoptimized={true}
@@ -28,7 +33,7 @@ export default function ProductImage({
                 alt={title}
                 fill={true}
                 sizes="(max-width: 400px) 100vw, (max-width: 768px) 50vw, 33vw"
-                className="object-contain p-8"
+                className={imgClasses}
                 priority={true}
             />
         </div>
