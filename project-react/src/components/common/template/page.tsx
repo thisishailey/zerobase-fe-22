@@ -10,10 +10,5 @@ export default function Page({ children, classList }: PageProps) {
 
     const pageClasses = defaultClasses + additionalClasses;
 
-    return (
-        <>
-            <main className={pageClasses}>{children}</main>
-            <div className="h-[450px] invisible"></div>
-        </>
-    );
+    return <main className={pageClasses}>{children}</main>;
 }
