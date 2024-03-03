@@ -2,10 +2,14 @@
 
 ## Tech Stack
 
+-   React Bootstrap
+-   React Icons
 -   Tailwind CSS
 -   TypeScript
 -   React
 -   Next.js
+-   Local Storage
+-   Fake Store API
 -   Git
 -   npm
 -   VS Code
@@ -17,8 +21,13 @@
 
     -   Menu
 
+        -   Search
         -   Home
         -   Products
+            -   All
+            -   Category 1
+            -   Category 2
+            -   Category 3
         -   Account
 
     -   Search
@@ -27,9 +36,15 @@
 
 ## To Do
 
+-   Search
+
+    -   Navigate to search results page on submit
+    -   Show search results
+
 -   Products
 
-    -   Product Detail Page
+    -   Make categories
+    -   Show breakcrumbs
 
 -   Account
 
@@ -38,17 +53,26 @@
         -   True - Get user info and open user account page
         -   False - Open log in page
 
-    -   Account page contents
+    -   Make log in page
 
-    -   Log in page contents
         -   Log in form
         -   Save log in info
-        -   Link to sign in form (in case the user doesn't have an account)
-    -   Sign in page contents
+        -   Link to sign in form (if no account)
+
+    -   Make sign in page
+
         -   Sign in form
         -   Create account
         -   Save log in info
 
+    -   Make user account page
+
 -   Cart
-    -   No item in cart page
-    -   Cart items & total page
+
+    -   Make cart empty page
+    -   Show cart items & total
+
+-   Others
+
+    -   404 page
+    -   Loading page
