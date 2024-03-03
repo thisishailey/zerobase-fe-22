@@ -5,7 +5,17 @@ import { FiSearch } from 'react-icons/fi';
 import { IoCloseOutline } from 'react-icons/io5';
 import NavButton from './NavButton';
 
-export default function SearchBar({ isHeader }: { isHeader: boolean }) {
+interface SearchBarProps {
+    isHeader: boolean;
+    classList?: string;
+    inputClassList?: string;
+}
+
+export default function SearchBar({
+    isHeader,
+    classList,
+    inputClassList,
+}: SearchBarProps) {
     const [showButton, setShowButton] = useState(isHeader);
 
     const showSearchForm = () => {
@@ -16,6 +26,16 @@ export default function SearchBar({ isHeader }: { isHeader: boolean }) {
         setShowButton(true);
     };
 
+    const defaultClasses =
+        'flex items-center justify-between rounded-full border-1 border-solid border-neutral-400 bg-neutral-100 dark:bg-neutral-800 hover:bg-white dark:hover:bg-neutral-900 transition-all ';
+    const additionalClasses = classList || '';
+    const formClasses = defaultClasses + additionalClasses;
+
+    const defaultInputClasses =
+        'flex-1 font-normal text-neutral-900 dark:text-neutral-100 bg-transparent outline-0 placeholder:font-light placeholder:text-neutral-600 dark:placeholder:text-neutral-300 ';
+    const additionalInputClasses = inputClassList || '';
+    const inputClasses = defaultInputClasses + additionalInputClasses;
+
     return (
         <>
             {showButton && (
@@ -23,24 +43,17 @@ export default function SearchBar({ isHeader }: { isHeader: boolean }) {
                     <FiSearch />
                 </NavButton>
             )}
-            <form
-                className={
-                    showButton
-                        ? 'hidden'
-                        : 'flex items-center justify-between w-60 p-1 px-2 pl-3 rounded-full border border-solid border-neutral-200 bg-neutral-200 hover:bg-neutral-50 transition'
-                }
-            >
+            <form className={showButton ? 'hidden' : formClasses}>
                 <input
-                    className="flex-1 text-neutral-700 bg-transparent outline-0 placeholder:text-sm placeholder:text-neutral-500"
+                    className={inputClasses}
                     type="text"
                     name="search"
-                    id=""
                     placeholder="Search products"
                     autoComplete="off"
                 />
                 {isHeader && (
                     <button
-                        className="basis-0 text-neutral-500"
+                        className="basis-0 text-neutral-600 dark:text-neutral-300"
                         type="button"
                         onClick={closeSearchForm}
                     >

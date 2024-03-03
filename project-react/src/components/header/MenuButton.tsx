@@ -41,11 +41,11 @@ export default function MenuButton() {
     return (
         <div ref={menuRef}>
             <NavButton
-                classList="flex items-center py-1.5"
+                classList="flex items-center sm:py-1.5"
                 onClick={toggleMenu}
             >
-                <FiMenu className="inline" />
-                <span className="pl-2">Menu</span>
+                <FiMenu className="inline sm:pr-1" />
+                <span className="hidden sm:inline text-base">Menu</span>
             </NavButton>
             <MenuPanel onClick={toggleMenu} />
         </div>

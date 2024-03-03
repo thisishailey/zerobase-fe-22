@@ -9,7 +9,7 @@ interface NavButtonProps {
 
 export default function NavButton(props: NavButtonProps) {
     const defaultClasses =
-        'block p-2.5 rounded-full transition hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 ';
+        'block p-2.5 text-lg rounded-full transition hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 ';
     const additionalClasses = props.classList || '';
 
     const navButtonClasses = defaultClasses + additionalClasses;

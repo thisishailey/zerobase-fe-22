@@ -15,7 +15,7 @@ export default function ProductCard({ id, title, price, image }: CardProps) {
                 <ProductImage
                     image={image}
                     title={title}
-                    classList="h-48 sm:h-64 lg:h-80 xl:h-96 my-4 transition-all duration-300 hover:shadow-lg dark:brightness-[0.85] dark:hover:brightness-100"
+                    classList="h-48 sm:h-64 lg:h-80 xl:h-96 my-4 transition-all duration-300 hover:shadow-lg dark:brightness-90 dark:hover:brightness-100"
                     imgClassList="hover:p-6 transition-all duration-300"
                 />
                 <div>
