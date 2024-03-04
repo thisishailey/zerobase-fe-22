@@ -20,7 +20,7 @@ export default function ProductImage({
     const additionalDivClasses = classList || '';
     const imgDivClasses = defaultDivClasses + additionalDivClasses;
 
-    const defaultImgClasses = 'object-contain p-8 ';
+    const defaultImgClasses = 'object-contain ';
     const additionalImgClasses = imgClassList || '';
     const imgClasses = defaultImgClasses + additionalImgClasses;
 

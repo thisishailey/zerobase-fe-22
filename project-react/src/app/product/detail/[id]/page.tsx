@@ -1,10 +1,10 @@
 import Wrap from '@/components/common/template/wrap';
-import { getProductData } from '@/api/products';
+import { getProductsData } from '@/api/products';
 import type IProduct from '@/types/productData';
 import ProductDetailCard from '@/components/common/ProductDetailCard';
 
 export async function generateStaticParams() {
-    const products: IProduct[] = await getProductData();
+    const products: IProduct[] = await getProductsData();
 
     return products.map((product) => ({
         id: product.id.toString(),
