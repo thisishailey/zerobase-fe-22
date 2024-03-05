@@ -37,11 +37,15 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
                 set((state) => ({
                     cart: state.cart.map((item) => {
                         if (item.id === id) {
-                            return { ...item, qty: item.qty - 1 };
+                            if (item.qty === 1) {
+                                return;
+                            } else {
+                                return { ...item, qty: item.qty - 1 };
+                            }
                         } else {
                             return item;
                         }
-                    }),
+                    }) as ICartItem[],
                 })),
             incrementQty: (id: number) =>
                 set((state) => ({

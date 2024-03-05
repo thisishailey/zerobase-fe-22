@@ -1,7 +1,12 @@
+'use client';
+
 import Wrap from '@/components/common/template/wrap';
 import CartItem from '@/components/cart/CartItem';
+import { useCartStore } from '@/providers/cartStoreProvider';
 
 export default function Cart() {
+    const { cart, updateItem, removeItem } = useCartStore((state) => state);
+
     return (
         <Wrap classList="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div>
@@ -20,7 +25,17 @@ export default function Cart() {
                         </tr>
                     </thead>
                     <tbody className="border-b border-gray-300 dark:border-neutral-600">
-                        <CartItem itemId={1} />
+                        {cart.map((item) => {
+                            return (
+                                <CartItem
+                                    item={item}
+                                    increment={updateItem.incrementQty}
+                                    decrement={updateItem.decrementQty}
+                                    removeItem={removeItem}
+                                    key={item.id}
+                                />
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>
