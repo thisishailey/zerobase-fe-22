@@ -24,7 +24,7 @@ export default async function ProductDetailCard({ id }: { id: string }) {
                 </span>
                 <ProductDescription description={product.description} />
                 <div className="flex justify-between gap-3 min-[400px]:gap-6">
-                    <AddCartButton itemId={product.id} />
+                    <AddCartButton item={product} />
                     <PurchaseButton />
                 </div>
             </div>

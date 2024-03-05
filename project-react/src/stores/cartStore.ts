@@ -1,7 +1,7 @@
 import { createStore } from 'zustand';
+import type IProduct from '@/types/productData';
 
-export interface ICartItem {
-    id: number;
+export interface ICartItem extends IProduct {
     qty: number;
 }
 
@@ -10,7 +10,7 @@ export type CartState = {
 };
 
 export type CartActions = {
-    addItem: (id: number) => void;
+    addItem: (item: IProduct) => void;
     updateItem: {
         decrementQty: (id: number) => void;
         incrementQty: (id: number) => void;
@@ -28,24 +28,20 @@ export const defaultInitState: CartState = {
 export const createCartStore = (initState: CartState = defaultInitState) => {
     return createStore<CartStore>()((set) => ({
         ...initState,
-        addItem: (id: number) =>
+        addItem: (item: IProduct) =>
             set((state) => ({
-                cart: state.cart.concat({ id: id, qty: 1 }),
+                cart: state.cart.concat({ ...item, qty: 1 }),
             })),
         updateItem: {
             decrementQty: (id: number) =>
                 set((state) => ({
                     cart: state.cart.map((item) => {
                         if (item.id === id) {
-                            if (item.qty === 1) {
-                                return;
-                            } else {
-                                return { ...item, qty: item.qty - 1 };
-                            }
+                            return { ...item, qty: item.qty - 1 };
                         } else {
                             return item;
                         }
-                    }) as ICartItem[],
+                    }),
                 })),
             incrementQty: (id: number) =>
                 set((state) => ({

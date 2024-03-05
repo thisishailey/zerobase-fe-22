@@ -22,6 +22,16 @@ const config: Config = {
                         transform: 'rotate(0deg)',
                     },
                 },
+                arrowBounce: {
+                    '0%, 100%': {
+                        transform: 'translateX(-30%)',
+                        animation: 'cubic-bezier(0.8, 0, 1, 1)',
+                    },
+                    '50%': {
+                        transform: 'translateX(0)',
+                        animation: 'cubic-bezier(0, 0, 0.2, 1)',
+                    },
+                },
             },
         },
     },
