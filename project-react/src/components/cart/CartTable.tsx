@@ -13,13 +13,19 @@ import {
 
 export default function CartTable() {
     const { cart, updateItem, removeItem } = useCartStore((state) => state);
+    const subtotal = cart.reduce((acc, cur) => {
+        return cur.price * cur.qty + acc;
+    }, 0);
 
     function CartItems() {
         return (
             <>
                 {cart.map((item) => {
                     return (
-                        <tr className="text-sm h-24" key={item.id}>
+                        <tr
+                            className="text-sm h-24 border-b border-gray-300 dark:border-neutral-600"
+                            key={item.id}
+                        >
                             <td className="px-2">
                                 <Link
                                     className="flex w-16"
@@ -40,29 +46,31 @@ export default function CartTable() {
                                     </p>
                                 </Link>
                             </td>
-                            <td className="text-center h-24 flex flex-col items-center justify-evenly">
-                                <button
-                                    className="w-4"
-                                    onClick={() =>
-                                        updateItem.incrementQty(item.id)
-                                    }
-                                >
-                                    <ChevronUpIcon />
-                                </button>
-                                <p>{item.qty}</p>
-                                <button className="w-4">
-                                    <ChevronDownIcon
-                                        onClick={() => {
-                                            if (item.qty === 1) {
-                                                removeItem(item.id);
-                                            } else {
-                                                updateItem.decrementQty(
-                                                    item.id
-                                                );
-                                            }
-                                        }}
-                                    />
-                                </button>
+                            <td className="px-2">
+                                <div className="text-center h-24 flex flex-col items-center justify-evenly">
+                                    <button
+                                        className="w-4"
+                                        onClick={() =>
+                                            updateItem.incrementQty(item.id)
+                                        }
+                                    >
+                                        <ChevronUpIcon />
+                                    </button>
+                                    <p>{item.qty}</p>
+                                    <button className="w-4">
+                                        <ChevronDownIcon
+                                            onClick={() => {
+                                                if (item.qty === 1) {
+                                                    removeItem(item.id);
+                                                } else {
+                                                    updateItem.decrementQty(
+                                                        item.id
+                                                    );
+                                                }
+                                            }}
+                                        />
+                                    </button>
+                                </div>
                             </td>
                             <td className="hidden sm:table-cell text-center px-2">
                                 ${item.price.toFixed(2)}
@@ -89,28 +97,31 @@ export default function CartTable() {
         <>
             {cart.length > 0 ? (
                 <>
-                    <table className="w-full">
-                        <thead className="border-b border-gray-300 dark:border-neutral-600">
-                            <tr className="text-sm h-12">
-                                <th className="font-medium pl-3">Item</th>
-                                <th className="font-medium"></th>
-                                <th className="font-medium text-center">
-                                    Quantity
-                                </th>
-                                <th className="hidden sm:table-cell font-medium text-center">
-                                    Price
-                                </th>
-                                <th className="font-medium text-center">
-                                    Total
-                                </th>
-                                <th className="font-medium"></th>
-                            </tr>
-                        </thead>
-                        <tbody className="border-b border-gray-300 dark:border-neutral-600">
-                            <CartItems />
-                        </tbody>
-                    </table>
-                    <OrderSummary />
+                    <div className="flex flex-col items-start md:flex-row gap-10 md:gap-0 sm:m-6">
+                        <table className="w-full md:w-2/3">
+                            <thead className="border-b border-gray-300 dark:border-neutral-600">
+                                <tr className="text-sm h-12">
+                                    <th className="font-medium pl-3">Item</th>
+                                    <th className="font-medium"></th>
+                                    <th className="font-medium text-center">
+                                        Quantity
+                                    </th>
+                                    <th className="hidden sm:table-cell font-medium text-center">
+                                        Price
+                                    </th>
+                                    <th className="font-medium text-center">
+                                        Total
+                                    </th>
+                                    <th className="font-medium"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <CartItems />
+                            </tbody>
+                        </table>
+                        <OrderSummary subtotal={subtotal} />
+                    </div>
+                    <div className="h-40"></div>
                 </>
             ) : (
                 <EmptyCart />
