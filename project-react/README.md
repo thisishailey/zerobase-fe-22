@@ -36,15 +36,21 @@
 
 ## To Do
 
--   Search
-
-    -   Navigate to search results page on submit
-    -   Show search results
-
 -   Products
 
     -   Make categories
     -   Show breakcrumbs
+
+-   Cart
+
+    -   Need to Add:
+        -   Nav Cart button - popover on hover, cart item number badge
+        -   Show that the item is already in the cart (on item detail page)
+
+-   Search
+
+    -   Navigate to search results page on submit
+    -   Show search results
 
 -   Account
 
@@ -66,16 +72,6 @@
         -   Save log in info
 
     -   Make user account page
-
--   Cart
-
-    -   Need to Fix:
-
-        -   Zustand store - back to initial state on reload
-
-    -   Need to Add:
-        -   Nav Cart button - popover on hover, cart item number badge
-        -   Show that the item is already in the cart (on item detail page)
 
 -   Others
 

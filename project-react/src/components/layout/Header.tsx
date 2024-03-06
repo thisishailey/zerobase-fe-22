@@ -4,8 +4,8 @@ import NavButton from '../header/NavButton';
 import MenuButton from '../header/MenuButton';
 import DarkModeButton from '../header/DarkModeButton';
 import SearchBar from '../header/SearchBar';
+import CartPopover from '../header/CartPopover';
 import { VscAccount } from 'react-icons/vsc';
-import { HiOutlineShoppingBag } from 'react-icons/hi2';
 
 export default function Header() {
     return (
@@ -35,9 +35,7 @@ export default function Header() {
                         <DarkModeButton />
                     </li>
                     <li>
-                        <NavButton href={'/cart'}>
-                            <HiOutlineShoppingBag />
-                        </NavButton>
+                        <CartPopover href={'/cart'} />
                     </li>
                     <li className="block sm:hidden">
                         <MenuButton />
