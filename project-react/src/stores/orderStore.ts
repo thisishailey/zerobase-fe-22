@@ -6,6 +6,7 @@ import OrderCode from 'ordercode';
 
 type OrderState = {
     order: IOrder[];
+    currentOrder: IOrder;
 };
 
 type OrderActions = {
@@ -17,19 +18,23 @@ type OrderStore = OrderState & OrderActions;
 
 const defaultInitState: OrderState = {
     order: [],
+    currentOrder: { orderId: '', orderItems: [] },
 };
 
 export const useOrderStore = create<OrderStore>()(
     persist(
         (set) => ({
             ...defaultInitState,
-            addOrder: (item) =>
+            addOrder: (item) => {
+                const newOrder = {
+                    orderId: OrderCode.generate(),
+                    orderItems: item,
+                };
                 set((state) => ({
-                    order: state.order.concat({
-                        orderId: OrderCode.generate(),
-                        orderItems: item,
-                    }),
-                })),
+                    order: state.order.concat(newOrder),
+                    currentOrder: newOrder,
+                }));
+            },
             clearOrderHistory: () => {
                 set(defaultInitState);
             },
