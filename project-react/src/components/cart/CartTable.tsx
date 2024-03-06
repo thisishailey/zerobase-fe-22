@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useCartStore } from '@/providers/cartStoreProvider';
+import { useCartStore } from '@/stores/cartStore';
 import ProductImage from '../common/ProductImage';
 import OrderSummary from '@/components/cart/OrderSummary';
 import EmptyCart from './EmptyCart';
@@ -12,7 +12,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 export default function CartTable() {
-    const { cart, updateItem, removeItem } = useCartStore((state) => state);
+    const { cart, incrementQty, decrementQty, removeItem } = useCartStore();
     const subtotal = cart.reduce((acc, cur) => {
         return cur.price * cur.qty + acc;
     }, 0);
@@ -50,9 +50,7 @@ export default function CartTable() {
                                 <div className="text-center h-24 flex flex-col items-center justify-evenly">
                                     <button
                                         className="w-4"
-                                        onClick={() =>
-                                            updateItem.incrementQty(item.id)
-                                        }
+                                        onClick={() => incrementQty(item.id)}
                                     >
                                         <ChevronUpIcon />
                                     </button>
@@ -63,9 +61,7 @@ export default function CartTable() {
                                                 if (item.qty === 1) {
                                                     removeItem(item.id);
                                                 } else {
-                                                    updateItem.decrementQty(
-                                                        item.id
-                                                    );
+                                                    decrementQty(item.id);
                                                 }
                                             }}
                                         />

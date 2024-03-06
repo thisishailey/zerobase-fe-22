@@ -1,14 +1,14 @@
 'use client';
 
-import { useCartStore } from '@/providers/cartStoreProvider';
+import { useCartStore } from '@/stores/cartStore';
 import type IProduct from '@/types/productData';
 
 export function AddCartButton({ item }: { item: IProduct }) {
-    const { cart, addItem, updateItem } = useCartStore((state) => state);
+    const { cart, addItem, incrementQty } = useCartStore();
 
     const addToCart = (item: IProduct) => {
         if (cart.some((i) => i.id === item.id)) {
-            updateItem.incrementQty(item.id);
+            incrementQty(item.id);
         } else {
             addItem(item);
         }
