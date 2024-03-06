@@ -1,5 +1,5 @@
 import Wrap from '@/components/common/template/wrap';
-import OrderSummary from '@/components/checkout/OrderSummary';
+import OrderCompleteSummary from '@/components/checkout/OrderCompleteSummary';
 
 export default function Checkout() {
     return (
@@ -12,7 +12,7 @@ export default function Checkout() {
                 We appreciate your order, we’re currently processing it. So hang
                 tight and we’ll send you confirmation very soon!
             </p>
-            <OrderSummary isOrderComplete={true} />
+            <OrderCompleteSummary />
         </Wrap>
     );
 }

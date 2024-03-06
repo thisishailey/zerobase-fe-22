@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cartStore';
 import ProductImage from '../common/ProductImage';
-import OrderSummary from '@/components/cart/OrderSummary';
+import CartSummary from './CartSummary';
 import EmptyCart from './EmptyCart';
 import {
     TrashIcon,
@@ -112,7 +112,7 @@ export default function CartTable() {
                                 <CartItems />
                             </tbody>
                         </table>
-                        <OrderSummary cart={cart} />
+                        <CartSummary cart={cart} />
                     </div>
                     <div className="h-40"></div>
                 </>
