@@ -1,11 +1,28 @@
+'use client';
+
 import Link from 'next/link';
 import { useCheckoutStore } from '@/stores/checkoutStore';
-import type ICartItem from '@/types/cartItem';
+import { useOrderStore } from '@/stores/orderStore';
+import { useCartStore } from '@/stores/cartStore';
 
-export default function OrderSummary({ cart }: { cart: ICartItem[] }) {
-    const { setCheckout } = useCheckoutStore();
+export default function OrderSummary({
+    isOrderComplete = false,
+}: {
+    isOrderComplete?: boolean;
+}) {
+    const { checkout, fromCart, clearCheckout } = useCheckoutStore();
+    const { addOrder } = useOrderStore();
+    const { emptyCart } = useCartStore();
 
-    const subtotal = cart.reduce((acc, cur) => {
+    const handleOrderComplete = () => {
+        addOrder(checkout);
+        clearCheckout();
+        if (fromCart) {
+            emptyCart();
+        }
+    };
+
+    const subtotal = checkout.reduce((acc, cur) => {
         return cur.price * cur.qty + acc;
     }, 0);
     const shipping = 5;
@@ -17,6 +34,11 @@ export default function OrderSummary({ cart }: { cart: ICartItem[] }) {
             <h3 className="text-lg sm:text-xl font-normal pb-3 border-b border-gray-300 dark:border-neutral-500">
                 Order Summary
             </h3>
+            <ul>
+                {checkout.map((item) => {
+                    return <li key={item.id}>{item.title}</li>;
+                })}
+            </ul>
             <ul className="flex flex-col gap-2 text-sm sm:text-base font-light text-neutral-600 dark:text-neutral-300">
                 <li className="flex justify-between">
                     <span>Subtotal</span>
@@ -35,15 +57,15 @@ export default function OrderSummary({ cart }: { cart: ICartItem[] }) {
                 <span>Total</span>
                 <span>${total.toFixed(2)}</span>
             </div>
-            <Link
-                href={'/checkout'}
-                onClick={() => {
-                    setCheckout(cart, true);
-                }}
-                className="py-3 rounded-xl text-center text-base text-white bg-blue-700 transition-all duration-300 hover:bg-blue-800 hover:text-lg"
-            >
-                Checkout
-            </Link>
+            {!isOrderComplete && (
+                <Link
+                    href={'/checkout/success'}
+                    onClick={handleOrderComplete}
+                    className="py-3 rounded-xl text-center text-base text-white bg-blue-700 transition-all duration-300 hover:bg-blue-800 hover:text-lg"
+                >
+                    Pay ${total.toFixed(2)}
+                </Link>
+            )}
         </div>
     );
 }

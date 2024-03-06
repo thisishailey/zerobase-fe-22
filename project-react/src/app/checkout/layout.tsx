@@ -1,6 +1,6 @@
 import Page from '@/components/common/template/page';
 
-export default function CartLayout({
+export default function CheckoutLayout({
     children,
 }: {
     children: React.ReactNode;

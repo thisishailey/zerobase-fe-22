@@ -1,6 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { useCartStore } from '@/stores/cartStore';
+import { useCheckoutStore } from '@/stores/checkoutStore';
 import type IProduct from '@/types/productData';
 
 export function AddCartButton({ item }: { item: IProduct }) {
@@ -12,7 +14,6 @@ export function AddCartButton({ item }: { item: IProduct }) {
         } else {
             addItem(item);
         }
-        console.log(cart);
     };
 
     return (
@@ -25,20 +26,18 @@ export function AddCartButton({ item }: { item: IProduct }) {
     );
 }
 
-export function PurchaseButton() {
-    const { cart, emptyCart } = useCartStore((state) => state);
-
-    const purchaseProduct = () => {
-        emptyCart();
-        console.log(cart);
-    };
+export function PurchaseButton({ item }: { item: IProduct }) {
+    const { setCheckout } = useCheckoutStore();
 
     return (
-        <button
-            className="flex-1 min-w-24 py-3 text-base shadow-md rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-400 bg-[#ffffff] dark:bg-neutral-900 transition-all duration-500 hover:bg-blue-600 hover:text-white"
-            onClick={purchaseProduct}
+        <Link
+            href={'/checkout'}
+            className="flex-1 min-w-24 py-3 text-base text-center shadow-md rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-400 bg-[#ffffff] dark:bg-neutral-900 transition-all duration-500 hover:bg-blue-600 hover:text-white"
+            onClick={() => {
+                setCheckout([{ ...item, qty: 1 }]);
+            }}
         >
             Purchase
-        </button>
+        </Link>
     );
 }

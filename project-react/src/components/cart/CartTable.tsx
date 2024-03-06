@@ -13,9 +13,6 @@ import {
 
 export default function CartTable() {
     const { cart, incrementQty, decrementQty, removeItem } = useCartStore();
-    const subtotal = cart.reduce((acc, cur) => {
-        return cur.price * cur.qty + acc;
-    }, 0);
 
     function CartItems() {
         return (
@@ -115,7 +112,7 @@ export default function CartTable() {
                                 <CartItems />
                             </tbody>
                         </table>
-                        <OrderSummary subtotal={subtotal} />
+                        <OrderSummary cart={cart} />
                     </div>
                     <div className="h-40"></div>
                 </>
