@@ -15,6 +15,11 @@ export default function CartPopover({ href }: { href: string }) {
         <Popover className="relative">
             <Popover.Button className="p-2.5 text-lg rounded-full outline-0 transition hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 cart-popover-button">
                 <HiOutlineShoppingBag />
+                {cart.length > 0 && (
+                    <div className="absolute bottom-0.5 right-0.5 px-1 text-xs font-medium rounded-full bg-gray-300 dark:bg-neutral-600">
+                        {cart.length}
+                    </div>
+                )}
             </Popover.Button>
             <Popover.Overlay className="fixed inset-0 bg-black/20 dark:bg-white/20" />
             <Transition
@@ -60,7 +65,7 @@ export default function CartPopover({ href }: { href: string }) {
                                     ))
                                 ) : (
                                     <li className="flex items-center p-2 py-3 rounded-lg">
-                                        You don't have anything in your cart.
+                                        Your shopping cart is empty.
                                     </li>
                                 )}
                             </ul>

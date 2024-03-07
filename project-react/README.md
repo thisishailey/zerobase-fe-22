@@ -41,12 +41,6 @@
     -   Make categories
     -   Show breakcrumbs
 
--   Cart
-
-    -   Need to Add:
-        -   Nav Cart button - cart item number badge
-        -   Show that the item is already in the cart (on item detail page)
-
 -   Search
 
     -   Navigate to search results page on submit

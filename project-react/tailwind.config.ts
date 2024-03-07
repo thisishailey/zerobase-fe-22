@@ -34,6 +34,6 @@ const config: Config = {
         },
     },
     darkMode: 'selector',
-    plugins: [],
+    plugins: [require('daisyui')],
 };
 export default config;
