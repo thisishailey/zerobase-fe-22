@@ -44,7 +44,7 @@
 -   Cart
 
     -   Need to Add:
-        -   Nav Cart button - popover on hover, cart item number badge
+        -   Nav Cart button - cart item number badge
         -   Show that the item is already in the cart (on item detail page)
 
 -   Search

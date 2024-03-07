@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
-export default function EmptyCart() {
+interface EmptyCartButtonProps {
+    classList: string;
+    onClick?: () => void;
+}
+
+export function EmptyCartButton({ classList, onClick }: EmptyCartButtonProps) {
     const arrowBounceEffect = (add: boolean) => {
         add
             ? document
@@ -12,22 +17,36 @@ export default function EmptyCart() {
                   ?.classList.remove('animate-[arrowBounce_800ms]');
     };
 
+    const defaultClasses =
+        'flex justify-center px-4 py-3 shadow-md rounded-lg bg-blue-700 font-medium text-center text-white transfrom-all duration-300 hover:bg-blue-800 ';
+    const additionalClasses = classList || '';
+    const buttonClasses = defaultClasses + additionalClasses;
+
+    return (
+        <Link
+            href={'/product/all'}
+            className={buttonClasses}
+            onClick={onClick}
+            onMouseOver={() => arrowBounceEffect(true)}
+            onMouseLeave={() => arrowBounceEffect(false)}
+        >
+            Explore products
+            <ArrowRightIcon
+                className="inline w-5 ml-3 arrow-icon"
+                onMouseOver={(e) => e.stopPropagation()}
+                onMouseLeave={(e) => e.stopPropagation()}
+            />
+        </Link>
+    );
+}
+
+export default function EmptyCart() {
     return (
         <div className="flex flex-col items-center py-10">
-            <h3 className="mb-10 text-lg sm:text-xl">The cart is empty.</h3>
-            <Link
-                href={'/product/all'}
-                className="flex items-center p-3 px-4 text-xl font-normal rounded-lg text-blue-700 dark:text-white bg-white dark:!bg-blue-700 shadow-md transition-all duration-300 hover:text-[22px]"
-                onMouseOver={() => arrowBounceEffect(true)}
-                onMouseLeave={() => arrowBounceEffect(false)}
-            >
-                Explore products
-                <ArrowRightIcon
-                    className="inline w-5 ml-3 arrow-icon"
-                    onMouseOver={(e) => e.stopPropagation()}
-                    onMouseLeave={(e) => e.stopPropagation()}
-                />
-            </Link>
+            <h3 className="mb-10 text-lg sm:text-xl">
+                You don't have anything in your cart.
+            </h3>
+            <EmptyCartButton classList="text-xl" />
         </div>
     );
 }

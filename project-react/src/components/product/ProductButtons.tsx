@@ -16,10 +16,20 @@ export function AddCartButton({ item }: { item: IProduct }) {
         }
     };
 
+    const showCart = () => {
+        const button = document.querySelector(
+            '.cart-popover-button'
+        ) as HTMLButtonElement;
+        button.click();
+    };
+
     return (
         <button
             className="flex-1 min-w-24 py-3 text-base shadow-md rounded-lg border-1 border-solid border-gray-300 dark:border-neutral-400 bg-[#ffffff] dark:bg-neutral-900 transition-all duration-500 hover:bg-blue-600 hover:text-white"
-            onClick={() => addToCart(item)}
+            onClick={() => {
+                addToCart(item);
+                showCart();
+            }}
         >
             Add to Cart
         </button>
