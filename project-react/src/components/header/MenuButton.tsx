@@ -1,53 +1,34 @@
 'use client';
 
-import { useRef } from 'react';
 import NavButton from './NavButton';
 import MenuPanel from './MenuPanel';
 import { FiMenu } from 'react-icons/fi';
 
 export default function MenuButton() {
-    const menuRef = useRef(null);
-
-    const toggleMenu = () => {
-        const menu = menuRef.current! as HTMLDivElement;
-        const menuPanel = menu.querySelector(
+    const openSidePanel = () => {
+        const sidePanel = document.querySelector(
             '.menu-side-panel'
         ) as HTMLDivElement;
-
-        if (menuPanel.classList.contains('hidden')) {
-            menuPanel.classList.remove('hidden');
-            document.addEventListener('click', bodyClickHandler);
-        } else {
-            menuPanel.classList.add('hidden');
-            document.removeEventListener('click', bodyClickHandler);
-        }
+        sidePanel.classList.remove('hidden');
     };
 
-    const bodyClickHandler = (e: Event) => {
-        const menu = menuRef.current! as HTMLDivElement;
-        let target = e.target as HTMLElement | null;
-
-        while (target) {
-            if (target === menu) {
-                return;
-            } else {
-                target = target.parentElement;
-            }
-        }
-
-        toggleMenu();
+    const closeSidePanel = () => {
+        const sidePanel = document.querySelector(
+            '.menu-side-panel'
+        ) as HTMLDivElement;
+        sidePanel.classList.add('hidden');
     };
 
     return (
-        <div ref={menuRef}>
+        <div>
             <NavButton
                 classList="flex items-center sm:py-1.5"
-                onClick={toggleMenu}
+                onClick={openSidePanel}
             >
                 <FiMenu className="inline sm:pr-1" />
                 <span className="hidden sm:inline text-base">Menu</span>
             </NavButton>
-            <MenuPanel onClick={toggleMenu} />
+            <MenuPanel onClick={closeSidePanel} />
         </div>
     );
 }

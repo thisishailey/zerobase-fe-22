@@ -36,11 +36,6 @@
 
 ## To Do
 
--   Products
-
-    -   Make categories
-    -   Show breakcrumbs
-
 -   Search
 
     -   Navigate to search results page on submit

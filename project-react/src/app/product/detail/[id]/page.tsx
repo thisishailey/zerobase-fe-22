@@ -27,7 +27,6 @@ export default async function ProductDetail({
                 name={product.title}
             />
             <ProductDetailCard product={product} />
-            <div className="h-20"></div>
         </Wrap>
     );
 }

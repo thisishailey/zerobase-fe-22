@@ -1,10 +1,23 @@
-import { getProductsData } from '@/api/products';
+import { convertParamToCategory } from '@/utils/productCategory';
+import { getProductsData, getProductsByCategory } from '@/api/products';
 import ProductCard from '@/components/common/ProductCard';
 import type IProduct from '@/types/productData';
 import type { TProductSort } from '@/types/sortOption';
 
-export default async function Products({ sort }: { sort: TProductSort }) {
-    const products: IProduct[] = await getProductsData();
+interface ProductsProps {
+    param: string;
+    sort: TProductSort;
+}
+
+export default async function Products({ param, sort }: ProductsProps) {
+    let products: IProduct[] = [];
+
+    if (param === 'all') {
+        products = await getProductsData();
+    } else {
+        const category = await convertParamToCategory(param);
+        products = await getProductsByCategory(category!);
+    }
 
     switch (sort) {
         case 'date-desc':

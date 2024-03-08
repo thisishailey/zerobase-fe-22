@@ -5,7 +5,7 @@ interface BreadcrumbsProps {
     name: string;
 }
 
-export default function ProductBreadcrumbs({
+export default async function ProductBreadcrumbs({
     category,
     name,
 }: BreadcrumbsProps) {
@@ -13,7 +13,7 @@ export default function ProductBreadcrumbs({
         <div className="mb-10 text-xs sm:text-sm breadcrumbs">
             <ul>
                 <li>
-                    <Link href={'/product/all'}>Products</Link>
+                    <Link href={'/product/category/all'}>Products</Link>
                 </li>
                 <li>
                     <Link
