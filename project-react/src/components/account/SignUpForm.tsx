@@ -1,4 +1,11 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
 export default function SignUpForm() {
+    const router = useRouter();
+
     const formInputs = [
         { id: 'first-name', text: 'First name', type: 'text' },
         { id: 'last-name', text: 'Last name', type: 'text' },
@@ -72,20 +79,43 @@ export default function SignUpForm() {
                     </div>
                 </div>
 
-                <div className="my-20 flex justify-center gap-2">
+                <div className="my-12 text-center text-xs">
+                    By creating an account, you agree to My Store's{' '}
+                    <Link href={'/'} className="underline">
+                        Privacy Policy
+                    </Link>{' '}
+                    and{' '}
+                    <Link href={'/'} className="underline">
+                        Terms of Use
+                    </Link>
+                    .
+                </div>
+
+                <div className="mt-6 flex justify-center gap-2">
                     <button
                         type="submit"
                         className="rounded-md px-14 py-2 text-base sm:text-lg text-white shadow-md bg-blue-600 hover:bg-blue-700"
                     >
-                        Save
+                        Join
                     </button>
                     <button
+                        onClick={() => router.back()}
                         type="button"
                         className="rounded-md px-4 py-2 text-base sm:text-lg text-blue-600 hover:bg-blue-100 dark:hover:bg-black"
                     >
                         Cancel
                     </button>
                 </div>
+
+                <p className="mt-6 mb-20 text-center text-sm sm:text-base text-gray-500">
+                    Already a member?
+                    <Link
+                        href="/account/login"
+                        className="ml-4 font-medium text-blue-600 hover:text-blue-500"
+                    >
+                        Sign in
+                    </Link>
+                </p>
             </div>
         </form>
     );

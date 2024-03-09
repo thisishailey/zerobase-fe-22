@@ -30,22 +30,16 @@ export default function LogInPage() {
     return (
         <Wrap>
             <div className="flex flex-col justify-center py-16 px-6 lg:px-8">
-                <div className="sm:w-full sm:max-w-sm sm:mx-auto">
-                    <h2 className="text-center text-2xl sm:text-3xl font-semibold">
-                        Sign in to your account
+                <div className="sm:w-full sm:max-w-sm sm:mx-auto space-y-6">
+                    <h2 className="text-center text-2xl font-semibold uppercase">
+                        Welcome back
                     </h2>
+                    <p className="text-center text-sm">
+                        Sign in to access an enhanced shopping experience.
+                    </p>
                 </div>
                 <div className="!mt-16 sm:!mt-20 sm:w-full sm:max-w-sm sm:mx-auto">
                     <LogInForm onSubmit={handleSubmit} />
-                    <p className="mt-6 text-center text-sm sm:text-base text-gray-500">
-                        Not a member?
-                        <a
-                            href="/account/signup"
-                            className="ml-4 font-semibold text-blue-600 hover:text-blue-500"
-                        >
-                            Sign up
-                        </a>
-                    </p>
                 </div>
             </div>
         </Wrap>

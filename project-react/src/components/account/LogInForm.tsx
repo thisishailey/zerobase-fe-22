@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface Props {
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
 }
@@ -34,7 +36,7 @@ export default function LogInForm({ onSubmit }: Props) {
                     </label>
                     <a
                         href="/"
-                        className="text-xs font-semibold text-blue-600 hover:text-blue-500"
+                        className="text-xs font-medium text-blue-600 hover:text-blue-500"
                     >
                         Forgot password?
                     </a>
@@ -59,6 +61,16 @@ export default function LogInForm({ onSubmit }: Props) {
                     Sign in
                 </button>
             </div>
+
+            <p className="mt-6 text-center text-sm sm:text-base text-gray-500">
+                Not a member?
+                <Link
+                    href="/account/signup"
+                    className="ml-4 font-medium text-blue-600 hover:text-blue-500"
+                >
+                    Join us
+                </Link>
+            </p>
         </form>
     );
 }
