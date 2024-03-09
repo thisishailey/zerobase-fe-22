@@ -1,9 +1,9 @@
 import Wrap from '@/components/common/template/wrap';
 
-export default function Account() {
+export default function ProfilePage() {
     return (
         <Wrap>
-            <h2>This is an account page.</h2>
+            <h2>Profile</h2>
         </Wrap>
     );
 }
