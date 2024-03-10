@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 interface Props {
-    onSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+    handleSubmit: (formData: FormData) => void;
 }
 
-export default function LogInForm({ onSubmit }: Props) {
+export default function LogInForm({ handleSubmit }: Props) {
     return (
-        <form onSubmit={onSubmit}>
+        <form action={handleSubmit}>
             <div className="!mb-6">
                 <label
                     htmlFor="email"

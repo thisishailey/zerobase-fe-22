@@ -85,7 +85,7 @@ export default function MenuPanel({ onClick }: { onClick: () => void }) {
                     </li>
                     <li className="transition-all duration-300 hover:text-4xl">
                         <Link href={'/account'} onClick={closePanel}>
-                            Log In
+                            Account
                         </Link>
                     </li>
                 </ul>

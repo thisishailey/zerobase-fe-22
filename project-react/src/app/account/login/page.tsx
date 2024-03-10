@@ -2,31 +2,9 @@
 
 import Wrap from '@/components/common/template/wrap';
 import LogInForm from '@/components/account/LogInForm';
-import { useRouter } from 'next/navigation';
+import handleSubmit from './action';
 
 export default function LogInPage() {
-    const router = useRouter();
-
-    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-
-        const formData = new FormData(event.currentTarget);
-        const email = formData.get('email');
-        const password = formData.get('password');
-
-        const response = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
-        });
-
-        if (response.ok) {
-            router.push('/profile');
-        } else {
-            // Handle errors
-        }
-    }
-
     return (
         <Wrap>
             <div className="flex flex-col justify-center py-16 px-6 lg:px-8">
@@ -39,7 +17,7 @@ export default function LogInPage() {
                     </p>
                 </div>
                 <div className="!mt-16 sm:!mt-20 sm:w-full sm:max-w-sm sm:mx-auto">
-                    <LogInForm onSubmit={handleSubmit} />
+                    <LogInForm handleSubmit={handleSubmit} />
                 </div>
             </div>
         </Wrap>
