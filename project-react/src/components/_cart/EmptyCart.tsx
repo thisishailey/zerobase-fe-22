@@ -24,7 +24,7 @@ export function EmptyCartButton({ classList, onClick }: EmptyCartButtonProps) {
 
     return (
         <Link
-            href={'/product/all'}
+            href={'/product/category/all'}
             className={buttonClasses}
             onClick={onClick}
             onMouseOver={() => arrowBounceEffect(true)}

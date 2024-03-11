@@ -4,7 +4,7 @@ interface WrapProps {
 }
 
 export default function Wrap({ children, classList }: WrapProps) {
-    const defaultClasses = 'w-full max-w-screen-2xl my-0 mx-auto ';
+    const defaultClasses = 'w-full max-w-7xl my-0 mx-auto ';
     const additionalClasses = classList || '';
 
     const wrapClasses = defaultClasses + additionalClasses;

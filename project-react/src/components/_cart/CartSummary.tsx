@@ -1,11 +1,18 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useCheckoutStore } from '@/stores/checkoutStore';
 import OrderSummary from '@/components/common/OrderSummary';
 import type ICartItem from '@/types/cartItem';
 
 export default function CartSummary({ cart }: { cart: ICartItem[] }) {
+    const router = useRouter();
     const { setCheckout } = useCheckoutStore();
+
+    const handleCheckout = () => {
+        setCheckout(cart, true);
+        router.push('/checkout');
+    };
 
     const subtotal = cart.reduce((acc, cur) => {
         return cur.price * cur.qty + acc;
@@ -20,9 +27,8 @@ export default function CartSummary({ cart }: { cart: ICartItem[] }) {
             shipping={shipping}
             tax={tax}
             total={total}
-            href="/checkout"
             hasItems={false}
-            onClick={() => setCheckout(cart, true)}
+            onClick={handleCheckout}
             isOrderComplete={false}
         />
     );

@@ -234,7 +234,7 @@ export function CartButton() {
 
     return (
         <Popover className="relative">
-            <Popover.Button className="p-2.5 text-lg rounded-full outline-0 hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 transition duration-300">
+            <Popover.Button className="p-2.5 text-lg rounded-full outline-0 hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 transition duration-300 cart-popover-button">
                 <HiOutlineShoppingBag />
                 {cart.length > 0 && (
                     <div className="absolute bottom-0.5 right-0.5 px-1 text-xs font-medium rounded-full bg-gray-300 dark:bg-neutral-600">
@@ -252,12 +252,12 @@ export function CartButton() {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
             >
-                <Popover.Panel className="absolute right-0 z-50 translate-x-14 sm:translate-x-4 w-80 mt-3">
-                    {({ close }) => (
-                        <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/5">
-                            <ul className="relative p-2 bg-white dark:!bg-black">
-                                {cart.length > 0 ? (
-                                    cart.map((item) => (
+                {cart.length > 0 ? (
+                    <Popover.Panel className="absolute right-0 z-50 translate-x-14 sm:translate-x-4 w-80 mt-3">
+                        {({ close }) => (
+                            <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/5">
+                                <ul className="relative p-2 bg-white dark:!bg-black">
+                                    {cart.map((item) => (
                                         <Link
                                             href={`/product/detail/${item.id}`}
                                             onClick={() => close()}
@@ -283,15 +283,9 @@ export function CartButton() {
                                                 </div>
                                             </li>
                                         </Link>
-                                    ))
-                                ) : (
-                                    <li className="flex items-center p-2 py-3 rounded-lg">
-                                        Your shopping cart is empty.
-                                    </li>
-                                )}
-                            </ul>
-                            <div className="flex p-3 bg-gray-100 dark:bg-neutral-900">
-                                {cart.length > 0 ? (
+                                    ))}
+                                </ul>
+                                <div className="flex p-3 bg-gray-100 dark:bg-neutral-900">
                                     <Link
                                         href={'/cart'}
                                         onClick={() => close()}
@@ -299,16 +293,27 @@ export function CartButton() {
                                     >
                                         Go to cart
                                     </Link>
-                                ) : (
+                                </div>
+                            </div>
+                        )}
+                    </Popover.Panel>
+                ) : (
+                    <Popover.Panel className="absolute right-0 z-50 translate-x-14 sm:translate-x-4 w-60 mt-3">
+                        {({ close }) => (
+                            <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/5">
+                                <div className="relative p-2 bg-white dark:!bg-black">
+                                    <div className="flex items-center p-2 pb-3 text-sm rounded-lg">
+                                        Your shopping cart is empty.
+                                    </div>
                                     <EmptyCartButton
-                                        classList="w-72 text-lg"
+                                        classList="w-56 text-base"
                                         onClick={() => close()}
                                     />
-                                )}
+                                </div>
                             </div>
-                        </div>
-                    )}
-                </Popover.Panel>
+                        )}
+                    </Popover.Panel>
+                )}
             </Transition>
         </Popover>
     );

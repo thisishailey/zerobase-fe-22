@@ -1,22 +1,35 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useCheckoutStore } from '@/stores/checkoutStore';
 import { useOrderStore } from '@/stores/orderStore';
 import { useCartStore } from '@/stores/cartStore';
 import OrderSummary from '@/components/common/OrderSummary';
 
 export default function CheckoutSummary() {
+    const router = useRouter();
+
     const { checkout, fromCart, clearCheckout } = useCheckoutStore();
     const { addOrder } = useOrderStore();
     const { emptyCart } = useCartStore();
 
-    const handleOrderComplete = () => {
+    const handleOrderComplete = (e: SubmitEvent) => {
+        e.preventDefault();
         addOrder(checkout);
         clearCheckout();
         if (fromCart) {
             emptyCart();
         }
+        router.push('/checkout/success');
     };
+
+    useEffect(() => {
+        const form = document.querySelector(
+            '.checkout-form'
+        ) as HTMLFormElement;
+        form.onsubmit = handleOrderComplete;
+    }, []);
 
     const subtotal = checkout.reduce((acc, cur) => {
         return cur.price * cur.qty + acc;
@@ -31,11 +44,9 @@ export default function CheckoutSummary() {
             shipping={shipping}
             tax={tax}
             total={total}
-            href="/checkout/success"
             hasItems={true}
             items={checkout}
             isOrderComplete={false}
-            onClick={handleOrderComplete}
         />
     );
 }

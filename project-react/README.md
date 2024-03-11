@@ -47,8 +47,8 @@
 
 ## To Do
 
--   Search page
 -   Signup page
+-   Search page
 -   404 page
 -   Loading page & skeleton
 -   Deployment

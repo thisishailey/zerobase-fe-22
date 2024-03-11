@@ -11,13 +11,12 @@ interface OrderSummaryProps {
     items?: ICartItem[];
     isOrderComplete: boolean;
     orderId?: string;
-    href?: string;
     onClick?: () => void;
 }
 
 export default function OrderSummary(props: OrderSummaryProps) {
     return (
-        <div className="flex flex-col gap-4 w-full md:w-1/3 min-h-96 md:mx-4 !px-6 !py-8 rounded-lg bg-gray-100 dark:bg-neutral-800">
+        <div className="flex flex-col gap-4 w-full max-w-sm min-w-80 min-h-96 md:mx-4 !px-6 !py-8 rounded-xl bg-gray-100 dark:bg-neutral-800">
             <div>
                 <h3 className="text-lg sm:text-xl font-medium pb-3 border-b border-gray-300 dark:border-neutral-500">
                     {props.isOrderComplete
@@ -79,13 +78,13 @@ export default function OrderSummary(props: OrderSummaryProps) {
                 <span>${props.total.toFixed(2)}</span>
             </div>
             {!props.isOrderComplete && (
-                <Link
-                    href={props.href!}
+                <button
+                    type="submit"
                     onClick={props.onClick}
                     className="py-3 rounded-xl text-center text-base text-white bg-blue-700 transition-all duration-300 hover:bg-blue-800 hover:text-lg"
                 >
                     Pay ${props.total.toFixed(2)}
-                </Link>
+                </button>
             )}
         </div>
     );
