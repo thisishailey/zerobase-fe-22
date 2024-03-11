@@ -1,5 +1,5 @@
-import Wrap from '@/components/common/template/Wrap';
 import { getProductsData, getProductData } from '@/api/products';
+import Wrap from '@/components/common/template/Wrap';
 import ProductBreadcrumbs from '@/components/_product/_detail/Breadcrumbs';
 import ProductDetailCard from '@/components/_product/_detail/DetailCard';
 import type IProduct from '@/types/productData';
@@ -12,7 +12,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function ProductDetail({
+export default async function ProductDetailPage({
     params,
 }: {
     params: { id: string };

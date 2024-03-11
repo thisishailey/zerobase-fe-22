@@ -1,7 +1,7 @@
 import Wrap from '@/components/common/template/Wrap';
 import OrderCompleteSummary from '@/components/_checkout/OrderCompleteSummary';
 
-export default function Checkout() {
+export default function CheckoutSuccessPage() {
     return (
         <Wrap>
             <span>Payment successful</span>

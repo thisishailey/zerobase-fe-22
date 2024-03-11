@@ -2,67 +2,53 @@
 
 ## Tech Stack
 
--   React Bootstrap
--   React Icons
--   Tailwind CSS
--   TypeScript
--   React
--   Next.js
--   Local Storage
--   Fake Store API
--   Git
--   npm
--   VS Code
--   ESLint
+-   Styles
 
-## Structure
+    -   Tailwind CSS
+    -   React Bootstrap
+    -   Daisy UI
+    -   Headless UI
+    -   React Icons
+    -   Heroicons
 
--   Home
+-   JS Lib & Framework
 
-    -   Menu
+    -   TypeScript
+    -   React
+    -   Next.js
 
-        -   Search
-        -   Home
-        -   Products
-            -   All
-            -   Category 1
-            -   Category 2
-            -   Category 3
-        -   Account
+-   JS modules
 
-    -   Search
-    -   Account
-    -   Cart
+    -   JSON Web Tokens (JWT)
+    -   OrderCode
+
+-   Storage
+
+    -   Local Storage
+    -   Cookies
+
+-   API
+
+    -   Fake Store API
+
+-   State Management
+
+    -   Zustand
+
+-   Version Control
+
+    -   Git
+
+-   Tools
+
+    -   npm
+    -   VS Code
+    -   ESLint
 
 ## To Do
 
--   Search
-
-    -   Navigate to search results page on submit
-    -   Show search results
-
--   Account
-
-    -   Check whether the user is logged in
-
-        -   True - Get user info and open user account page
-        -   False - Open log in page
-
-    -   Make log in page
-
-        -   Log in form
-        -   Save log in info
-        -   Link to sign in form (if no account)
-
-    -   Make sign in page
-
-        -   Sign in form
-        -   Create account
-        -   Save log in info
-
-    -   Make user account page
-
--   Others
-
-    -   404 page
-    -   Loading page
+-   Search page
+-   Signup page
+-   404 page
+-   Loading page & skeleton
+-   Deployment

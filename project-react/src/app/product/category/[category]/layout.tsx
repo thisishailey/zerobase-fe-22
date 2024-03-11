@@ -12,12 +12,7 @@ interface CategoryLayoutProps {
     expensive: React.ReactNode;
 }
 
-export default function ProductCategoryLayout({
-    children,
-    latest,
-    cheap,
-    expensive,
-}: CategoryLayoutProps) {
+export default function ProductCategoryLayout(props: CategoryLayoutProps) {
     const [sortOption, setSortOption] = useState<TSortOption>('latest');
 
     const changeSortOption = (id: TSortOption) => {
@@ -39,10 +34,10 @@ export default function ProductCategoryLayout({
                 />
             </div>
             <div className="w-full md:w-4/5">
-                {children}
-                {sortOption === 'latest' && latest}
-                {sortOption === 'cheap' && cheap}
-                {sortOption === 'expensive' && expensive}
+                {props.children}
+                {sortOption === 'latest' && props.latest}
+                {sortOption === 'cheap' && props.cheap}
+                {sortOption === 'expensive' && props.expensive}
             </div>
         </Wrap>
     );

@@ -1,9 +1,9 @@
-export default function Search() {
+import Wrap from '@/components/common/template/Wrap';
+
+export default function SearchPage() {
     return (
-        <div className="min-h-screen">
-            <main className="p-10">
-                <h2>This is a search page.</h2>
-            </main>
-        </div>
+        <Wrap>
+            <h2>This is a search page.</h2>
+        </Wrap>
     );
 }
