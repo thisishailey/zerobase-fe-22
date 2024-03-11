@@ -1,6 +1,6 @@
 'use server';
 
-import { getSession, logout } from '../../../../lib';
+import { getSession, logout } from '../../../lib';
 import { redirect } from 'next/navigation';
 
 export async function getCurrentUser() {

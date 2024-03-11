@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Wrap from '@/components/common/template/wrap';
-import Sort from '@/components/product/Sort';
-import { SmallSort } from '@/components/product/Sort';
+import Wrap from '@/components/common/template/Wrap';
+import Sort, { SmallSort } from '@/components/_product/Sort';
 import type { TSortOption } from '@/types/sortOption';
 
 interface CategoryLayoutProps {

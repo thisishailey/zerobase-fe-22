@@ -1,5 +1,5 @@
-import Wrap from '@/components/common/template/wrap';
-import CheckoutSummary from '@/components/checkout/CheckoutSummary';
+import Wrap from '@/components/common/template/Wrap';
+import CheckoutSummary from '@/components/_checkout/CheckoutSummary';
 
 export default function Checkout() {
     return (

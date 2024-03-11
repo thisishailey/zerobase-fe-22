@@ -1,4 +1,4 @@
-import Page from '@/components/common/template/page';
+import Page from '@/components/common/template/Page';
 
 export default function CheckoutLayout({
     children,

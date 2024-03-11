@@ -1,7 +1,4 @@
-import {
-    getCategoryDict,
-    convertParamToCategory,
-} from '@/utils/productCategory';
+import { getCategoryDict, convertParamToCategory } from '@/api/productCategory';
 
 export async function generateStaticParams() {
     const categories = await getCategoryDict();

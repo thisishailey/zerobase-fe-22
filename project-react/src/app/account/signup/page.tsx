@@ -1,5 +1,5 @@
-import Wrap from '@/components/common/template/wrap';
-import SignUpForm from '@/components/account/SignUpForm';
+import Wrap from '@/components/common/template/Wrap';
+import SignUpForm from '@/components/_account/SignUpForm';
 
 export default function SignUpPage() {
     return (

@@ -1,5 +1,5 @@
-import { getProductsData } from '@/api/products';
-import type IProduct from '@/types/productData';
+import { getProductsData } from './products';
+import type IProduct from '../types/productData';
 
 async function getCategoryList() {
     const products: IProduct[] = await getProductsData();

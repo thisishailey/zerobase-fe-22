@@ -1,4 +1,6 @@
-import Wrap from '../common/template/wrap';
+import Wrap from '../template/Wrap';
+import Link from 'next/link';
+import { CATEGORY } from '@/constants/category';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
@@ -12,48 +14,54 @@ export default function Footer() {
                 <Wrap classList="flex flex-col items-center gap-12 pt-14 pb-14 lg:pb-20 px-8 lg:px-12">
                     <div className="flex items-start justify-center sm:justify-between w-full text-sm lg:p-6 !pb-12 border-b border-solid border-neutral-400">
                         <div className="hidden sm:block">
-                            <h4 className="mb-3 font-semibold">About Us</h4>
+                            <p className="mb-3 font-semibold">About Us</p>
                             <ul>
                                 <li className="mb-1 cursor-pointer">
                                     Our Story
                                 </li>
-                                <li className="mb-1 cursor-pointer">News</li>
-                                <li className="mb-1 cursor-pointer">GitHub</li>
+                                <li className="mb-1 cursor-pointer">
+                                    Sustainability
+                                </li>
+                                <li className="mb-1 cursor-pointer">Press</li>
+                                <li className="mb-1 cursor-pointer">Careers</li>
                             </ul>
                         </div>
                         <div className="hidden sm:block">
-                            <h4 className="mb-3 font-semibold">Products</h4>
+                            <p className="mb-3 font-semibold">Shop</p>
                             <ul>
-                                <li className="mb-1 cursor-pointer">All</li>
-                                <li className="mb-1 cursor-pointer">Latest</li>
-                                <li className="mb-1 cursor-pointer">
-                                    Trending
-                                </li>
-                                <li className="mb-1 cursor-pointer">Clothes</li>
-                                <li className="mb-1 cursor-pointer">
-                                    Accessories
-                                </li>
+                                {CATEGORY.map((category) => {
+                                    return (
+                                        <li className="mb-1" key={category}>
+                                            <Link
+                                                href={`/product/category/${category}`}
+                                                className="capitalize"
+                                            >
+                                                {category}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                         <div className="hidden md:block">
-                            <h4 className="mb-3 font-semibold">Support</h4>
+                            <p className="mb-3 font-semibold">
+                                Customer Service
+                            </p>
                             <ul>
-                                <li className="mb-1 cursor-pointer">
-                                    Get Help
-                                </li>
-                                <li className="mb-1 cursor-pointer">
-                                    Shipping and Delivery
-                                </li>
-                                <li className="mb-1 cursor-pointer">
-                                    Returns and Cancellations
-                                </li>
                                 <li className="mb-1 cursor-pointer">FAQ</li>
+                                <li className="mb-1 cursor-pointer">
+                                    Shipping
+                                </li>
+                                <li className="mb-1 cursor-pointer">Returns</li>
+                                <li className="mb-1 cursor-pointer">
+                                    Find a store
+                                </li>
                             </ul>
                         </div>
                         <div className="sm:ml-6 sm:mr-12 lg:ml-10 lg:mr-20">
-                            <h3 className="mb-3 font-semibold text-lg text-center">
+                            <h4 className="mb-3 font-semibold text-lg text-center">
                                 Contact Us
-                            </h3>
+                            </h4>
                             <ul>
                                 <li className="mb-1">
                                     <HiOutlineMail className="inline" />

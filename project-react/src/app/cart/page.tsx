@@ -1,5 +1,5 @@
-import Wrap from '@/components/common/template/wrap';
-import CartTable from '@/components/cart/CartTable';
+import Wrap from '@/components/common/template/Wrap';
+import CartTable from '@/components/_cart/CartTable';
 
 export default function Cart() {
     return (

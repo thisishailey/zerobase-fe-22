@@ -3,8 +3,8 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-import { getUserInfo } from '@/api/users';
-import type { UserInfo } from '@/types/userInfo';
+import { getUserInfo } from './api/users';
+import type { IUserInfo } from './types/userInfo';
 
 const secretKey = 'secret';
 const key = new TextEncoder().encode(secretKey);
@@ -42,7 +42,7 @@ export async function logout() {
 export async function getSession() {
     const session = cookies().get('session')?.value;
     if (!session) return null;
-    return (await decrypt(session)) as UserInfo;
+    return (await decrypt(session)) as IUserInfo;
 }
 
 export async function updateSession(request: NextRequest) {

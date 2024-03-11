@@ -1,6 +1,6 @@
 'use client';
 
-import Wrap from '@/components/common/template/wrap';
+import Wrap from '@/components/common/template/Wrap';
 import { useCartStore } from '@/stores/cartStore';
 import { useCheckoutStore } from '@/stores/checkoutStore';
 import { useOrderStore } from '@/stores/orderStore';

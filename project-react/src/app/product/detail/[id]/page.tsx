@@ -1,8 +1,8 @@
-import Wrap from '@/components/common/template/wrap';
+import Wrap from '@/components/common/template/Wrap';
 import { getProductsData, getProductData } from '@/api/products';
 import type IProduct from '@/types/productData';
-import ProductBreadcrumbs from '@/components/product/ProductBreadcrumbs';
-import ProductDetailCard from '@/components/product/ProductDetailCard';
+import ProductBreadcrumbs from '@/components/_product/ProductBreadcrumbs';
+import ProductDetailCard from '@/components/_product/ProductDetailCard';
 
 export async function generateStaticParams() {
     const products: IProduct[] = await getProductsData();

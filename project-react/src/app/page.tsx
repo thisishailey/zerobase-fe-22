@@ -1,11 +1,11 @@
-import Page from '@/components/common/template/page';
-import CarouselBanner from '@/components/home/CarouselBanner';
-import Wrap from '@/components/common/template/wrap';
-import HomeSection from '@/components/home/template/section';
+import Page from '@/components/common/template/Page';
+import Carousel from '@/components/home/Carousel';
+import Wrap from '@/components/common/template/Wrap';
+import Section from '@/components/home/Section';
 import { getProductsData } from '@/api/products';
 import type Product from '@/types/productData';
 
-export default async function Home() {
+export default async function HomePage() {
     const data = await getProductsData();
 
     const newProducts: Product[] = data.slice(0, 3);
@@ -20,11 +20,11 @@ export default async function Home() {
 
     return (
         <Page>
-            <CarouselBanner />
+            <Carousel />
             <Wrap classList="min-h-screen px-10 pt-10 lg:pt-14 pb-16 lg:pb-20">
                 {sectionList.map((section) => {
                     return (
-                        <HomeSection
+                        <Section
                             title={section.title}
                             products={section.products}
                             key={section.id}

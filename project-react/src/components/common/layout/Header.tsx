@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import Wrap from '../common/template/wrap';
-import NavButton from '../header/NavButton';
-import MenuButton from '../header/MenuButton';
-import DarkModeButton from '../header/DarkModeButton';
-import SearchBar from '../header/SearchBar';
-import CartPopover from '../header/CartPopover';
-import { VscAccount } from 'react-icons/vsc';
+import Wrap from '../template/Wrap';
+import {
+    MenuButton,
+    ThemeButton,
+    SearchBar,
+    AccountButton,
+    CartButton,
+} from './HeaderComponents';
 
 export default function Header() {
     return (
@@ -13,9 +14,9 @@ export default function Header() {
             <Wrap classList="flex justify-between">
                 <div className="hidden sm:flex flex-1 basis-0 items-center md:gap-1">
                     <MenuButton />
-                    <DarkModeButton />
+                    <ThemeButton />
                 </div>
-                <h1 className="flex items-center text-xl font-semibold">
+                <h1 className="flex items-center text-xl font-semibold hover:text-neutral-600 dark:hover:text-neutral-300 transform duration-300">
                     <Link href={'/'}>MY STORE</Link>
                 </h1>
                 <ul className="flex-1 basis-0 flex items-center justify-end gap-0.5 md:gap-2">
@@ -27,15 +28,13 @@ export default function Header() {
                         />
                     </li>
                     <li className="hidden sm:block">
-                        <NavButton href={'/account'}>
-                            <VscAccount />
-                        </NavButton>
+                        <AccountButton />
                     </li>
                     <li className="block sm:hidden">
-                        <DarkModeButton />
+                        <ThemeButton />
                     </li>
                     <li>
-                        <CartPopover href={'/cart'} />
+                        <CartButton />
                     </li>
                     <li className="block sm:hidden">
                         <MenuButton />

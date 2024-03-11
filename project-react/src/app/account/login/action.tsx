@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { authenticate } from '@/api/users';
-import { login } from '../../../../lib';
+import { login } from '@/lib';
 
 export default async function handleSubmit(formData: FormData) {
     const email = formData.get('email') as string;
@@ -12,6 +12,6 @@ export default async function handleSubmit(formData: FormData) {
         await login(email);
         redirect('/account/user');
     } else {
-        alert('Your email or password is invalid. Please try again.');
+        throw new Error('Your email or password is invalid. Please try again.');
     }
 }

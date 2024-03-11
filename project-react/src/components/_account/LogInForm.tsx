@@ -2,9 +2,15 @@ import Link from 'next/link';
 
 interface Props {
     handleSubmit: (formData: FormData) => void;
+    emailInputRef: React.RefObject<HTMLInputElement>;
+    passwordInputRef: React.RefObject<HTMLInputElement>;
 }
 
-export default function LogInForm({ handleSubmit }: Props) {
+export default function LogInForm({
+    handleSubmit,
+    emailInputRef,
+    passwordInputRef,
+}: Props) {
     return (
         <form action={handleSubmit}>
             <div className="!mb-6">
@@ -16,6 +22,7 @@ export default function LogInForm({ handleSubmit }: Props) {
                 </label>
                 <div className="mt-2">
                     <input
+                        ref={emailInputRef}
                         id="email"
                         name="email"
                         type="email"
@@ -43,6 +50,7 @@ export default function LogInForm({ handleSubmit }: Props) {
                 </div>
                 <div className="mt-2">
                     <input
+                        ref={passwordInputRef}
                         id="password"
                         name="password"
                         type="password"

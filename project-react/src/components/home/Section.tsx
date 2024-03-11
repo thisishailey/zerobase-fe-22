@@ -1,12 +1,12 @@
-import type IProduct from '@/types/productData';
-import ProductCard from '@/components/common/ProductCard';
+import type IProduct from '../../types/productData';
+import ProductCard from '../common/ProductCard';
 
 interface SectionProps {
     title: string;
     products: IProduct[];
 }
 
-export default function HomeSection({ title, products }: SectionProps) {
+export default function Section({ title, products }: SectionProps) {
     return (
         <div className="py-10">
             <h2 className="text-xl font-semibold">{title}</h2>

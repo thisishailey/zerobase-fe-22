@@ -1,4 +1,4 @@
-import type ICartItem from '@/types/cartItem';
+import type ICartItem from './cartItem';
 
 export default interface IOrder {
     orderId: string;

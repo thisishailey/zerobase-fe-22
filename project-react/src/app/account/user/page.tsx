@@ -1,6 +1,6 @@
-import Wrap from '@/components/common/template/wrap';
+import Wrap from '../../../components/common/template/Wrap';
 import { getCurrentUser, handleLogout } from './action';
-import type { UserInfo } from '@/types/userInfo';
+import type { UserInfo } from '../../../types/userInfo';
 
 export default async function UserPage() {
     const user = (await getCurrentUser()) as UserInfo;

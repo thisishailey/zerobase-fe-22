@@ -1,4 +1,4 @@
-import type IProduct from '@/types/productData';
+import type IProduct from '../../types/productData';
 import ProductImage from '../common/ProductImage';
 import ProductDescription from './ProductDescription';
 import { AddCartButton, PurchaseButton } from './ProductButtons';

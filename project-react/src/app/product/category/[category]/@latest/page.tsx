@@ -1,4 +1,4 @@
-import Products from '@/components/product/Products';
+import Products from '@/components/_product/Products';
 import type { CategoryPageParams } from '../page';
 
 export default function ProductsSortByDateDesc({ params }: CategoryPageParams) {
