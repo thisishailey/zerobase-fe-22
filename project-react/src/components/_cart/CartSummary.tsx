@@ -1,8 +1,8 @@
 'use client';
 
-import type ICartItem from '@/types/cartItem';
 import { useCheckoutStore } from '@/stores/checkoutStore';
-import OrderSummary from '../common/OrderSummary';
+import OrderSummary from '@/components/common/OrderSummary';
+import type ICartItem from '@/types/cartItem';
 
 export default function CartSummary({ cart }: { cart: ICartItem[] }) {
     const { setCheckout } = useCheckoutStore();

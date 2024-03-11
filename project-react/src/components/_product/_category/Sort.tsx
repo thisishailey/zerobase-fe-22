@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-import type { TSortOption } from '@/types/sortOption';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import type { TSortOption } from '@/types/sortOption';
 
 interface SortProps {
     sortOption: TSortOption;

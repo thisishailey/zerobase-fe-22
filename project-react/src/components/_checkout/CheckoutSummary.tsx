@@ -3,7 +3,7 @@
 import { useCheckoutStore } from '@/stores/checkoutStore';
 import { useOrderStore } from '@/stores/orderStore';
 import { useCartStore } from '@/stores/cartStore';
-import OrderSummary from '../common/OrderSummary';
+import OrderSummary from '@/components/common/OrderSummary';
 
 export default function CheckoutSummary() {
     const { checkout, fromCart, clearCheckout } = useCheckoutStore();

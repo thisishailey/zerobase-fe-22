@@ -3,8 +3,8 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-import { getUserInfo } from './api/users';
-import type { IUserInfo } from './types/userInfo';
+import { getUserInfo } from '@/api/users';
+import type IUserInfo from '@/types/userInfo';
 
 const secretKey = 'secret';
 const key = new TextEncoder().encode(secretKey);

@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import OrderCode from 'ordercode';
 import type IOrder from '@/types/order';
 import type ICartItem from '@/types/cartItem';
-import OrderCode from 'ordercode';
 
 type OrderState = {
     order: IOrder[];

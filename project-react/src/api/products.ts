@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://fakestoreapi.com/products';
+import { ENDPOINT } from '@/constants/api';
 
 export const getProductsData = async () => {
     const res = await fetch(ENDPOINT);

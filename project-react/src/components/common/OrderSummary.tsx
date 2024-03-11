@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import type ICartItem from '@/types/cartItem';
 import ProductImage from './ProductImage';
+import type ICartItem from '@/types/cartItem';
 
 interface OrderSummaryProps {
     subtotal: number;

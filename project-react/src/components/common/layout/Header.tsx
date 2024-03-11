@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Wrap from '../template/Wrap';
+import Wrap from '@/components/common/template/Wrap';
 import {
     MenuButton,
     ThemeButton,

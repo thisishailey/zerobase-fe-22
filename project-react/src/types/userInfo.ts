@@ -1,4 +1,4 @@
-export interface IUserInfo {
+export default interface IUserInfo {
     user: {
         firstName: string;
         lastName: string;

@@ -8,7 +8,7 @@ import { useAccountStore } from '@/stores/accountStore';
 import { logout } from '@/lib';
 import ProductImage from '@/components/common/ProductImage';
 import { EmptyCartButton } from '@/components/_cart/EmptyCart';
-import { THEME_LS_KEY } from '@/constants/keys/theme';
+import { THEME_LS_KEY } from '@/constants/theme';
 import { CATEGORY } from '@/constants/category';
 import { VscAccount } from 'react-icons/vsc';
 import { IoCloseOutline } from 'react-icons/io5';

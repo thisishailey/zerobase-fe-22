@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useCartStore } from '@/stores/cartStore';
-import ProductImage from '../common/ProductImage';
+import ProductImage from '@/components/common/ProductImage';
 import CartSummary from './CartSummary';
 import EmptyCart from './EmptyCart';
 import {

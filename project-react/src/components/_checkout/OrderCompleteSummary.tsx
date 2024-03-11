@@ -1,7 +1,7 @@
 'use client';
 
 import { useOrderStore } from '@/stores/orderStore';
-import OrderSummary from '../common/OrderSummary';
+import OrderSummary from '@/components/common/OrderSummary';
 
 export default function OrderCompleteSummary() {
     const { currentOrder } = useOrderStore();
