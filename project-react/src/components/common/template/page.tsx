@@ -5,7 +5,7 @@ interface PageProps {
 
 export default function Page({ children, classList }: PageProps) {
     const defaultClasses =
-        'relative top-16 z-30 bg-neutral-50 dark:bg-neutral-900 ';
+        'relative top-16 z-10 bg-neutral-50 dark:bg-neutral-900 ';
     const additionalClasses = classList || '';
 
     const pageClasses = defaultClasses + additionalClasses;

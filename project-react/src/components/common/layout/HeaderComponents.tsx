@@ -21,38 +21,7 @@ import {
     MdDarkMode,
 } from 'react-icons/md';
 
-interface NavButtonProps {
-    href?: string;
-    onClick?: () => void;
-    classList?: string;
-    children: React.ReactNode;
-}
-
-function NavButton(props: NavButtonProps) {
-    const defaultClasses =
-        'block p-2.5 text-lg rounded-full transition hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 ';
-    const additionalClasses = props.classList || '';
-
-    const navButtonClasses = defaultClasses + additionalClasses;
-
-    return (
-        <>
-            {props.href ? (
-                <Link href={props.href} className={navButtonClasses}>
-                    {props.children}
-                </Link>
-            ) : props.onClick ? (
-                <button className={navButtonClasses} onClick={props.onClick}>
-                    {props.children}
-                </button>
-            ) : (
-                <button className={navButtonClasses}>{props.children}</button>
-            )}
-        </>
-    );
-}
-
-export function ThemeButton({ classList }: { classList?: string }) {
+export function ThemeButton() {
     const [isDarkMode, setIsDarkMode] = useState<boolean>();
     const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
     const [isToggled, setIsToggled] = useState<boolean>(false);
@@ -98,14 +67,9 @@ export function ThemeButton({ classList }: { classList?: string }) {
         }, 300);
     };
 
-    const defaultClasses =
-        'p-2.5 text-lg rounded-full transition hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 ';
-    const additionalClasses = classList || '';
-    const buttonClasses = defaultClasses + additionalClasses;
-
     return (
         <button
-            className={buttonClasses}
+            className="p-2.5 text-lg rounded-full hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 transition duration-300"
             onClick={toggleTheme}
             onMouseOver={() => !isToggled && setIsMouseOver(true)}
             onMouseLeave={() => {
@@ -134,12 +98,8 @@ interface SearchBarProps {
     inputClassList?: string;
 }
 
-export function SearchBar({
-    isHeader,
-    classList,
-    inputClassList,
-}: SearchBarProps) {
-    const [showButton, setShowButton] = useState(isHeader);
+export function SearchButton(props: SearchBarProps) {
+    const [showButton, setShowButton] = useState(props.isHeader);
 
     const showSearchForm = () => {
         setShowButton(false);
@@ -150,21 +110,24 @@ export function SearchBar({
     };
 
     const defaultClasses =
-        'flex items-center justify-between rounded-full border-1 border-solid border-neutral-400 bg-neutral-100 dark:bg-neutral-800 hover:bg-white dark:hover:bg-neutral-900 transition-all ';
-    const additionalClasses = classList || '';
+        'flex items-center justify-between rounded-full border-1 border-solid border-neutral-400 bg-neutral-100 dark:bg-neutral-800 hover:bg-white dark:hover:bg-neutral-900 transition duration-300 ';
+    const additionalClasses = props.classList || '';
     const formClasses = defaultClasses + additionalClasses;
 
     const defaultInputClasses =
         'flex-1 font-normal text-neutral-900 dark:text-neutral-100 bg-transparent outline-0 placeholder:font-light placeholder:text-neutral-600 dark:placeholder:text-neutral-300 ';
-    const additionalInputClasses = inputClassList || '';
+    const additionalInputClasses = props.inputClassList || '';
     const inputClasses = defaultInputClasses + additionalInputClasses;
 
     return (
         <>
             {showButton && (
-                <NavButton onClick={showSearchForm}>
+                <button
+                    className="block p-2.5 text-lg rounded-full hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 transition duration-300"
+                    onClick={showSearchForm}
+                >
                     <FiSearch />
-                </NavButton>
+                </button>
             )}
             <form className={showButton ? 'hidden' : formClasses}>
                 <input
@@ -174,7 +137,7 @@ export function SearchBar({
                     placeholder="Search products"
                     autoComplete="off"
                 />
-                {isHeader && (
+                {props.isHeader && (
                     <button
                         className="basis-0 text-neutral-600 dark:text-neutral-300"
                         type="button"
@@ -194,12 +157,12 @@ export function AccountButton() {
     return (
         <Popover className="relative">
             <Popover.Button
-                className="p-2.5 text-lg rounded-full outline-0 transition hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40"
+                className="p-2.5 text-lg rounded-full outline-0 hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 transition duration-300"
                 onClick={async () => getUser()}
             >
                 <VscAccount />
             </Popover.Button>
-            <Popover.Overlay className="fixed inset-0 bg-black/20 dark:bg-white/20" />
+            <Popover.Overlay className="fixed inset-0 z-40 bg-black/20 dark:bg-white/20" />
             <Transition
                 as={Fragment}
                 enter="transition ease-out duration-200"
@@ -209,7 +172,7 @@ export function AccountButton() {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
             >
-                <Popover.Panel className="absolute right-0 translate-x-16 z-10 w-40 mt-3">
+                <Popover.Panel className="absolute right-0 z-50 translate-x-16 w-40 mt-3">
                     {({ close }) => (
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/5">
                             <div className="p-3 bg-white dark:!bg-black">
@@ -224,7 +187,7 @@ export function AccountButton() {
                                         <Link
                                             href={'/account'}
                                             onClick={() => close()}
-                                            className="p-2 rounded-lg text-center text-white text-sm bg-blue-600 hover:bg-blue-700"
+                                            className="p-2 rounded-lg text-center text-white text-sm bg-blue-600 hover:bg-blue-700 transition duration-300"
                                         >
                                             View Account
                                         </Link>
@@ -233,7 +196,7 @@ export function AccountButton() {
                                                 logout();
                                                 close();
                                             }}
-                                            className="p-2 rounded-lg text-center text-blue-600 text-sm border-1 border-blue-600 hover:bg-blue-100"
+                                            className="p-2 rounded-lg text-center text-blue-600 text-sm border-1 border-blue-600 hover:bg-blue-100 dark:hover:bg-neutral-800 transition duration-300"
                                         >
                                             Log Out
                                         </button>
@@ -243,7 +206,7 @@ export function AccountButton() {
                                         <Link
                                             href={'/account/login'}
                                             onClick={() => close()}
-                                            className="p-2 rounded-lg text-center text-white text-lg bg-blue-600 hover:bg-blue-700"
+                                            className="p-2 rounded-lg text-center text-white text-lg bg-blue-600 hover:bg-blue-700 transition duration-300"
                                         >
                                             Log In
                                         </Link>
@@ -251,7 +214,7 @@ export function AccountButton() {
                                         <Link
                                             href={'/account/signup'}
                                             onClick={() => close()}
-                                            className="p-2 rounded-lg text-center text-blue-600 text-lg border-1 border-blue-600 hover:bg-blue-100"
+                                            className="p-2 rounded-lg text-center text-blue-600 text-lg border-1 border-blue-600 hover:bg-blue-100 dark:hover:bg-neutral-800 transition duration-300"
                                         >
                                             Sign Up
                                         </Link>
@@ -271,7 +234,7 @@ export function CartButton() {
 
     return (
         <Popover className="relative">
-            <Popover.Button className="p-2.5 text-lg rounded-full outline-0 transition hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 cart-popover-button">
+            <Popover.Button className="p-2.5 text-lg rounded-full outline-0 hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 transition duration-300">
                 <HiOutlineShoppingBag />
                 {cart.length > 0 && (
                     <div className="absolute bottom-0.5 right-0.5 px-1 text-xs font-medium rounded-full bg-gray-300 dark:bg-neutral-600">
@@ -279,7 +242,7 @@ export function CartButton() {
                     </div>
                 )}
             </Popover.Button>
-            <Popover.Overlay className="fixed inset-0 bg-black/20 dark:bg-white/20" />
+            <Popover.Overlay className="fixed inset-0 z-40 bg-black/20 dark:bg-white/20" />
             <Transition
                 as={Fragment}
                 enter="transition ease-out duration-200"
@@ -289,7 +252,7 @@ export function CartButton() {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
             >
-                <Popover.Panel className="absolute right-0 translate-x-14 sm:translate-x-4 z-10 w-80 mt-3">
+                <Popover.Panel className="absolute right-0 z-50 translate-x-14 sm:translate-x-4 w-80 mt-3">
                     {({ close }) => (
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/5">
                             <ul className="relative p-2 bg-white dark:!bg-black">
@@ -300,7 +263,7 @@ export function CartButton() {
                                             onClick={() => close()}
                                             key={item.id}
                                         >
-                                            <li className="flex items-center p-2 rounded-lg transition duration-200 hover:bg-gray-200/60 dark:hover:bg-neutral-800">
+                                            <li className="flex items-center p-2 rounded-lg hover:bg-gray-200/60 dark:hover:bg-neutral-800 transition duration-300">
                                                 <div className="flex items-center justify-center w-12 h-12 text-white">
                                                     <ProductImage
                                                         classList="w-12 h-12"
@@ -332,7 +295,7 @@ export function CartButton() {
                                     <Link
                                         href={'/cart'}
                                         onClick={() => close()}
-                                        className="w-72 py-2.5 rounded-lg bg-blue-700 text-center text-lg text-white transfrom-all duration-300 hover:bg-blue-800"
+                                        className="w-72 py-2.5 rounded-lg text-center text-lg text-white bg-blue-600 hover:bg-blue-700 transition duration-300"
                                     >
                                         Go to cart
                                     </Link>
@@ -382,20 +345,20 @@ export function MenuButton() {
 
     return (
         <div>
-            <NavButton
-                classList="flex items-center sm:py-1.5"
+            <button
+                className="flex items-center p-2.5 sm:py-1.5 text-lg rounded-full hover:bg-neutral-300/40 dark:hover:bg-neutral-600/40 transition duration-300"
                 onClick={openSidePanel}
             >
                 <FiMenu className="inline sm:pr-1" />
                 <span className="hidden sm:inline text-base">Menu</span>
-            </NavButton>
+            </button>
             <div ref={sidePanelRef} className="hidden">
                 <div
-                    className="fixed inset-0 bg-black/30"
+                    className="fixed inset-0 bg-black/30 z-40"
                     aria-hidden="true"
                     onClick={closeSidePanel}
                 />
-                <div className="absolute top-[1vh] right-[1vh] sm:left-[1vh] flex flex-col justify-between w-[96vw] sm:w-[50vw] lg:w-[40vw] max-w-md h-[98vh] rounded-xl font-medium text-white bg-gray-400/90 dark:bg-neutral-700/95 backdrop-blur-lg">
+                <div className="absolute top-[1vh] right-[1vh] z-50 sm:left-[1vh] flex flex-col justify-between w-[96vw] sm:w-[50vw] lg:w-[40vw] max-w-md h-[98vh] rounded-xl font-medium text-white bg-gray-400/90 dark:bg-neutral-700/95 backdrop-blur-lg">
                     <div className="flex flex-col w-full">
                         <div className="flex justify-end p-4 text-2xl">
                             <IoCloseOutline
@@ -404,7 +367,7 @@ export function MenuButton() {
                             />
                         </div>
                         <div className="w-full">
-                            <SearchBar
+                            <SearchButton
                                 isHeader={false}
                                 classList="w-4/5 min-w-52 max-w-96 py-2 px-3 my-0 mx-auto"
                                 inputClassList="text-lg placeholder:text-base"
@@ -445,6 +408,11 @@ export function MenuButton() {
                         <li className="transition-all duration-300 hover:text-4xl">
                             <Link href={'/account'} onClick={closeSidePanel}>
                                 Account
+                            </Link>
+                        </li>
+                        <li className="transition-all duration-300 hover:text-4xl">
+                            <Link href={'/cart'} onClick={closeSidePanel}>
+                                Cart
                             </Link>
                         </li>
                     </ul>

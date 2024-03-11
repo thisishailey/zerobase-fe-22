@@ -18,7 +18,7 @@ export function EmptyCartButton({ classList, onClick }: EmptyCartButtonProps) {
     };
 
     const defaultClasses =
-        'flex justify-center px-4 py-3 shadow-md rounded-lg bg-blue-700 font-medium text-center text-white transfrom-all duration-300 hover:bg-blue-800 ';
+        'flex justify-center px-4 py-3 shadow-md rounded-lg font-medium text-center text-white bg-blue-600 hover:bg-blue-700 transition duration-300 ';
     const additionalClasses = classList || '';
     const buttonClasses = defaultClasses + additionalClasses;
 

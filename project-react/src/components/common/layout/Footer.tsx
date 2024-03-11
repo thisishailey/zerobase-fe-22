@@ -7,6 +7,11 @@ import { FaInstagram } from 'react-icons/fa';
 import { IoCallOutline } from 'react-icons/io5';
 
 export default function Footer() {
+    const company = ['Our story', 'Sustainability', 'Press', 'Careers'];
+    const service = ['FAQ', 'Shipping', 'Returns', 'Find a store'];
+    const liClassList =
+        'mb-1.5 cursor-pointer text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white hover:underline transition-all duration-300';
+
     return (
         <>
             <div className="h-[445px] lg:h-[490px] invisible"></div>
@@ -16,14 +21,11 @@ export default function Footer() {
                         <div className="hidden sm:block">
                             <p className="mb-3 font-semibold">About Us</p>
                             <ul>
-                                <li className="mb-1 cursor-pointer">
-                                    Our Story
-                                </li>
-                                <li className="mb-1 cursor-pointer">
-                                    Sustainability
-                                </li>
-                                <li className="mb-1 cursor-pointer">Press</li>
-                                <li className="mb-1 cursor-pointer">Careers</li>
+                                {company.map((item) => (
+                                    <li key={item} className={liClassList}>
+                                        {item}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div className="hidden sm:block">
@@ -31,7 +33,10 @@ export default function Footer() {
                             <ul>
                                 {CATEGORY.map((category) => {
                                     return (
-                                        <li className="mb-1" key={category}>
+                                        <li
+                                            key={category}
+                                            className={liClassList}
+                                        >
                                             <Link
                                                 href={`/product/category/${category}`}
                                                 className="capitalize"
@@ -48,14 +53,11 @@ export default function Footer() {
                                 Customer Service
                             </p>
                             <ul>
-                                <li className="mb-1 cursor-pointer">FAQ</li>
-                                <li className="mb-1 cursor-pointer">
-                                    Shipping
-                                </li>
-                                <li className="mb-1 cursor-pointer">Returns</li>
-                                <li className="mb-1 cursor-pointer">
-                                    Find a store
-                                </li>
+                                {service.map((item) => (
+                                    <li key={item} className={liClassList}>
+                                        {item}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div className="sm:ml-6 sm:mr-12 lg:ml-10 lg:mr-20">
@@ -95,11 +97,13 @@ export default function Footer() {
                             </span>
                         </div>
                         <div className="hidden sm:flex !gap-4 md:!gap-6 lg:!gap-8">
-                            <span className="cursor-pointer">Guide</span>
-                            <span className="cursor-pointer">
+                            <span className="cursor-pointer hover:underline">
+                                Guide
+                            </span>
+                            <span className="cursor-pointer hover:underline">
                                 Terms & Conditions
                             </span>
-                            <span className="cursor-pointer">
+                            <span className="cursor-pointer hover:underline">
                                 Privacy Policy
                             </span>
                         </div>
