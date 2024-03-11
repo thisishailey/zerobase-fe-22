@@ -1,4 +1,5 @@
 import { getCategoryDict, convertParamToCategory } from '@/api/productCategory';
+import type ICategoryParams from '@/types/category';
 
 export async function generateStaticParams() {
     const categories = await getCategoryDict();
@@ -9,13 +10,7 @@ export async function generateStaticParams() {
     return params;
 }
 
-export interface CategoryPageParams {
-    params: { category: string };
-}
-
-export default async function ProductCategoryPage({
-    params,
-}: CategoryPageParams) {
+export default async function ProductCategoryPage({ params }: ICategoryParams) {
     let category = await convertParamToCategory(params.category);
     if (category === 'all') {
         category = 'all products';

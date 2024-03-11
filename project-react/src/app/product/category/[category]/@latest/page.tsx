@@ -1,6 +1,6 @@
-import Products from '@/components/_product/Products';
-import type { CategoryPageParams } from '../page';
+import Products from '@/components/_product/_category/Products';
+import type ICategoryParams from '@/types/category';
 
-export default function ProductsSortByDateDesc({ params }: CategoryPageParams) {
+export default function ProductsSortByDateDesc({ params }: ICategoryParams) {
     return <Products param={params.category} sort={'date-desc'} />;
 }

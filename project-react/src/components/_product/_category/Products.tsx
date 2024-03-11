@@ -1,8 +1,8 @@
-import { convertParamToCategory } from '../../api/productCategory';
-import { getProductsData, getProductsByCategory } from '../../api/products';
-import ProductCard from '../common/ProductCard';
-import type IProduct from '../../types/productData';
-import type { TProductSort } from '../../types/sortOption';
+import { convertParamToCategory } from '@/api/productCategory';
+import { getProductsData, getProductsByCategory } from '@/api/products';
+import ProductCard from '@/components/common/ProductCard';
+import type IProduct from '@/types/productData';
+import type { TProductSort } from '@/types/sortOption';
 
 interface ProductsProps {
     param: string;

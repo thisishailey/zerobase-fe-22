@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Wrap from '@/components/common/template/Wrap';
-import Sort, { SmallSort } from '@/components/_product/Sort';
+import { RadioSort, ListboxSort } from '@/components/_product/_category/Sort';
 import type { TSortOption } from '@/types/sortOption';
 
 interface CategoryLayoutProps {
@@ -27,15 +27,15 @@ export default function ProductCategoryLayout({
     return (
         <Wrap classList="flex justify-between flex-col md:flex-row">
             <div className="w-1/5 text-sm hidden md:block">
-                <Sort
+                <RadioSort
                     sortOption={sortOption}
                     changeSortOption={changeSortOption}
                 />
             </div>
             <div className="block md:hidden flex justify-end">
-                <SmallSort
+                <ListboxSort
                     sortOption={sortOption}
-                    changeSortOption={changeSortOption}
+                    changeSortOption={setSortOption}
                 />
             </div>
             <div className="w-full md:w-4/5">

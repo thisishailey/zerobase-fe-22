@@ -1,5 +1,5 @@
-import type IProduct from '../../types/productData';
-import ProductImage from '../common/ProductImage';
+import type IProduct from '@/types/productData';
+import ProductImage from '@/components/common/ProductImage';
 import ProductDescription from './ProductDescription';
 import { AddCartButton, PurchaseButton } from './ProductButtons';
 
