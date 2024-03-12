@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
+import Loading from '@/app/loading';
 import { getProductsData, getProductData } from '@/api/products';
 import Wrap from '@/components/common/template/Wrap';
-import Loading from '@/components/common/template/Loading';
 import ProductBreadcrumbs from '@/components/_product/_detail/Breadcrumbs';
 import ProductDetailCard from '@/components/_product/_detail/DetailCard';
 import type IProduct from '@/types/productData';

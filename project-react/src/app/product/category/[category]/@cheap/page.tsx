@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Loading from '@/components/common/template/Loading';
+import Loading from '@/app/loading';
 import Products from '@/components/_product/_category/Products';
 import type ICategoryParams from '@/types/category';
 

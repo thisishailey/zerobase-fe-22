@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Loading from '@/components/common/template/Loading';
+import Loading from '@/app/loading';
 import Wrap from '@/components/common/template/Wrap';
 import SearchBar from '@/components/_search/SearchBar';
 import SearchResult from '@/components/_search/SearchResult';
