@@ -8,7 +8,7 @@ import { useCartStore } from '@/stores/cartStore';
 import OrderSummary from '@/components/common/OrderSummary';
 
 export default function CheckoutSummary() {
-    const router = useRouter();
+    const { replace } = useRouter();
 
     const { checkout, fromCart, clearCheckout } = useCheckoutStore();
     const { addOrder } = useOrderStore();
@@ -21,7 +21,7 @@ export default function CheckoutSummary() {
         if (fromCart) {
             emptyCart();
         }
-        router.push('/checkout/success');
+        replace('/checkout/success');
     };
 
     useEffect(() => {

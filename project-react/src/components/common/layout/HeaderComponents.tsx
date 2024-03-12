@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState, Fragment, useRef } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { useCartStore } from '@/stores/cartStore';
@@ -94,12 +95,16 @@ export function ThemeButton() {
 
 interface SearchBarProps {
     isHeader: boolean;
+    closeSidePanel?: () => void;
     classList?: string;
     inputClassList?: string;
 }
 
 export function SearchButton(props: SearchBarProps) {
     const [showButton, setShowButton] = useState(props.isHeader);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const searchParams = useSearchParams();
+    const { push } = useRouter();
 
     const showSearchForm = () => {
         setShowButton(false);
@@ -107,6 +112,19 @@ export function SearchButton(props: SearchBarProps) {
 
     const closeSearchForm = () => {
         setShowButton(true);
+    };
+
+    const handleSearch = (formData: FormData) => {
+        const search = formData.get('search') as string;
+        const params = new URLSearchParams(searchParams);
+        params.set('query', search);
+        push(`/search?${params.toString()}`);
+        (inputRef.current as HTMLInputElement).value = '';
+        if (props.isHeader) {
+            closeSearchForm();
+        } else {
+            props.closeSidePanel?.();
+        }
     };
 
     const defaultClasses =
@@ -129,11 +147,15 @@ export function SearchButton(props: SearchBarProps) {
                     <FiSearch />
                 </button>
             )}
-            <form className={showButton ? 'hidden' : formClasses}>
+            <form
+                action={handleSearch}
+                className={showButton ? 'hidden' : formClasses}
+            >
                 <input
+                    ref={inputRef}
                     className={inputClasses}
-                    type="text"
                     name="search"
+                    type="text"
                     placeholder="Search products"
                     autoComplete="off"
                 />
@@ -373,6 +395,7 @@ export function MenuButton() {
                         </div>
                         <div className="w-full">
                             <SearchButton
+                                closeSidePanel={closeSidePanel}
                                 isHeader={false}
                                 classList="w-4/5 min-w-52 max-w-96 py-2 px-3 my-0 mx-auto"
                                 inputClassList="text-lg placeholder:text-base"

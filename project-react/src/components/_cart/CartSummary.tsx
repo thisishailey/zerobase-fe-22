@@ -6,12 +6,12 @@ import OrderSummary from '@/components/common/OrderSummary';
 import type ICartItem from '@/types/cartItem';
 
 export default function CartSummary({ cart }: { cart: ICartItem[] }) {
-    const router = useRouter();
+    const { push } = useRouter();
     const { setCheckout } = useCheckoutStore();
 
     const handleCheckout = () => {
         setCheckout(cart, true);
-        router.push('/checkout');
+        push('/checkout');
     };
 
     const subtotal = cart.reduce((acc, cur) => {
