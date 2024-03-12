@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-import Loading from '@/app/loading';
 import Wrap from '@/components/common/template/Wrap';
 import SearchBar from '@/components/_search/SearchBar';
 import SearchResult from '@/components/_search/SearchResult';
@@ -13,12 +11,10 @@ export default function SearchPage({
 
     return (
         <Wrap>
-            <Suspense fallback={<Loading />}>
-                <div className="h-12"></div>
-                <SearchBar query={query} />
-                <div className="h-12"></div>
-                <SearchResult query={query} />
-            </Suspense>
+            <div className="h-12"></div>
+            <SearchBar query={query} />
+            <div className="h-12"></div>
+            <SearchResult query={query} />
         </Wrap>
     );
 }
