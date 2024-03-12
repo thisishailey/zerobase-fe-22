@@ -5,10 +5,5 @@ export default function ProductLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return (
-        <Page classList="py-10 px-4 min-h-screen">
-            {children}
-            <div className="h-20"></div>
-        </Page>
-    );
+    return <Page classList="py-10 px-4 min-h-screen">{children}</Page>;
 }

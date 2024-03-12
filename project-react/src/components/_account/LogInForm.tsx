@@ -1,18 +1,18 @@
 import Link from 'next/link';
 
 interface Props {
-    handleSubmit: (formData: FormData) => void;
+    action: (formData: FormData) => void;
     emailInputRef: React.RefObject<HTMLInputElement>;
     passwordInputRef: React.RefObject<HTMLInputElement>;
 }
 
 export default function LogInForm({
-    handleSubmit,
+    action,
     emailInputRef,
     passwordInputRef,
 }: Props) {
     return (
-        <form action={handleSubmit}>
+        <form action={action}>
             <div className="!mb-6">
                 <label
                     htmlFor="email"

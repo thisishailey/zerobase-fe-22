@@ -1,10 +1,16 @@
-const usersData = [
+import type { IUserInfo } from '@/types/user';
+
+const usersData: IUserInfo[] = [
     {
         firstName: 'User',
         lastName: 'User',
         phone: '01010101010',
         email: 'user@email.com',
         password: 'password',
+        notification: {
+            email: false,
+            sms: false,
+        },
     },
 ];
 
@@ -24,4 +30,12 @@ export const authenticate = (attempt: LogInAttempt) => {
 export const getUserInfo = (email: string) => {
     const user = usersData.find((user) => user.email === email);
     return user;
+};
+
+export const createUser = (info: IUserInfo) => {
+    if (!usersData.some((user) => user.email === info.email)) {
+        usersData.push(info);
+        return true;
+    }
+    return false;
 };

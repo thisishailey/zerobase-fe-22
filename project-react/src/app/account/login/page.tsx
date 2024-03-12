@@ -31,7 +31,7 @@ export default function LogInPage() {
                 </div>
                 <div className="!mt-16 sm:!mt-20 sm:w-full sm:max-w-sm sm:mx-auto">
                     <LogInForm
-                        handleSubmit={async (formData) =>
+                        action={async (formData) =>
                             handleSubmit(formData).catch(handleError)
                         }
                         emailInputRef={emailInputRef}

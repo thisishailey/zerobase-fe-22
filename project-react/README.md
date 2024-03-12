@@ -22,6 +22,10 @@
     -   JSON Web Tokens (JWT)
     -   OrderCode
 
+-   State Management
+
+    -   Zustand
+
 -   Storage
 
     -   Local Storage
@@ -31,15 +35,11 @@
 
     -   Fake Store API
 
--   State Management
-
-    -   Zustand
-
 -   Version Control
 
     -   Git
 
--   Tools
+-   Other Tools
 
     -   npm
     -   VS Code
@@ -47,7 +47,6 @@
 
 ## To Do
 
--   Signup page
 -   Search page
 -   404 page
 -   Loading page & skeleton

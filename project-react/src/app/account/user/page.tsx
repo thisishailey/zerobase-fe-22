@@ -1,14 +1,23 @@
 import Wrap from '@/components/common/template/Wrap';
 import { getCurrentUser, handleLogout } from './action';
-import type UserInfo from '@/types/userInfo';
+import type { IUserSession } from '@/types/user';
 
 export default async function UserPage() {
-    const user = (await getCurrentUser()) as UserInfo;
+    const user = (await getCurrentUser()) as IUserSession;
 
-    const info = ['First name', 'Last name', 'Phone', 'Email', 'Password'];
+    const info = [
+        'First name',
+        'Last name',
+        'Phone',
+        'Email',
+        'Password',
+        'Notification',
+    ];
+
     const infoList = Object.values(user.user).map((data, i) => {
         return { id: i, title: info[i], data: data };
     });
+    infoList.pop();
 
     return (
         <Wrap>

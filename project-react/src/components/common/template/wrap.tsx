@@ -12,6 +12,7 @@ export default function Wrap({ children, classList }: WrapProps) {
     return (
         <>
             <div className={wrapClasses}>{children}</div>
+            <div className="h-12"></div>
         </>
     );
 }
