@@ -1,10 +1,10 @@
-import type IProduct from '@/types/productData';
 import ProductImage from '@/components/common/ProductImage';
 import {
     ProductDescription,
     AddCartButton,
     PurchaseButton,
 } from './DetailCardComponents';
+import type IProduct from '@/types/productData';
 
 export default function ProductDetailCard({ product }: { product: IProduct }) {
     return (

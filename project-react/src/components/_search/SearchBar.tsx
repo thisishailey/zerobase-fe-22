@@ -22,7 +22,7 @@ export default function SearchBar({ query }: { query: string }) {
         >
             <input
                 name="search"
-                className="peer block w-full py-2 pl-10 shadow-md text-base placeholder:text-gray-500 dark:placeholder:text-neutral-400 outline-0 rounded-lg border-1 border-gray-200 dark:border-neutral-700 focus-visible:border-gray-500 dark:focus-visible:border-neutral-400 bg-white dark:!bg-black"
+                className="peer block w-full py-2 pl-10 shadow-md text-lg lg:text-xl placeholder:text-gray-500 dark:placeholder:text-neutral-400 outline-0 rounded-lg border-1 border-gray-200 dark:border-neutral-700 focus-visible:border-gray-500 dark:focus-visible:border-neutral-400 bg-white dark:!bg-black"
                 placeholder="Search products"
                 autoComplete="off"
                 onChange={(e) => {

@@ -3,14 +3,13 @@ import Carousel from '@/components/home/Carousel';
 import Wrap from '@/components/common/template/Wrap';
 import Section from '@/components/home/Section';
 import { getProductsData } from '@/api/products';
-import type Product from '@/types/productData';
 
 export default async function HomePage() {
     const data = await getProductsData();
 
-    const newProducts: Product[] = data.slice(0, 3);
-    const bestProducts: Product[] = data.slice(3, 6);
-    const saleProducts: Product[] = data.slice(6, 9);
+    const newProducts = data.slice(0, 3);
+    const bestProducts = data.slice(3, 6);
+    const saleProducts = data.slice(6, 9);
 
     const sectionList = [
         { id: 'new', title: 'New Arrivals', products: newProducts },

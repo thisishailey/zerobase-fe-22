@@ -23,7 +23,7 @@ export default function CartTable() {
                             className="text-sm h-24 border-b border-gray-300 dark:border-neutral-600"
                             key={item.id}
                         >
-                            <td className="px-2">
+                            <td className="px-2 peer">
                                 <Link
                                     className="flex w-16"
                                     href={'/product/detail/' + item.id}
@@ -36,7 +36,7 @@ export default function CartTable() {
                                     />
                                 </Link>
                             </td>
-                            <td className="max-w-42">
+                            <td className="max-w-42 hover:underline peer-hover:underline">
                                 <Link href={'/product/detail/' + item.id}>
                                     <p className="h-10 text-ellipsis overflow-hidden">
                                         {item.title}
@@ -44,24 +44,25 @@ export default function CartTable() {
                                 </Link>
                             </td>
                             <td className="px-2">
-                                <div className="text-center h-24 flex flex-col items-center justify-evenly">
+                                <div className="text-center h-24 flex flex-col items-center justify-center gap-1">
                                     <button
-                                        className="w-4"
+                                        className="w-6 p-1 rounded-md hover:bg-gray-200 dark:hover:bg-neutral-700 transition duration-300"
                                         onClick={() => incrementQty(item.id)}
                                     >
                                         <ChevronUpIcon />
                                     </button>
                                     <p>{item.qty}</p>
-                                    <button className="w-4">
-                                        <ChevronDownIcon
-                                            onClick={() => {
-                                                if (item.qty === 1) {
-                                                    removeItem(item.id);
-                                                } else {
-                                                    decrementQty(item.id);
-                                                }
-                                            }}
-                                        />
+                                    <button
+                                        className="w-6 p-1 rounded-md hover:bg-gray-200 dark:hover:bg-neutral-700 transition duration-300"
+                                        onClick={() => {
+                                            if (item.qty === 1) {
+                                                removeItem(item.id);
+                                            } else {
+                                                decrementQty(item.id);
+                                            }
+                                        }}
+                                    >
+                                        <ChevronDownIcon />
                                     </button>
                                 </div>
                             </td>

@@ -10,7 +10,7 @@ interface CardProps {
 
 export default function ProductCard({ id, title, price, image }: CardProps) {
     return (
-        <div className="flex flex-col w-full cursor-pointer hover:text-blue-700 dark:hover:text-white dark:hover:underline decoration-1">
+        <div className="flex flex-col w-full cursor-pointer hover:text-blue-600 dark:hover:text-white dark:hover:underline decoration-1">
             <Link href={`/product/detail/${id}`}>
                 <ProductImage
                     image={image}

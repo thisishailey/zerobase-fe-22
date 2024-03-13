@@ -81,7 +81,7 @@ export default function OrderSummary(props: OrderSummaryProps) {
                 <button
                     type="submit"
                     onClick={props.onClick}
-                    className="py-3 rounded-xl text-center text-base text-white bg-blue-700 transition-all duration-300 hover:bg-blue-800 hover:text-lg"
+                    className="py-3 rounded-xl text-center text-base text-white bg-blue-600 transition-all duration-300 hover:bg-blue-700 hover:text-lg"
                 >
                     Pay ${props.total.toFixed(2)}
                 </button>

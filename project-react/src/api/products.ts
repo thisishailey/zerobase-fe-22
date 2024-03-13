@@ -1,4 +1,5 @@
 import { ENDPOINT } from '@/constants/api';
+import type IProduct from '@/types/productData';
 
 export const getProductsData = async () => {
     const res = await fetch(ENDPOINT);
@@ -7,7 +8,7 @@ export const getProductsData = async () => {
         throw new Error('Failed to fetch data');
     }
 
-    const data = await res.json();
+    const data: IProduct[] = await res.json();
     return data;
 };
 
@@ -18,7 +19,7 @@ export const getProductsByCategory = async (category: string) => {
         throw new Error('Failed to fetch data');
     }
 
-    const data = await res.json();
+    const data: IProduct[] = await res.json();
     return data;
 };
 
@@ -29,6 +30,6 @@ export const getProductData = async (id: number | string) => {
         throw new Error('Failed to fetch data');
     }
 
-    const data = await res.json();
+    const data: IProduct = await res.json();
     return data;
 };

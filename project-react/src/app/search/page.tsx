@@ -10,7 +10,7 @@ export default function SearchPage({
     const query = searchParams.query;
 
     return (
-        <Wrap>
+        <Wrap classList="px-4">
             <div className="h-12"></div>
             <SearchBar query={query} />
             <div className="h-12"></div>
